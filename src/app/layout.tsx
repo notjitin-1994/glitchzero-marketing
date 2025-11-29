@@ -5,7 +5,7 @@ import { Toaster } from '@/components/ui/toaster';
 import { ClientLayout } from '@/components/ui/client-layout';
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://glitchzero.dev'),
+  metadataBase: new URL('https://glitchzerolabs.com'),
   title: {
     default: 'GlitchZero | Zero Glitches. Infinite Possibilities.',
     template: `%s | GlitchZero`,
@@ -22,12 +22,12 @@ export const metadata: Metadata = {
     'Next.js Development',
     'AI-powered development',
   ],
-  authors: [{ name: 'GlitchZero', url: 'https://glitchzero.dev' }],
+  authors: [{ name: 'GlitchZero', url: 'https://glitchzerolabs.com' }],
   creator: 'GlitchZero',
   openGraph: {
     title: 'GlitchZero | Zero Glitches. Infinite Possibilities.',
     description: 'Build your dream app with GlitchZero. Custom web & mobile solutions for Indian businesses - from idea to launch in weeks, not months.',
-    url: 'https://glitchzero.dev',
+    url: 'https://glitchzerolabs.com',
     siteName: 'GlitchZero',
     locale: 'en_IN',
     type: 'website',

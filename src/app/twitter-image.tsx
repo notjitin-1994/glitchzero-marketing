@@ -165,28 +165,6 @@ export default async function Image() {
           }}
         />
 
-        {/* Website URL */}
-        <div
-          style={{
-            position: 'absolute',
-            bottom: '30px',
-            display: 'flex',
-            alignItems: 'center',
-            gap: '8px',
-          }}
-        >
-          <span
-            style={{
-              fontSize: '16px',
-              fontWeight: 500,
-              color: '#8E8E93',
-              letterSpacing: '0.05em',
-              textTransform: 'uppercase',
-            }}
-          >
-            glitchzero.dev
-          </span>
-        </div>
       </div>
     ),
     {
