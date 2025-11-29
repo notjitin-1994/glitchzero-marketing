@@ -25,7 +25,7 @@ export function ProcessDeepDive() {
   return (
     <section className="py-24 px-6 bg-carbon border-y border-obsidian/50">
       <div className="max-w-5xl mx-auto">
-        <div className="text-center mb-20">
+        <div className="text-center mb-16 md:mb-20">
           <span className="typo-tech text-signal text-xs">Our Blueprint for Speed</span>
           <h2 className="typo-headline text-3xl md:text-4xl text-platinum mt-3">From Idea to Impact, Systematized.</h2>
           <p className="typo-subhead text-tungsten max-w-2xl mx-auto mt-4">Our three-step process is engineered for clarity, speed, and exceptional outcomes.</p>
@@ -42,7 +42,7 @@ export function ProcessDeepDive() {
                 </div>
                 <div className="absolute -top-2 -left-2 w-12 h-12 rounded-full bg-signal flex items-center justify-center typo-headline text-obsidian text-lg">{step.step}</div>
               </div>
-              <div className={`md:w-1/2 ${index % 2 !== 0 ? 'md:text-right' : ''}`}>
+              <div className={`md:w-1/2 text-center md:text-left ${index % 2 !== 0 ? 'md:text-right' : ''}`}>
                 <h3 className="typo-headline text-2xl text-platinum mb-4">{step.title}</h3>
                 <p className="typo-body text-tungsten leading-relaxed">{step.description}</p>
               </div>

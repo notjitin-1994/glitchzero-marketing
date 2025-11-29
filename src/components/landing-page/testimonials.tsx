@@ -29,13 +29,13 @@ export function Testimonials() {
     <section id="testimonials" className="py-24 px-6 bg-carbon border-y border-obsidian/50">
       <div className="max-w-7xl mx-auto">
         
-        <div className="text-center mb-20">
+        <div className="text-center mb-16 md:mb-20">
           <span className="typo-tech text-signal text-xs">Trusted By</span>
           <h2 className="typo-headline text-3xl md:text-4xl text-platinum mt-3">Partners in Growth</h2>
           <p className="typo-subhead text-tungsten max-w-2xl mx-auto mt-4">We're proud to have helped businesses across India achieve their digital goals at record speed.</p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-24">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-24">
           {testimonials.map((item, index) => (
             <div key={index} className="bg-obsidian border border-tungsten/10 p-8 rounded-sm flex flex-col">
               <div className="flex text-yellow-400 mb-6">

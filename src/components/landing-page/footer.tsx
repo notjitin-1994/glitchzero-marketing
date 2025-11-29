@@ -5,11 +5,11 @@ export function Footer() {
   return (
     <footer className="bg-carbon pt-16 pb-8 border-t border-obsidian">
       <div className="max-w-7xl mx-auto px-6">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
-          <div className="col-span-1 md:col-span-1">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-12 mb-16">
+          <div className="col-span-1 sm:col-span-2 md:col-span-1">
             <Link href="/" className="flex items-center gap-2 mb-6">
-              <div className="w-6 h-6 bg-signal flex items-center justify-center">
-                <TrendingUp className="text-obsidian w-3 h-3 fill-current" />
+              <div className="w-8 h-8 bg-signal flex items-center justify-center">
+                <span className="typo-headline text-lg text-obsidian font-bold">G0</span>
               </div>
               <span className="typo-headline text-lg text-platinum">GlitchZero</span>
             </Link>
@@ -31,7 +31,7 @@ export function Footer() {
           <div>
             <h4 className="typo-tech text-platinum text-xs mb-6">Support</h4>
             <ul className="space-y-4">
-              <li><a href="https://wa.me/9190088989642" target="_blank" rel="noopener noreferrer" className="typo-subhead text-tungsten text-sm hover:text-signal transition-colors">Contact via WhatsApp</a></li>
+              <li><a href="https://wa.me/919008898964" target="_blank" rel="noopener noreferrer" className="typo-subhead text-tungsten text-sm hover:text-signal transition-colors">Contact via WhatsApp</a></li>
               <li><a href="mailto:not.jitin@gmail.com" className="typo-subhead text-tungsten text-sm hover:text-signal transition-colors">Contact via Email</a></li>
               <li><Link href="/faq" className="typo-subhead text-tungsten text-sm hover:text-signal transition-colors">FAQs</Link></li>
             </ul>
@@ -47,7 +47,7 @@ export function Footer() {
         </div>
 
         <div className="border-t border-tungsten/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
-          <span className="typo-tech text-[10px] text-tungsten">© 2024 GlitchZero. Proudly Made in India. 🇮🇳</span>
+          <span className="typo-tech text-[10px] text-tungsten text-center md:text-left">© 2024 GlitchZero. Proudly Made in India. 🇮🇳</span>
           <div className="flex gap-4">
             <a href="#" className="text-tungsten hover:text-platinum transition-colors"><Facebook className="w-4 h-4" /></a>
             <a href="#" className="text-tungsten hover:text-platinum transition-colors"><Instagram className="w-4 h-4" /></a>
