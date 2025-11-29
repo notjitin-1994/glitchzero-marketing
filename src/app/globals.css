@@ -160,7 +160,6 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
-  background: var(--obsidian);
   overflow: hidden;
   clip: rect(0, 900px, 0, 0);
 }
