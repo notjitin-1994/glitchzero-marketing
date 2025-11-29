@@ -1,4 +1,4 @@
-import { ArrowRight, Check, Receipt, Repeat, FileText, Database, Users } from 'lucide-react';
+import { ArrowRight, Check, Receipt, Database, Users, FileText } from 'lucide-react';
 
 const features = [
   {

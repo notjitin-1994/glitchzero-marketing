@@ -1,16 +1,16 @@
 import { Header } from '@/components/landing-page/header';
 import { Footer } from '@/components/landing-page/footer';
 import { Cta } from '@/components/landing-page/cta';
-import { BillingSoftwareHero } from '@/components/service-pages/billing-software-hero';
-import { BillingSoftwareDetails } from '@/components/service-pages/billing-software-details';
+import { BusinessSoftwareHero } from '@/components/service-pages/business-software-hero';
+import { BusinessSoftwareDetails } from '@/components/service-pages/business-software-details';
 
-export default function BillingSoftwarePage() {
+export default function BusinessSoftwarePage() {
   return (
     <>
       <Header />
       <main>
-        <BillingSoftwareHero />
-        <BillingSoftwareDetails />
+        <BusinessSoftwareHero />
+        <BusinessSoftwareDetails />
         <Cta />
       </main>
       <Footer />
