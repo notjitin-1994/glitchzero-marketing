@@ -1,25 +1,23 @@
 import { Header } from '@/components/landing-page/header';
 import { Hero } from '@/components/landing-page/hero';
 import { Services } from '@/components/landing-page/services';
-import { Platforms } from '@/components/landing-page/platforms';
-import { WhyUs } from '@/components/landing-page/why-us';
-import { Testimonials } from '@/components/landing-page/testimonials';
-import { Contact } from '@/components/landing-page/contact';
+import { Benefits } from '@/components/landing-page/benefits';
+import { Metrics } from '@/components/landing-page/metrics';
+import { Cta } from '@/components/landing-page/cta';
 import { Footer } from '@/components/landing-page/footer';
 
-export default function DigitalDishaLandingPage() {
+export default function GlitchZeroLandingPage() {
   return (
-    <div className="flex min-h-screen w-full flex-col">
+    <>
       <Header />
-      <main className="flex-1">
+      <main>
         <Hero />
         <Services />
-        <Platforms />
-        <WhyUs />
-        <Testimonials />
-        <Contact />
+        <Benefits />
+        <Metrics />
+        <Cta />
       </main>
       <Footer />
-    </div>
+    </>
   );
 }

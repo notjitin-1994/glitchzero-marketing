@@ -1,22 +1,32 @@
 import { Button } from '@/components/ui/button';
-import { Logo } from '@/components/ui/logo';
-import { LanguageSwitcher } from '../language-switcher';
-import { TranslatableText } from '../translatable-text';
+import { TrendingUp, Phone, Menu } from 'lucide-react';
 
 export function Header() {
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur-sm">
-      <div className="container mx-auto flex h-14 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
-        <Logo />
-        <div className="flex items-center space-x-4">
-          <LanguageSwitcher />
-          <a href="#contact">
-            <Button>
-              <TranslatableText>Get a Quote</TranslatableText>
-            </Button>
-          </a>
+    <nav className="fixed w-full z-50 bg-obsidian/90 backdrop-blur-md border-b border-carbon">
+      <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+        <div className="flex items-center gap-2 group cursor-pointer">
+          <div className="w-8 h-8 bg-signal flex items-center justify-center">
+            <TrendingUp className="text-obsidian w-5 h-5 fill-current" />
+          </div>
+          <span className="typo-headline text-xl text-platinum group-hover:text-signal transition-colors">GlitchZero</span>
         </div>
+
+        <div className="hidden md:flex items-center gap-8">
+          <a href="#services" className="typo-subhead text-tungsten hover:text-platinum transition-colors text-sm">Services</a>
+          <a href="#benefits" className="typo-subhead text-tungsten hover:text-platinum transition-colors text-sm">Why Us</a>
+          <a href="#process" className="typo-subhead text-tungsten hover:text-platinum transition-colors text-sm">How it Works</a>
+        </div>
+
+        <button className="hidden md:flex items-center gap-2 border border-tungsten/30 px-5 py-2 hover:border-signal transition-colors group">
+          <Phone className="w-4 h-4 text-tungsten group-hover:text-signal" />
+          <span className="typo-tech text-xs text-platinum group-hover:text-signal">Contact Us</span>
+        </button>
+        
+        <button className="md:hidden text-platinum hover:text-signal">
+          <Menu className="w-6 h-6" />
+        </button>
       </div>
-    </header>
+    </nav>
   );
 }

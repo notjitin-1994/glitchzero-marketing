@@ -13,6 +13,8 @@ export default {
         body: ['Manrope', 'sans-serif'],
         headline: ['Manrope', 'sans-serif'],
         code: ['JetBrains Mono', 'monospace'],
+        sans: ['Manrope', 'sans-serif'],
+        mono: ['JetBrains Mono', 'monospace'],
       },
       colors: {
         background: 'hsl(var(--background))',
@@ -69,6 +71,12 @@ export default {
           border: 'hsl(var(--sidebar-border))',
           ring: 'hsl(var(--sidebar-ring))',
         },
+        obsidian: 'var(--obsidian)',
+        carbon: 'var(--carbon)',
+        platinum: 'var(--platinum)',
+        tungsten: 'var(--tungsten)',
+        signal: 'var(--signal)',
+        terminal: 'var(--terminal)',
       },
       borderRadius: {
         lg: 'var(--radius)',
@@ -97,6 +105,10 @@ export default {
         'accordion-down': 'accordion-down 0.2s ease-out',
         'accordion-up': 'accordion-up 0.2s ease-out',
       },
+      letterSpacing: {
+        'headlines': '0.02em', // +2%
+        'tags': '0.05em',      // +5%
+      }
     },
   },
   plugins: [require('tailwindcss-animate')],

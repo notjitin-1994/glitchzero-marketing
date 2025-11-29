@@ -4,73 +4,97 @@
 
 body {
   font-family: 'Manrope', sans-serif;
+  background-color: #121212;
+  color: #E5E5E7;
+  overflow-x: hidden;
+}
+
+::-webkit-scrollbar {
+    width: 8px;
+}
+::-webkit-scrollbar-track {
+    background: #121212; 
+}
+::-webkit-scrollbar-thumb {
+    background: #1C1C1E; 
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #FF4F00; 
 }
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    --background: 240 10% 3.9%;
+    --foreground: 0 0% 98%;
 
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card: 240 4% 11%;
+    --card-foreground: 0 0% 98%;
  
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover: 240 10% 3.9%;
+    --popover-foreground: 0 0% 98%;
  
     --primary: 19 100% 50%;
-    --primary-foreground: 0 0% 100%;
+    --primary-foreground: 240 10% 3.9%;
  
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
- 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
- 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
- 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
-
-    --success: 145 63.4% 50.4%;
-    --success-foreground: 0 0% 0%;
- 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 19 100% 50%;
- 
-    --radius: 0.5rem;
-  }
- 
-  .dark {
-    --background: 0 0% 7.1%;
-    --foreground: 240 5.3% 90.2%;
-
-    --card: 240 3.4% 11.4%;
-    --card-foreground: 240 5.3% 90.2%;
-
-    --popover: 240 3.4% 11.4%;
-    --popover-foreground: 240 5.3% 90.2%;
-
-    --primary: 19 100% 50%;
-    --primary-foreground: 0 0% 100%;
-
     --secondary: 240 3.7% 15.9%;
     --secondary-foreground: 0 0% 98%;
-
+ 
     --muted: 240 3.7% 15.9%;
-    --muted-foreground: 240 2.1% 56.7%;
-
+    --muted-foreground: 240 5% 64.9%;
+ 
     --accent: 240 3.7% 15.9%;
     --accent-foreground: 0 0% 98%;
-
+ 
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 0 0% 98%;
 
-    --success: 145 63.4% 50.4%;
-    --success-foreground: 0 0% 0%;
-
+    --success: 142 76% 36%;
+    --success-foreground: 0 0% 98%;
+ 
     --border: 240 3.7% 15.9%;
+    --input: 240 3.7% 15.9%;
+    --ring: 19 100% 50%;
+ 
+    --radius: 0.5rem;
+
+     /* Custom Colors */
+    --obsidian: #121212;
+    --carbon: #1C1C1E;
+    --platinum: #E5E5E7;
+    --tungsten: #8E8E93;
+    --signal: #FF4F00;
+    --terminal: #30D158;
+  }
+ 
+  .dark {
+    --background: 0 0% 7.1%; /* obsidian */
+    --foreground: 60 4.8% 95.9%; /* platinum */
+
+    --card: 240 3.3% 11%; /* carbon */
+    --card-foreground: 60 4.8% 95.9%; /* platinum */
+
+    --popover: 0 0% 7.1%;
+    --popover-foreground: 60 4.8% 95.9%;
+
+    --primary: 19 100% 50%; /* signal */
+    --primary-foreground: 0 0% 7.1%; /* obsidian */
+
+    --secondary: 240 3.7% 15.9%;
+    --secondary-foreground: 60 4.8% 95.9%;
+
+    --muted: 240 3.7% 15.9%;
+    --muted-foreground: 240 2.1% 56.7%; /* tungsten */
+
+    --accent: 240 3.7% 15.9%;
+    --accent-foreground: 60 4.8% 95.9%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 60 4.8%_95.9%;
+
+    --success: 145 63.4% 45.4%; /* terminal */
+    --success-foreground: 0 0% 7.1%;
+
+    --border: 240 3.3% 11%; /* carbon */
     --input: 240 3.7% 15.9%;
     --ring: 19 100% 50%;
   }
@@ -83,4 +107,41 @@ body {
   body {
     @apply bg-background text-foreground;
   }
+}
+
+.typo-headline {
+    font-family: 'Manrope', sans-serif;
+    font-weight: 800; /* ExtraBold */
+    text-transform: uppercase;
+    letter-spacing: 0.02em; /* +2% */
+}
+
+.typo-subhead {
+    font-family: 'Manrope', sans-serif;
+    font-weight: 500; /* Medium */
+}
+
+.typo-body {
+    font-family: 'Manrope', sans-serif;
+    font-weight: 400; /* Regular */
+}
+
+.typo-tech {
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 500; /* Medium */
+    text-transform: uppercase;
+    letter-spacing: 0.05em; /* +5% */
+}
+
+.typo-code {
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 400; /* Regular */
+}
+
+.selection\:bg-signal *::selection {
+    background-color: var(--signal);
+}
+
+.selection\:text-white *::selection {
+    color: white;
 }
