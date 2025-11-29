@@ -23,8 +23,8 @@ export function Footer() {
             <ul className="space-y-4">
               <li><Link href="/services/ecommerce-apps" className="typo-subhead text-tungsten text-sm hover:text-signal transition-colors">E-commerce Apps</Link></li>
               <li><Link href="/services/business-websites" className="typo-subhead text-tungsten text-sm hover:text-signal transition-colors">Business Websites</Link></li>
-              <li><Link href="/services/billing-software" className="typo-subhead text-tungsten text-sm hover:text-signal transition-colors">Billing Software</Link></li>
-              <li><Link href="/services/app-maintenance" className="typo-subhead text-tungsten text-sm hover:text-signal transition-colors">App Maintenance</Link></li>
+              <li><Link href="/services/business-software" className="typo-subhead text-tungsten text-sm hover:text-signal transition-colors">Business Software</Link></li>
+              <li><Link href="/services/app-maintenance" className="typo-subhead text-tungsten text-sm hover:text-signal transition-colors">Website/App Maintenance</Link></li>
             </ul>
           </div>
 
