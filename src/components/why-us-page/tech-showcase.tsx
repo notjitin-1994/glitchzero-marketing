@@ -1,14 +1,26 @@
-import { Check } from 'lucide-react';
+import { Check, Code, Database, Fingerprint, Globe, Layers, Server, Smartphone } from 'lucide-react';
 
-const technologies = [
-  { name: 'Next.js & React', category: 'Web Frontend', description: 'For fast, scalable, and SEO-friendly web applications.' },
-  { name: 'React Native', category: 'Cross-Platform Mobile', description: 'To build apps for Android & iOS from a single codebase.' },
-  { name: 'Flutter', category: 'Cross-Platform Mobile', description: 'Google\'s UI toolkit for beautiful, natively compiled mobile applications.' },
-  { name: 'Swift (iOS)', category: 'Native Mobile', description: 'Apple\'s powerful and intuitive language for native iOS and macOS apps.' },
-  { name: 'Kotlin (Android)', category: 'Native Mobile', description: 'The modern, official language for native Android app development.' },
-  { name: 'Node.js', category: 'Backend', description: 'The backbone of our fast and efficient server-side logic.' },
-  { name: 'Firebase & Google Cloud', category: 'Backend & Infrastructure', description: 'Ensuring real-time data, authentication, and secure, scalable hosting.' },
-  { name: 'Proprietary AI', category: 'Core Advantage', description: 'Our secret sauce for accelerated code generation, testing, and deployment.' },
+const techCategories = [
+  {
+    category: 'Web & Backend',
+    icon: Globe,
+    technologies: ['Next.js', 'React', 'Node.js', 'Typescript'],
+  },
+  {
+    category: 'Mobile Apps',
+    icon: Smartphone,
+    technologies: ['React Native', 'Flutter', 'Swift (iOS)', 'Kotlin (Android)'],
+  },
+  {
+    category: 'Cloud & Database',
+    icon: Server,
+    technologies: ['Firebase', 'Google Cloud', 'PostgreSQL', 'MongoDB'],
+  },
+  {
+    category: 'Core Advantage',
+    icon: Fingerprint,
+    technologies: ['Proprietary AI', 'Genkit', 'Secure Workflows'],
+  },
 ];
 
 export function TechShowcase() {
@@ -21,23 +33,25 @@ export function TechShowcase() {
           <p className="typo-subhead text-tungsten max-w-3xl mx-auto mt-4">We use a curated set of industry-leading technologies that allow for maximum speed, security, and scalability. This means your product is built to last and ready to grow.</p>
         </div>
 
-        <div className="bg-carbon border border-tungsten/10 rounded-sm">
-          <div className="p-6 border-b border-tungsten/10">
-            <h3 className="typo-headline text-platinum text-lg">Core Technologies</h3>
-          </div>
-          <div className="divide-y divide-tungsten/10">
-            {technologies.map((tech) => (
-              <div key={tech.name} className="p-6 grid md:grid-cols-3 gap-4 group hover:bg-obsidian/50 transition-colors">
-                <div className="md:col-span-1">
-                  <h4 className="typo-subhead text-platinum group-hover:text-signal transition-colors">{tech.name}</h4>
-                  <p className="typo-tech text-[10px] text-tungsten mt-1">{tech.category}</p>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          {techCategories.map((cat) => (
+            <div key={cat.category} className="bg-carbon border border-tungsten/10 rounded-sm p-8 group hover:border-signal/50 transition-colors duration-300">
+              <div className="flex items-center gap-4 mb-6">
+                <div className="w-12 h-12 bg-obsidian flex items-center justify-center rounded-sm border border-tungsten/10 group-hover:border-signal/30 transition-colors">
+                  <cat.icon className="w-6 h-6 text-tungsten group-hover:text-signal transition-colors" />
                 </div>
-                <div className="md:col-span-2">
-                  <p className="typo-body text-tungsten text-sm">{tech.description}</p>
-                </div>
+                <h3 className="typo-headline text-xl text-platinum">{cat.category}</h3>
               </div>
-            ))}
-          </div>
+              <ul className="space-y-3">
+                {cat.technologies.map((tech) => (
+                  <li key={tech} className="flex items-center gap-3">
+                    <Check className="w-4 h-4 text-terminal" />
+                    <span className="typo-code text-platinum text-sm">{tech}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
         </div>
       </div>
     </section>
