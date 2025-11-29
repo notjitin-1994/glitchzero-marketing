@@ -21,11 +21,10 @@ export function PricingDetails() {
               </div>
               <div>
                 <h4 className="typo-subhead text-platinum">
-                  Starting at Just ₹10,000
+                  Simple Websites from Just ₹10,000
                 </h4>
                 <p className="typo-body text-sm text-tungsten mt-1">
-                  Get a professional, high-quality digital product for your
-                  business without the enterprise price tag.
+                  Get a professional, high-quality online presence without the enterprise price tag. Pricing for more complex apps and software goes up from here, tailored to your specific needs.
                 </p>
               </div>
             </div>
