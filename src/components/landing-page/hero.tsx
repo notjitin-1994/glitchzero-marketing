@@ -1,4 +1,3 @@
-import { Button } from '@/components/ui/button';
 import { ArrowRight, MessageCircle, Store, Wifi, TrendingUp, CheckCircle2, Smartphone } from 'lucide-react';
 
 export function Hero() {
