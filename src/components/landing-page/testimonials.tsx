@@ -4,17 +4,17 @@ const testimonials = [
   {
     name: 'Rakesh',
     company: "Rocky's Fruit Cafe",
-    testimonial: "GlitchZero delivered an exceptional inventory and sales management app for our cafe. It's streamlined our operations, cut down on waste, and given us clear insights into our business. We couldn't be happier."
+    testimonial: "I was amazed at how fast GlitchZero delivered our inventory and sales management app. What I thought would take months was done in weeks. It's streamlined our operations, cut down waste, and given us clear insights. Truly exceptional speed and quality."
   },
   {
     name: 'Megha Sreekumar',
     company: 'SmartSlate',
-    testimonial: 'We partnered with GlitchZero to build our new AI-powered applications. Their technical expertise and forward-thinking approach are exactly what we needed. They are building robust web and desktop apps that are pushing the boundaries of our industry.'
+    testimonial: 'We needed to build our new AI-powered applications quickly to stay ahead. GlitchZero\'s speed and expertise are unmatched. They are building robust web and desktop apps for us at a pace that is pushing the boundaries of our industry.'
   },
   {
     name: 'Sid S',
     company: 'Stex',
-    testimonial: "The team at GlitchZero is phenomenal. They've already delivered a fantastic website for us. We're now working with them to build a complex factory management system and a customer-facing app for all platforms. Their ability to deliver across such a wide range of technologies is truly impressive."
+    testimonial: "The team at GlitchZero delivered a fantastic website for us in no time. We're now working with them to build a complex factory management system and customer-facing apps for all platforms. Their ability to execute quickly across such a wide range of technologies is impressive."
   }
 ]
 
@@ -32,7 +32,7 @@ export function Testimonials() {
         <div className="text-center mb-20">
           <span className="typo-tech text-signal text-xs">Trusted By</span>
           <h2 className="typo-headline text-3xl md:text-4xl text-platinum mt-3">Partners in Growth</h2>
-          <p className="typo-subhead text-tungsten max-w-2xl mx-auto mt-4">We're proud to have helped businesses across India achieve their digital goals.</p>
+          <p className="typo-subhead text-tungsten max-w-2xl mx-auto mt-4">We're proud to have helped businesses across India achieve their digital goals at record speed.</p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-24">

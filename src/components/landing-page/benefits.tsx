@@ -8,7 +8,7 @@ export function Benefits() {
         <div className="space-y-10">
           <div>
             <span className="typo-tech text-signal text-xs">Why Choose Us</span>
-            <h2 className="typo-headline text-3xl md:text-4xl text-platinum mt-3">Technology Made Simple.</h2>
+            <h2 className="typo-headline text-3xl md:text-4xl text-platinum mt-3">From Idea to Launch, Faster.</h2>
           </div>
           
           <div className="space-y-6">
@@ -18,7 +18,7 @@ export function Benefits() {
               </div>
               <div>
                 <h4 className="typo-subhead text-platinum mb-1">Affordable Pricing</h4>
-                <p className="typo-body text-tungsten text-sm">We offer packages designed for small businesses. No hidden fees, clear payment terms.</p>
+                <p className="typo-body text-tungsten text-sm">Our rapid development cycle means lower costs. We offer packages designed for small businesses with no hidden fees.</p>
               </div>
             </div>
             
@@ -29,8 +29,8 @@ export function Benefits() {
                 <MessageSquare className="w-5 h-5 text-tungsten" />
               </div>
               <div>
-                <h4 className="typo-subhead text-platinum mb-1">WhatsApp Support</h4>
-                <p className="typo-body text-tungsten text-sm">Have a question? Just message us. We speak English, Hindi, and Hinglish.</p>
+                <h4 className="typo-subhead text-platinum mb-1">Direct WhatsApp Support</h4>
+                <p className="typo-body text-tungsten text-sm">No ticket delays. Get instant answers and updates directly from the team. We speak English, Hindi, and Hinglish.</p>
               </div>
             </div>
 
@@ -41,15 +41,15 @@ export function Benefits() {
                 <ShieldCheck className="w-5 h-5 text-tungsten" />
               </div>
               <div>
-                <h4 className="typo-subhead text-platinum mb-1">Secure & Reliable</h4>
-                <p className="typo-body text-tungsten text-sm">Your customer data is safe. We use the latest security standards so you can focus on sales.</p>
+                <h4 className="typo-subhead text-platinum mb-1">Secure & Reliable, Fast</h4>
+                <p className="typo-body text-tungsten text-sm">We use the latest security standards without compromising on speed, so you can focus on sales, sooner.</p>
               </div>
             </div>
           </div>
         </div>
 
         <div id="process" className="bg-carbon border border-tungsten/10 p-8 rounded-sm relative">
-          <h3 className="typo-headline text-lg text-platinum mb-6">How It Works</h3>
+          <h3 className="typo-headline text-lg text-platinum mb-6">Our 3-Step Rapid Process</h3>
           
           <div className="space-y-8 relative">
             <div className="absolute left-3 top-2 bottom-2 w-0.5 bg-tungsten/20"></div>
@@ -59,8 +59,8 @@ export function Benefits() {
                 <span className="text-signal text-[10px] font-bold">1</span>
               </div>
               <div>
-                <h4 className="typo-subhead text-platinum text-sm">You tell us your idea</h4>
-                <p className="typo-body text-xs text-tungsten mt-1">We discuss what your business needs over a call.</p>
+                <h4 className="typo-subhead text-platinum text-sm">Consult & Strategize (Day 1)</h4>
+                <p className="typo-body text-xs text-tungsten mt-1">We discuss your needs and finalize a plan on our first call.</p>
               </div>
             </div>
 
@@ -69,8 +69,8 @@ export function Benefits() {
                 <span className="text-platinum text-[10px] font-bold">2</span>
               </div>
               <div>
-                <h4 className="typo-subhead text-platinum text-sm">We build your app/site</h4>
-                <p className="typo-body text-xs text-tungsten mt-1">Our team codes everything from scratch. You see progress weekly.</p>
+                <h4 className="typo-subhead text-platinum text-sm">Build & Review (1-2 Weeks)</h4>
+                <p className="typo-body text-xs text-tungsten mt-1">Our team codes at high speed. You get weekly updates, not monthly.</p>
               </div>
             </div>
 
@@ -79,8 +79,8 @@ export function Benefits() {
                 <span className="text-platinum text-[10px] font-bold">3</span>
               </div>
               <div>
-                <h4 className="typo-subhead text-platinum text-sm">Launch & Training</h4>
-                <p className="typo-body text-xs text-tungsten mt-1">We put it on the App Store and teach you how to use it.</p>
+                <h4 className="typo-subhead text-platinum text-sm">Launch & Train (Final Day)</h4>
+                <p className="typo-body text-xs text-tungsten mt-1">We deploy your app and train you, ensuring you're ready for business.</p>
               </div>
             </div>
           </div>

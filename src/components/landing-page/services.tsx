@@ -5,8 +5,8 @@ export function Services() {
     <section id="services" className="py-24 bg-carbon border-y border-obsidian/50">
       <div className="max-w-7xl mx-auto px-6">
         <div className="mb-16">
-          <span className="typo-tech text-signal text-xs">What We Do</span>
-          <h2 className="typo-headline text-3xl md:text-4xl text-platinum mt-3">Everything You Need to Grow</h2>
+          <span className="typo-tech text-signal text-xs">What We Build, Fast.</span>
+          <h2 className="typo-headline text-3xl md:text-4xl text-platinum mt-3">Digital Solutions, Delivered at Speed</h2>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -16,7 +16,7 @@ export function Services() {
             </div>
             <h3 className="typo-headline text-xl text-platinum mb-4">Mobile Apps</h3>
             <p className="typo-body text-tungsten leading-relaxed">
-              Get your own branded app on Play Store and App Store. Perfect for e-commerce, food delivery, or customer loyalty.
+              Launch your branded app on Play Store & App Store in record time. Perfect for e-commerce, delivery, or customer loyalty.
             </p>
             <div className="absolute bottom-0 left-0 w-full h-1 bg-signal transform -translate-x-full group-hover:translate-x-0 transition-transform duration-300"></div>
           </div>
@@ -27,7 +27,7 @@ export function Services() {
             </div>
             <h3 className="typo-headline text-xl text-platinum mb-4">Business Software</h3>
             <p className="typo-body text-tungsten leading-relaxed">
-              Manage inventory, billing, and staff from your computer. We build simple software that works on Windows and Mac.
+              We rapidly build simple, powerful software for Windows & Mac to manage inventory, billing, and staff.
             </p>
             <div className="absolute bottom-0 left-0 w-full h-1 bg-signal transform -translate-x-full group-hover:translate-x-0 transition-transform duration-300 delay-75"></div>
           </div>
@@ -38,7 +38,7 @@ export function Services() {
             </div>
             <h3 className="typo-headline text-xl text-platinum mb-4">Modern Websites</h3>
             <p className="typo-body text-tungsten leading-relaxed">
-              A professional website that loads fast on every mobile network. Showcase your products to the whole world.
+             Need a professional website that loads instantly? We design and deploy it fast, optimized for all devices.
             </p>
             <div className="absolute bottom-0 left-0 w-full h-1 bg-signal transform -translate-x-full group-hover:translate-x-0 transition-transform duration-300 delay-150"></div>
           </div>

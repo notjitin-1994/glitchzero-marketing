@@ -12,21 +12,21 @@ export function Hero() {
         <div className="space-y-8 z-10">
           <div className="inline-flex items-center gap-3 bg-carbon border border-tungsten/20 px-3 py-1.5 rounded-sm">
             <span className="w-2 h-2 rounded-full bg-terminal animate-pulse"></span>
-            <span className="typo-tech text-xs text-tungsten">Helping 500+ Businesses in India</span>
+            <span className="typo-tech text-xs text-tungsten">Average Project Delivery: 2 Weeks</span>
           </div>
 
           <h1 className="typo-headline text-5xl md:text-7xl leading-tight text-platinum">
-            Take Your Business <br/>
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-signal to-orange-400">Online Today.</span><br/>
+            Your App, <br/>
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-signal to-orange-400">Live in 2 Weeks.</span><br/>
           </h1>
 
           <p className="typo-subhead text-lg text-tungsten max-w-lg leading-relaxed">
-            Own a shop, startup, or agency? We build custom mobile apps and websites that help you reach customers across India. No technical knowledge required.
+            Stop waiting months. We build and launch high-quality custom apps and websites for your Indian business at unmatched speed. No technical knowledge required.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 pt-4">
             <button className="bg-signal text-obsidian px-8 py-4 typo-headline text-sm hover:bg-white hover:text-obsidian transition-all duration-300 flex items-center justify-center gap-2 shadow-[0_0_15px_rgba(255,79,0,0.4)]">
-              Get Free Consultation
+              Start Building Now
               <ArrowRight className="w-4 h-4" />
             </button>
             <button className="border border-tungsten/30 text-platinum px-8 py-4 typo-headline text-sm hover:bg-carbon hover:border-platinum transition-all duration-300 flex items-center justify-center gap-2">
