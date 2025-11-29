@@ -17,7 +17,7 @@ export function Header() {
         <div className="hidden md:flex items-center gap-8">
           <Link href="/services" className="typo-subhead text-tungsten hover:text-platinum transition-colors text-sm">Services</Link>
           <Link href="/why-us" className="typo-subhead text-tungsten hover:text-platinum transition-colors text-sm">Why Us</Link>
-          <a href="/#process" className="typo-subhead text-tungsten hover:text-platinum transition-colors text-sm">How it Works</a>
+          <Link href="/pricing" className="typo-subhead text-tungsten hover:text-platinum transition-colors text-sm">Pricing</Link>
         </div>
 
         <button className="hidden md:flex items-center gap-2 border border-tungsten/30 px-5 py-2 hover:border-signal transition-colors group">
