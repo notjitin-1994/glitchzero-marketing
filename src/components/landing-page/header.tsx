@@ -14,7 +14,7 @@ export function Header() {
 
         <div className="hidden md:flex items-center gap-8">
           <Link href="/services" className="typo-subhead text-tungsten hover:text-platinum transition-colors text-sm">Services</Link>
-          <a href="/#benefits" className="typo-subhead text-tungsten hover:text-platinum transition-colors text-sm">Why Us</a>
+          <Link href="/why-us" className="typo-subhead text-tungsten hover:text-platinum transition-colors text-sm">Why Us</Link>
           <a href="/#process" className="typo-subhead text-tungsten hover:text-platinum transition-colors text-sm">How it Works</a>
         </div>
 
