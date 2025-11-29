@@ -1,4 +1,3 @@
-import { Button } from '@/components/ui/button';
 import { TrendingUp, Mail, Menu } from 'lucide-react';
 
 export function Header() {
@@ -13,9 +12,9 @@ export function Header() {
         </div>
 
         <div className="hidden md:flex items-center gap-8">
-          <a href="#portfolio" className="typo-subhead text-tungsten hover:text-platinum transition-colors text-sm">Portfolio</a>
-          <a href="#pricing" className="typo-subhead text-tungsten hover:text-platinum transition-colors text-sm">Products & Pricing</a>
-          <a href="#why-us" className="typo-subhead text-tungsten hover:text-platinum transition-colors text-sm">Why us</a>
+          <a href="#services" className="typo-subhead text-tungsten hover:text-platinum transition-colors text-sm">Services</a>
+          <a href="#benefits" className="typo-subhead text-tungsten hover:text-platinum transition-colors text-sm">Why Us</a>
+          <a href="#process" className="typo-subhead text-tungsten hover:text-platinum transition-colors text-sm">How it Works</a>
         </div>
 
         <button className="hidden md:flex items-center gap-2 border border-tungsten/30 px-5 py-2 hover:border-signal transition-colors group">
