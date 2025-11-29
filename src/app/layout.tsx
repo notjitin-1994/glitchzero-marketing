@@ -7,11 +7,11 @@ import { ClientLayout } from '@/components/ui/client-layout';
 export const metadata: Metadata = {
   metadataBase: new URL('https://glitchzero.dev'),
   title: {
-    default: 'GlitchZero | Digital Solutions for Indian Businesses',
+    default: 'GlitchZero | Zero Glitches. Infinite Possibilities.',
     template: `%s | GlitchZero`,
   },
   description:
-    'Custom web and mobile applications for small businesses in India. We turn your vision into reality with bespoke digital solutions, delivered at speed.',
+    'Build your dream app with GlitchZero. Custom web & mobile solutions for Indian businesses - from idea to launch in weeks, not months. AI-powered development, pixel-perfect design, zero bugs.',
   keywords: [
     'Web Development India',
     'Mobile App Development India',
@@ -25,25 +25,17 @@ export const metadata: Metadata = {
   authors: [{ name: 'GlitchZero', url: 'https://glitchzero.dev' }],
   creator: 'GlitchZero',
   openGraph: {
-    title: 'GlitchZero | Digital Solutions for Indian Businesses',
-    description: 'Custom web and mobile applications for small businesses in India, delivered at speed.',
+    title: 'GlitchZero | Zero Glitches. Infinite Possibilities.',
+    description: 'Build your dream app with GlitchZero. Custom web & mobile solutions for Indian businesses - from idea to launch in weeks, not months.',
     url: 'https://glitchzero.dev',
     siteName: 'GlitchZero',
-    images: [
-      {
-        url: '/og-image.png', // Must be an absolute URL
-        width: 1200,
-        height: 630,
-      },
-    ],
     locale: 'en_IN',
     type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'GlitchZero | Digital Solutions for Indian Businesses',
-    description: 'Custom web and mobile applications for small businesses in India, delivered at speed.',
-    images: ['/og-image.png'], // Must be an absolute URL
+    title: 'GlitchZero | Zero Glitches. Infinite Possibilities.',
+    description: 'Build your dream app with GlitchZero. Custom web & mobile solutions for Indian businesses - from idea to launch in weeks, not months.',
   },
   robots: {
     index: true,
