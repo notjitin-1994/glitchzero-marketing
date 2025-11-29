@@ -15,12 +15,12 @@ export function Hero() {
           </div>
 
           <h1 className="typo-headline text-5xl md:text-7xl leading-tight text-platinum">
-            Your Custom App, <br/>
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-signal to-orange-400">50% Faster.</span><br/>
+            Take Your Business <br/>
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-signal to-orange-400">Online Today.</span><br/>
           </h1>
 
           <p className="typo-subhead text-lg text-tungsten max-w-lg leading-relaxed">
-            Why wait months? We build and launch high-quality custom apps and websites for your Indian business at least 50% faster than the industry average. No technical knowledge required.
+            Own a shop, startup, or agency? We build custom mobile apps and websites that help you reach customers across India. No technical knowledge required.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 pt-4">
