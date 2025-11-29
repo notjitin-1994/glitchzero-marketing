@@ -36,6 +36,8 @@ interface Service {
   features: ServiceFeature[];
   stats: ServiceStat[];
   isTerminal: boolean;
+  ctaText: string;
+  ctaLink?: string;
 }
 
 const services: Service[] = [
@@ -59,6 +61,8 @@ const services: Service[] = [
       { value: 'A+', label: 'SEO Score' },
     ],
     isTerminal: false,
+    ctaText: 'View Portfolio',
+    ctaLink: '/services/websites',
   },
   {
     id: 'web-apps',
@@ -80,6 +84,8 @@ const services: Service[] = [
       { value: '∞', label: 'Scalable' },
     ],
     isTerminal: true,
+    ctaText: 'Explore',
+    ctaLink: '/services/webapps',
   },
   {
     id: 'desktop-apps',
@@ -101,6 +107,8 @@ const services: Service[] = [
       { value: '60%', label: 'Faster' },
     ],
     isTerminal: false,
+    ctaText: 'Explore',
+    ctaLink: '/services/desktop-apps',
   },
   {
     id: 'mobile-apps',
@@ -122,6 +130,7 @@ const services: Service[] = [
       { value: '50%', label: 'Cost Saved' },
     ],
     isTerminal: true,
+    ctaText: 'View Portfolio',
   },
   {
     id: 'iot-apps',
@@ -143,6 +152,8 @@ const services: Service[] = [
       { value: 'OTA', label: 'Updates' },
     ],
     isTerminal: false,
+    ctaText: 'Explore',
+    ctaLink: '/services/iot',
   },
 ];
 
@@ -209,10 +220,10 @@ function ServiceCard({ service, index }: { service: Service; index: number }) {
 
           {/* CTA */}
           <a
-            href="#"
+            href={service.ctaLink || '#'}
             className={`inline-flex items-center gap-2 typo-tech text-sm ${service.isTerminal ? 'text-terminal' : 'text-signal'} hover:underline underline-offset-4 group`}
           >
-            View Portfolio
+            {service.ctaText}
             <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
           </a>
         </div>
