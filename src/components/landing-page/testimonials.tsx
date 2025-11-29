@@ -14,7 +14,7 @@ const testimonials = [
   {
     name: 'Sid S',
     company: 'Stex',
-    testimonial: "The team at GlitchZero is phenomenal. They built our website, a complex factory management system, and a customer-facing app that works flawlessly on every platform—desktop and mobile. Their ability to deliver across such a wide range of technologies is truly impressive."
+    testimonial: "The team at GlitchZero is phenomenal. They've already delivered a fantastic website for us. We're now working with them to build a complex factory management system and a customer-facing app for all platforms. Their ability to deliver across such a wide range of technologies is truly impressive."
   }
 ]
 
