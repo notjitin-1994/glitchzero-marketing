@@ -1,25 +1,20 @@
-import Image from 'next/image';
-import { PlaceHolderImages } from '@/lib/placeholder-images';
-import { Star } from 'lucide-react';
+import { User, Star } from 'lucide-react';
 
 const testimonials = [
   {
     name: 'Rakesh',
     company: "Rocky's Fruit Cafe",
-    avatar: PlaceHolderImages.find(img => img.id === 'testimonial-1')?.imageUrl || 'https://picsum.photos/seed/1/100/100',
-    testimonial: 'GlitchZero built an app that doubled our online orders in three months. Their team understood our needs perfectly and delivered beyond our expectations. Truly a game-changer for our small cafe.'
+    testimonial: "GlitchZero delivered an exceptional inventory and sales management app for our cafe. It's streamlined our operations, cut down on waste, and given us clear insights into our business. We couldn't be happier."
   },
   {
     name: 'Megha Sreekumar',
     company: 'SmartSlate',
-    avatar: PlaceHolderImages.find(img => img.id === 'testimonial-2')?.imageUrl || 'https://picsum.photos/seed/2/100/100',
-    testimonial: 'The website they developed is not only beautiful but also incredibly fast. Our user engagement has gone up by 40%. The WhatsApp support is a lifesaver for quick queries.'
+    testimonial: 'We partnered with GlitchZero to build our new AI-powered applications. Their technical expertise and forward-thinking approach are exactly what we needed. They are building robust web and desktop apps that are pushing the boundaries of our industry.'
   },
   {
     name: 'Sid S',
     company: 'Stex',
-    avatar: PlaceHolderImages.find(img => img.id === 'testimonial-3')?.imageUrl || 'https://picsum.photos/seed/3/100/100',
-    testimonial: 'As a startup, we needed a reliable tech partner who could be flexible and affordable. GlitchZero delivered a secure and scalable platform that has been crucial for our growth.'
+    testimonial: "The team at GlitchZero is phenomenal. They built our website, a complex factory management system, and a customer-facing app that works flawlessly on every platform—desktop and mobile. Their ability to deliver across such a wide range of technologies is truly impressive."
   }
 ]
 
@@ -48,14 +43,9 @@ export function Testimonials() {
               </div>
               <p className="typo-body text-tungsten flex-grow">"{item.testimonial}"</p>
               <div className="flex items-center gap-4 mt-8">
-                <Image 
-                  src={item.avatar} 
-                  alt={`Portrait of ${item.name}`} 
-                  width={40} 
-                  height={40} 
-                  className="rounded-full object-cover" 
-                  data-ai-hint="person portrait"
-                />
+                <div className="w-10 h-10 rounded-full bg-carbon border border-tungsten/20 flex items-center justify-center">
+                  <User className="w-5 h-5 text-tungsten" />
+                </div>
                 <div>
                   <h4 className="typo-subhead text-platinum">{item.name}</h4>
                   <p className="typo-tech text-xs text-tungsten">{item.company}</p>
