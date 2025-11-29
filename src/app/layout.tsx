@@ -58,6 +58,23 @@ export default function RootLayout({
   return (
     <html lang="en" className="scroll-smooth">
       <head>
+        {/* OG tags for social sharing - must be static HTML for crawlers */}
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://glitchzerolabs.com" />
+        <meta property="og:title" content="GlitchZero | Zero Glitches. Infinite Possibilities." />
+        <meta property="og:description" content="Build your dream app with GlitchZero. Custom web & mobile solutions for Indian businesses - from idea to launch in weeks, not months." />
+        <meta property="og:image" content="https://glitchzerolabs.com/opengraph-image" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta property="og:site_name" content="GlitchZero" />
+        <meta property="og:locale" content="en_IN" />
+
+        {/* Twitter Card tags */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="GlitchZero | Zero Glitches. Infinite Possibilities." />
+        <meta name="twitter:description" content="Build your dream app with GlitchZero. Custom web & mobile solutions for Indian businesses - from idea to launch in weeks, not months." />
+        <meta name="twitter:image" content="https://glitchzerolabs.com/opengraph-image" />
+
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link
