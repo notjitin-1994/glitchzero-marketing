@@ -1,4 +1,3 @@
-import { Header } from '@/components/landing-page/header';
 import { Footer } from '@/components/landing-page/footer';
 import { Cta } from '@/components/landing-page/cta';
 import { PrivacyPolicyHero } from '@/components/legal-pages/privacy-policy-hero';
@@ -25,7 +24,6 @@ export const metadata: Metadata = {
 export default function PrivacyPolicyPage() {
   return (
     <>
-      <Header />
       <main>
         <PrivacyPolicyHero />
         <PrivacyPolicyContent />

@@ -20,7 +20,7 @@ const pricingPoints = [
 
 export function PricingDetails() {
   return (
-    <section className="py-24 px-6">
+    <section className="py-24 px-6 bg-carbon border-y border-obsidian/50">
       <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-16">
         <div className="lg:col-span-2">
           <h2 className="typo-headline text-3xl text-platinum mb-4">

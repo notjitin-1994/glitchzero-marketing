@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import './globals.css';
 import { cn } from '@/lib/utils';
 import { Toaster } from '@/components/ui/toaster';
+import { ClientLayout } from '@/components/ui/client-layout';
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://glitchzero.dev'),
@@ -73,7 +74,9 @@ export default function RootLayout({
         />
       </head>
       <body className={cn('antialiased min-h-screen flex flex-col relative selection:bg-signal selection:text-white', 'font-sans bg-obsidian text-platinum')}>
-          {children}
+          <ClientLayout>
+            {children}
+          </ClientLayout>
           <Toaster />
       </body>
     </html>

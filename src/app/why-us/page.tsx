@@ -1,4 +1,3 @@
-import { Header } from '@/components/landing-page/header';
 import { Footer } from '@/components/landing-page/footer';
 import { Cta } from '@/components/landing-page/cta';
 import { WhyUsHero } from '@/components/why-us-page/why-us-hero';
@@ -23,7 +22,6 @@ export const metadata: Metadata = {
 export default function WhyUsPage() {
   return (
     <>
-      <Header />
       <main>
         <WhyUsHero />
         <CorePillars />

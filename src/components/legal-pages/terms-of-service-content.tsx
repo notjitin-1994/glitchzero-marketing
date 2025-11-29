@@ -56,7 +56,7 @@ export function TermsOfServiceContent() {
 
         <h2>11. Contact Us</h2>
         <p>
-          If you have any questions about these Terms, please contact us at: <a href="mailto:not.jitin@gmail.com">not.jitin@gmail.com</a>.
+          If you have any questions about these Terms, please contact us at: <a href="mailto:jitin@glitchzerolabs.com">jitin@glitchzerolabs.com</a>.
         </p>
       </div>
     </section>

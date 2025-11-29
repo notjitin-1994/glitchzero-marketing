@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { ArrowRight, MessageCircle, Store, Wifi, TrendingUp, CheckCircle2, Smartphone } from 'lucide-react';
 import { ContactFormModal } from '@/components/contact-form-modal';
+import { FadeInSection, BlurFadeIn } from '@/components/ui/fade-in-section';
 
 export function Hero() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -13,45 +14,53 @@ export function Hero() {
       <div className="absolute bottom-0 left-0 w-96 h-96 bg-signal/5 blur-[120px] rounded-full pointer-events-none"></div>
 
       <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-        
+
         <div className="space-y-8 z-10">
-          <div className="inline-flex items-center gap-3 bg-carbon border border-tungsten/20 px-3 py-1.5 rounded-sm">
-            <span className="w-2 h-2 rounded-full bg-terminal animate-pulse"></span>
-            <span className="typo-tech text-xs text-tungsten">Average Project Delivery: 2 Weeks</span>
-          </div>
+          <FadeInSection delay={0.1} direction="up">
+            <div className="inline-flex items-center gap-3 bg-carbon border border-tungsten/20 px-3 py-1.5 rounded-sm">
+              <span className="w-2 h-2 rounded-full bg-terminal animate-pulse"></span>
+              <span className="typo-tech text-xs text-tungsten">Average Project Delivery: 2 Weeks</span>
+            </div>
+          </FadeInSection>
 
-          <h1 className="typo-headline text-5xl md:text-7xl leading-tight text-platinum">
-            Take Your Business <br/>
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-signal to-orange-400">Online Today.</span><br/>
-          </h1>
+          <BlurFadeIn delay={0.2}>
+            <h1 className="typo-headline text-5xl md:text-7xl leading-tight text-platinum">
+              Take Your Business <br/>
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-signal to-orange-400">Online Today.</span><br/>
+            </h1>
+          </BlurFadeIn>
 
-          <p className="typo-subhead text-lg text-tungsten max-w-lg leading-relaxed">
-            Own a shop, startup, or agency? We build custom mobile apps and websites that help you reach customers across India. No technical knowledge required.
-          </p>
+          <FadeInSection delay={0.3} direction="up">
+            <p className="typo-subhead text-lg text-tungsten max-w-lg leading-relaxed">
+              Own a shop, startup, or agency? We build custom mobile apps and websites that help you reach customers across India. No technical knowledge required.
+            </p>
+          </FadeInSection>
 
-          <div className="flex flex-col sm:flex-row gap-4 pt-4">
-            <button
-              onClick={() => setIsModalOpen(true)}
-              className="bg-signal text-obsidian px-8 py-4 typo-headline text-sm hover:bg-white hover:text-obsidian transition-all duration-300 flex items-center justify-center gap-2 shadow-[0_0_15px_rgba(255,79,0,0.4)]"
-            >
-              Start Building Now
-              <ArrowRight className="w-4 h-4" />
-            </button>
-            <a
-              href="https://wa.me/919008898642"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="border border-tungsten/30 text-platinum px-8 py-4 typo-headline text-sm hover:bg-carbon hover:border-platinum transition-all duration-300 flex items-center justify-center gap-2"
-            >
-              <MessageCircle className="w-4 h-4" />
-              Chat on WhatsApp
-            </a>
-          </div>
+          <FadeInSection delay={0.4} direction="up">
+            <div className="flex flex-col sm:flex-row gap-4 pt-4">
+              <button
+                onClick={() => setIsModalOpen(true)}
+                className="bg-signal text-obsidian px-8 py-4 typo-headline text-sm hover:bg-white hover:text-obsidian transition-all duration-300 flex items-center justify-center gap-2 shadow-[0_0_15px_rgba(255,79,0,0.4)]"
+              >
+                Start Building Now
+                <ArrowRight className="w-4 h-4" />
+              </button>
+              <a
+                href="https://wa.me/919008898642"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="border border-tungsten/30 text-platinum px-8 py-4 typo-headline text-sm hover:bg-carbon hover:border-platinum transition-all duration-300 flex items-center justify-center gap-2"
+              >
+                <MessageCircle className="w-4 h-4" />
+                Chat on WhatsApp
+              </a>
+            </div>
+          </FadeInSection>
 
           <ContactFormModal open={isModalOpen} onOpenChange={setIsModalOpen} />
         </div>
 
-        <div className="relative group">
+        <FadeInSection delay={0.3} direction="right" className="relative group">
           <div className="absolute -inset-1 bg-gradient-to-r from-signal to-carbon rounded-sm opacity-20 group-hover:opacity-50 blur transition duration-500"></div>
           
           <div className="relative bg-obsidian border border-carbon rounded-sm p-6 shadow-2xl">
@@ -103,7 +112,7 @@ export function Hero() {
               Android & iOS <Smartphone className="w-4 h-4 text-signal" />
             </div>
           </div>
-        </div>
+        </FadeInSection>
       </div>
     </section>
   );

@@ -1,54 +1,70 @@
+'use client';
+
 import { BrainCircuit, IndianRupee, MessageSquare, ShieldCheck } from 'lucide-react';
+import { FadeInSection, StaggerContainer, StaggerItem } from '@/components/ui/fade-in-section';
 
 export function Benefits() {
   return (
     <section id="benefits" className="py-24 px-6 max-w-7xl mx-auto">
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-        
+
         <div className="space-y-10">
-          <div>
-            <span className="typo-tech text-signal text-xs">Why Choose Us</span>
-            <h2 className="typo-headline text-3xl md:text-4xl text-platinum mt-3">From Idea to Launch, Faster.</h2>
-          </div>
-          
-          <div className="space-y-6">
-            <div className="flex items-start gap-4">
-              <div className="mt-1">
-                <BrainCircuit className="w-5 h-5 text-tungsten" />
-              </div>
-              <div>
-                <h4 className="typo-subhead text-platinum mb-1">AI-Accelerated Development</h4>
-                <p className="typo-body text-tungsten text-sm">We leverage secure, proprietary AI-powered workflows and frameworks to accelerate our development process by an average of 60%, delivering your project faster than traditional agencies.</p>
-              </div>
+          <FadeInSection direction="up">
+            <div>
+              <span className="typo-tech text-signal text-xs">Why Choose Us</span>
+              <h2 className="typo-headline text-3xl md:text-4xl text-platinum mt-3">From Idea to Launch, Faster.</h2>
             </div>
+          </FadeInSection>
 
-            <div className="w-full h-px bg-carbon"></div>
+          <StaggerContainer staggerDelay={0.1} className="space-y-6">
+            <StaggerItem>
+              <div className="flex items-start gap-4">
+                <div className="mt-1">
+                  <BrainCircuit className="w-5 h-5 text-tungsten" />
+                </div>
+                <div>
+                  <h4 className="typo-subhead text-platinum mb-1">AI-Accelerated Development</h4>
+                  <p className="typo-body text-tungsten text-sm">We leverage secure, proprietary AI-powered workflows and frameworks to accelerate our development process by an average of 60%, delivering your project faster than traditional agencies.</p>
+                </div>
+              </div>
+            </StaggerItem>
 
-            <div className="flex items-start gap-4">
-              <div className="mt-1">
-                <IndianRupee className="w-5 h-5 text-tungsten" />
-              </div>
-              <div>
-                <h4 className="typo-subhead text-platinum mb-1">Affordable & Transparent</h4>
-                <p className="typo-body text-tungsten text-sm">Our rapid, AI-driven cycle means lower costs. We offer clear packages designed for small businesses with no hidden fees.</p>
-              </div>
-            </div>
-            
-            <div className="w-full h-px bg-carbon"></div>
+            <StaggerItem>
+              <div className="w-full h-px bg-carbon"></div>
+            </StaggerItem>
 
-            <div className="flex items-start gap-4">
-              <div className="mt-1">
-                <MessageSquare className="w-5 h-5 text-tungsten" />
+            <StaggerItem>
+              <div className="flex items-start gap-4">
+                <div className="mt-1">
+                  <IndianRupee className="w-5 h-5 text-tungsten" />
+                </div>
+                <div>
+                  <h4 className="typo-subhead text-platinum mb-1">Affordable & Transparent</h4>
+                  <p className="typo-body text-tungsten text-sm">Our rapid, AI-driven cycle means lower costs. We offer clear packages designed for small businesses with no hidden fees.</p>
+                </div>
               </div>
-              <div>
-                <h4 className="typo-subhead text-platinum mb-1">Direct WhatsApp Support</h4>
-                <p className="typo-body text-tungsten text-sm">No ticket delays. Get instant answers and updates directly from the team. We speak English, Kannada, Malayalam, and Hindi.</p>
+            </StaggerItem>
+
+            <StaggerItem>
+              <div className="w-full h-px bg-carbon"></div>
+            </StaggerItem>
+
+            <StaggerItem>
+              <div className="flex items-start gap-4">
+                <div className="mt-1">
+                  <MessageSquare className="w-5 h-5 text-tungsten" />
+                </div>
+                <div>
+                  <h4 className="typo-subhead text-platinum mb-1">Direct WhatsApp Support</h4>
+                  <p className="typo-body text-tungsten text-sm">No ticket delays. Get instant answers and updates directly from the team. We speak English, Kannada, Malayalam, and Hindi.</p>
+                </div>
               </div>
-            </div>
-          </div>
+            </StaggerItem>
+          </StaggerContainer>
         </div>
 
-        <div id="process" className="bg-carbon border border-tungsten/10 p-8 rounded-sm relative">
+        <FadeInSection direction="right" delay={0.2} className="h-full">
+          <div id="process" className="bg-carbon border border-tungsten/10 p-8 rounded-sm relative h-full">
           <h3 className="typo-headline text-lg text-platinum mb-6">Our 3-Step Rapid Process</h3>
           
           <div className="space-y-8 relative">
@@ -84,8 +100,9 @@ export function Benefits() {
               </div>
             </div>
           </div>
-          
-        </div>
+
+          </div>
+        </FadeInSection>
       </div>
     </section>
   );

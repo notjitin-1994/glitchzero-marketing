@@ -93,7 +93,7 @@ export function PrivacyPolicyContent() {
 
         <h2>9. Contact Us</h2>
         <p>
-          If you have questions or comments about this Privacy Policy, please contact us at: <a href="mailto:not.jitin@gmail.com">not.jitin@gmail.com</a>.
+          If you have questions or comments about this Privacy Policy, please contact us at: <a href="mailto:jitin@glitchzerolabs.com">jitin@glitchzerolabs.com</a>.
         </p>
       </div>
     </section>

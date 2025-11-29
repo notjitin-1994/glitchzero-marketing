@@ -1,4 +1,3 @@
-import { Header } from '@/components/landing-page/header';
 import { Footer } from '@/components/landing-page/footer';
 import { Cta } from '@/components/landing-page/cta';
 import { PricingHero } from '@/components/pricing-page/pricing-hero';
@@ -21,7 +20,6 @@ export const metadata: Metadata = {
 export default function PricingPage() {
   return (
     <>
-      <Header />
       <main>
         <PricingHero />
         <PricingDetails />
