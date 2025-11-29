@@ -4,22 +4,22 @@ const features = [
   {
     icon: ShieldCheck,
     title: "Proactive Security Patching",
-    description: "We don't wait for threats. Our systems continuously scan for vulnerabilities and automatically apply security patches to your application's framework and dependencies, keeping your data safe."
+    description: "We don't wait for threats. Our systems continuously scan for vulnerabilities and apply security patches to your website or app's framework and dependencies, keeping your data and customers safe."
   },
   {
     icon: Server,
     title: "24/7 Uptime & Performance Monitoring",
-    description: "Our AI-powered monitors watch your application around the clock. We detect and resolve performance bottlenecks or downtime before they impact your customers, ensuring a smooth user experience."
+    description: "Our AI-powered monitors watch your digital assets around the clock. We detect and resolve performance bottlenecks or downtime on your website or app before they impact your customers."
   },
   {
     icon: BrainCircuit,
     title: "Intelligent Updates & Backups",
-    description: "We handle regular software updates, OS patches, and feature enhancements. All data is backed up automatically, ensuring business continuity and peace of mind."
+    description: "We handle regular software updates, CMS patches, and plugin upgrades. All data is backed up automatically, ensuring your business continuity and peace of mind across all platforms."
   },
   {
     icon: MessageCircle,
     title: "Priority WhatsApp Support",
-    description: "Have a question or need a minor tweak? Our maintenance clients get priority access to our support team directly via WhatsApp for rapid assistance."
+    description: "Have a question or need a minor tweak on your site or app? Our maintenance clients get priority access to our support team directly via WhatsApp for rapid assistance."
   }
 ];
 
@@ -29,10 +29,10 @@ export function AppMaintenanceDetails() {
       <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-16">
         <div className="lg:col-span-2">
           <h2 className="typo-headline text-3xl text-platinum mb-4">
-            Keep Your Application Running Flawlessly
+            Keep Your Digital Presence Flawless
           </h2>
           <p className="typo-body text-tungsten mb-12">
-            Focus on your business, not on technical upkeep. Our App Maintenance plans provide comprehensive, proactive care for your digital products. We leverage AI-driven automation to ensure your website, mobile app, or desktop software remains secure, fast, and up-to-date, minimizing risks and maximizing performance.
+            Focus on your business, not on technical upkeep. Our Maintenance plans provide comprehensive, proactive care for your digital products. We leverage AI-driven automation to ensure your website, mobile app, or software remains secure, fast, and up-to-date, minimizing risks and maximizing performance.
           </p>
           <div className="space-y-8">
             {features.map((feature) => (
