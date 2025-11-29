@@ -18,7 +18,7 @@ export function Benefits() {
               </div>
               <div>
                 <h4 className="typo-subhead text-platinum mb-1">AI-Accelerated Development</h4>
-                <p className="typo-body text-tungsten text-sm">We leverage secure, proprietary AI to accelerate our development process by an average of 60%, delivering your project faster than traditional agencies.</p>
+                <p className="typo-body text-tungsten text-sm">We leverage secure, proprietary AI-powered workflows and frameworks to accelerate our development process by an average of 60%, delivering your project faster than traditional agencies.</p>
               </div>
             </div>
 
