@@ -9,7 +9,9 @@ export function Header() {
           <div className="w-8 h-8 bg-signal flex items-center justify-center">
             <TrendingUp className="text-obsidian w-5 h-5 fill-current" />
           </div>
-          <span className="typo-headline text-xl text-platinum group-hover:text-signal transition-colors">GlitchZero</span>
+          <span className="typo-headline text-xl text-platinum group-hover:text-signal transition-colors">
+            <span className="glitch" data-text="Glitch">Glitch</span>Zero
+          </span>
         </Link>
 
         <div className="hidden md:flex items-center gap-8">
