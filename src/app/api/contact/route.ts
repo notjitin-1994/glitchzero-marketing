@@ -3,6 +3,7 @@ import { Resend } from 'resend';
 import { render } from '@react-email/render';
 import { NotificationEmail } from '@/emails/notification-email';
 import { AcknowledgementEmail } from '@/emails/acknowledgement-email';
+import { supabase, ContactSubmission } from '@/lib/supabase';
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
@@ -33,6 +34,24 @@ export async function POST(request: NextRequest) {
         { error: 'Invalid email format' },
         { status: 400 }
       );
+    }
+
+    // Save to Supabase database
+    const submission: ContactSubmission = {
+      name,
+      email,
+      phone: phone || null,
+      project_details: projectDetails || null,
+      status: 'new',
+    };
+
+    const { error: dbError } = await supabase
+      .from('contact_submissions')
+      .insert(submission);
+
+    if (dbError) {
+      console.error('Failed to save to database:', dbError);
+      // Continue with email sending even if database save fails
     }
 
     // Render email templates to HTML

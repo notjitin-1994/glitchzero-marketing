@@ -8,12 +8,16 @@ export function AcknowledgementEmail({ name }: AcknowledgementEmailProps) {
   const firstName = name.split(' ')[0];
 
   return (
-    <div style={{ fontFamily: 'Arial, sans-serif', maxWidth: '600px', margin: '0 auto', backgroundColor: '#0a0a0a', color: '#e5e5e5' }}>
-      <div style={{ padding: '32px', borderTop: '4px solid #ff4f00' }}>
+    <table width="100%" cellPadding="0" cellSpacing="0" style={{ backgroundColor: '#0a0a0a', margin: 0, padding: 0 }}>
+      <tbody>
+        <tr>
+          <td align="center" style={{ padding: '24px 16px' }}>
+            <div style={{ fontFamily: 'Arial, sans-serif', maxWidth: '600px', width: '100%', backgroundColor: '#0a0a0a', color: '#e5e5e5' }}>
+              <div style={{ padding: '32px', borderTop: '4px solid #ff4f00' }}>
         {/* Header */}
         <div style={{ textAlign: 'center', marginBottom: '32px' }}>
           <h1 style={{ fontSize: '28px', fontWeight: 'bold', color: '#ffffff', margin: '0 0 8px 0' }}>
-            GlitchZero Labs
+            GlitchZero
           </h1>
           <p style={{ color: '#ff4f00', fontSize: '12px', letterSpacing: '2px', textTransform: 'uppercase', margin: 0 }}>
             Engineering Digital Excellence
@@ -79,16 +83,20 @@ export function AcknowledgementEmail({ name }: AcknowledgementEmailProps) {
           </a>
         </div>
 
-        {/* Footer */}
-        <div style={{ textAlign: 'center', paddingTop: '24px', borderTop: '1px solid #262626' }}>
-          <p style={{ color: '#737373', fontSize: '12px', margin: '0 0 8px 0' }}>
-            © {new Date().getFullYear()} GlitchZero Labs. All rights reserved.
-          </p>
-          <p style={{ color: '#525252', fontSize: '11px', margin: 0 }}>
-            You're receiving this email because you submitted an enquiry on our website.
-          </p>
-        </div>
-      </div>
-    </div>
+                {/* Footer */}
+                <div style={{ textAlign: 'center', paddingTop: '24px', borderTop: '1px solid #262626' }}>
+                  <p style={{ color: '#737373', fontSize: '12px', margin: '0 0 8px 0' }}>
+                    © {new Date().getFullYear()} GlitchZero. All rights reserved.
+                  </p>
+                  <p style={{ color: '#525252', fontSize: '11px', margin: 0 }}>
+                    You're receiving this email because you submitted an enquiry on our website.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
   );
 }

@@ -13,7 +13,7 @@ export function Footer() {
               <div className="w-8 h-8 bg-signal flex items-center justify-center">
                 <span className="typo-headline text-lg text-obsidian font-bold">G0</span>
               </div>
-              <span className="typo-headline text-lg text-platinum">GlitchZero</span>
+              <span className="typo-headline text-lg"><span className="text-signal">Glitch</span><span className="text-platinum" style={{ textShadow: '0 0 8px rgba(255, 255, 255, 0.5), 0 0 16px rgba(255, 255, 255, 0.25)' }}>Zero</span></span>
             </TransitionLink>
             <p className="typo-body text-tungsten text-sm">
               Your vision, flawlessly executed.

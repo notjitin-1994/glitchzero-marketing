@@ -23,7 +23,8 @@ export function Header() {
             <span className="typo-headline text-lg text-obsidian font-bold">G0</span>
           </div>
           <span className="typo-headline text-xl text-platinum group-hover:text-signal transition-colors">
-            <span className="glitch" data-text="Glitch">Glitch</span>Zero
+            <span className="glitch" data-text="Glitch">Glitch</span>
+            <span style={{ textShadow: '0 0 8px rgba(255, 255, 255, 0.5), 0 0 16px rgba(255, 255, 255, 0.25)' }}>Zero</span>
           </span>
         </TransitionLink>
 
@@ -37,7 +38,7 @@ export function Header() {
 
         <div className="flex items-center gap-2">
             <a
-              href="mailto:jitin@glitchzerolabs.com"
+              href="mailto:hello@glitchzerolabs.com"
               className="hidden md:flex items-center gap-2 border border-tungsten/30 text-platinum hover:border-signal hover:text-signal hover:bg-carbon px-3 py-1.5 rounded-md transition-colors group"
             >
                 <Mail className="w-4 h-4 text-tungsten group-hover:text-signal" />
@@ -58,7 +59,9 @@ export function Header() {
                                 <div className="w-8 h-8 bg-signal flex items-center justify-center">
                                     <span className="typo-headline text-lg text-obsidian font-bold">G0</span>
                                 </div>
-                                <span className="typo-headline text-xl text-platinum">GlitchZero</span>
+                                <span className="typo-headline text-xl text-platinum">
+                                  Glitch<span style={{ textShadow: '0 0 8px rgba(255, 255, 255, 0.5), 0 0 16px rgba(255, 255, 255, 0.25)' }}>Zero</span>
+                                </span>
                             </TransitionLink>
                             <SheetClose asChild>
                                 <Button variant="ghost" size="icon" className="text-tungsten hover:text-signal hover:bg-carbon">
@@ -82,7 +85,7 @@ export function Header() {
                         </div>
                         <div className="p-6 mt-auto">
                              <a
-                               href="mailto:jitin@glitchzerolabs.com"
+                               href="mailto:hello@glitchzerolabs.com"
                                className="w-full flex items-center justify-center gap-2 border border-tungsten/30 text-platinum hover:border-signal hover:text-signal hover:bg-carbon px-4 py-2.5 rounded-md transition-colors group"
                              >
                                 <Mail className="w-4 h-4 text-tungsten group-hover:text-signal" />

@@ -9,8 +9,12 @@ interface NotificationEmailProps {
 
 export function NotificationEmail({ name, email, phone, projectDetails }: NotificationEmailProps) {
   return (
-    <div style={{ fontFamily: 'Arial, sans-serif', maxWidth: '600px', margin: '0 auto', backgroundColor: '#0a0a0a', color: '#e5e5e5' }}>
-      <div style={{ padding: '32px', borderTop: '4px solid #ff4f00' }}>
+    <table width="100%" cellPadding="0" cellSpacing="0" style={{ backgroundColor: '#0a0a0a', margin: 0, padding: 0 }}>
+      <tbody>
+        <tr>
+          <td align="center" style={{ padding: '24px 16px' }}>
+            <div style={{ fontFamily: 'Arial, sans-serif', maxWidth: '600px', width: '100%', backgroundColor: '#0a0a0a', color: '#e5e5e5' }}>
+              <div style={{ padding: '32px', borderTop: '4px solid #ff4f00' }}>
         <h1 style={{ fontSize: '24px', fontWeight: 'bold', color: '#ffffff', marginBottom: '24px' }}>
           New Enquiry from GlitchZero Website
         </h1>
@@ -55,12 +59,16 @@ export function NotificationEmail({ name, email, phone, projectDetails }: Notifi
           </div>
         )}
 
-        <div style={{ borderTop: '1px solid #262626', paddingTop: '24px', marginTop: '24px' }}>
-          <p style={{ color: '#737373', fontSize: '12px', margin: 0 }}>
-            This enquiry was submitted through the GlitchZero Labs website contact form.
-          </p>
-        </div>
-      </div>
-    </div>
+                <div style={{ borderTop: '1px solid #262626', paddingTop: '24px', marginTop: '24px' }}>
+                  <p style={{ color: '#737373', fontSize: '12px', margin: 0 }}>
+                    This enquiry was submitted through the GlitchZero website contact form.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
   );
 }
