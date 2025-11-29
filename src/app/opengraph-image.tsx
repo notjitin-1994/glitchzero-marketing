@@ -151,6 +151,43 @@ export default async function Image() {
               Custom Web & Mobile Apps for Indian Businesses
             </span>
           </div>
+
+          {/* CTA Button */}
+          <div
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              marginTop: '16px',
+            }}
+          >
+            <div
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                backgroundColor: '#FF4F00',
+                paddingLeft: '32px',
+                paddingRight: '32px',
+                paddingTop: '14px',
+                paddingBottom: '14px',
+                borderRadius: '6px',
+                boxShadow: '0 0 30px rgba(255, 79, 0, 0.4)',
+              }}
+            >
+              <span
+                style={{
+                  fontSize: '18px',
+                  fontWeight: 800,
+                  color: '#121212',
+                  letterSpacing: '0.05em',
+                  textTransform: 'uppercase',
+                }}
+              >
+                Explore
+              </span>
+            </div>
+          </div>
         </div>
 
         {/* Bottom accent bar */}
