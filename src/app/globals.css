@@ -167,13 +167,13 @@ body {
 
 .glitch::before {
   left: 2px;
-  text-shadow: -1px 0 #30D158;
+  text-shadow: -1px 0 #00ffff;
   animation: glitch-anim-1 2s infinite linear alternate-reverse;
 }
 
 .glitch::after {
   left: -2px;
-  text-shadow: -1px 0 #ff00c1;
+  text-shadow: -1px 0 #ff00ff;
   animation: glitch-anim-2 2s infinite linear alternate-reverse;
 }
 
