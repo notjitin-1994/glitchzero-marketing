@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from 'react';
-import { Mail, Menu, X } from 'lucide-react';
+import { Mail, Menu, X, Download } from 'lucide-react';
 import { Sheet, SheetContent, SheetTrigger, SheetClose } from '@/components/ui/sheet';
 import { Button } from '@/components/ui/button';
 import { TransitionLink } from '@/components/ui/page-transition';
@@ -18,15 +18,25 @@ export function Header() {
   return (
     <header className="fixed top-0 left-0 w-full z-50 bg-obsidian/90 backdrop-blur-md border-b border-carbon">
       <div className="max-w-7xl mx-auto px-6 py-3 flex items-center justify-between">
-        <TransitionLink href="/" className="flex items-center gap-2 group cursor-pointer">
-          <div className="w-8 h-8 bg-signal flex items-center justify-center">
-            <span className="typo-headline text-lg text-obsidian font-bold">G0</span>
-          </div>
-          <span className="typo-headline text-xl text-platinum group-hover:text-signal transition-colors">
-            <span className="glitch" data-text="Glitch">Glitch</span>
-            <span style={{ textShadow: '0 0 8px rgba(255, 255, 255, 0.5), 0 0 16px rgba(255, 255, 255, 0.25)' }}>Zero</span>
-          </span>
-        </TransitionLink>
+        <div className="flex items-center gap-2">
+          <TransitionLink href="/" className="flex items-center gap-2 group cursor-pointer">
+            <div className="w-8 h-8 bg-signal flex items-center justify-center">
+              <span className="typo-headline text-lg text-obsidian font-bold">G0</span>
+            </div>
+            <span className="typo-headline text-xl text-platinum group-hover:text-signal transition-colors">
+              <span className="glitch" data-text="Glitch">Glitch</span>
+              <span style={{ textShadow: '0 0 8px rgba(255, 255, 255, 0.5), 0 0 16px rgba(255, 255, 255, 0.25)' }}>Zero</span>
+            </span>
+          </TransitionLink>
+          <a
+            href="/glitchzero-logo.svg"
+            download="glitchzero-logo.svg"
+            className="p-1.5 text-tungsten hover:text-signal hover:bg-carbon rounded transition-colors"
+            title="Download Logo"
+          >
+            <Download className="w-4 h-4" />
+          </a>
+        </div>
 
         <div className="hidden md:flex items-center gap-8">
           {navLinks.map((link) => (
