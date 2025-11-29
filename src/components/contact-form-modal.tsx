@@ -1,7 +1,7 @@
 "use client";
 
 import * as React from "react";
-import { ArrowRight, CheckCircle, Send } from "lucide-react";
+import { ArrowRight, CheckCircle, Send, Loader2 } from "lucide-react";
 import {
   Dialog,
   DialogContent,
@@ -26,35 +26,60 @@ export function ContactFormModal({ open, onOpenChange }: ContactFormModalProps) 
   });
   const [isSubmitted, setIsSubmitted] = React.useState(false);
   const [isClosing, setIsClosing] = React.useState(false);
+  const [isLoading, setIsLoading] = React.useState(false);
+  const [error, setError] = React.useState<string | null>(null);
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
+    // Clear error when user starts typing
+    if (error) setError(null);
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Backend functionality to be added later
-    console.log("Form submitted:", formData);
-    setIsSubmitted(true);
+    setIsLoading(true);
+    setError(null);
 
-    // Start closing animation after showing success
-    setTimeout(() => {
-      setIsClosing(true);
-    }, 1800);
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
 
-    // Close modal after animation completes
-    setTimeout(() => {
-      onOpenChange(false);
-      // Reset state after modal is closed
+      const result = await response.json();
+
+      if (!response.ok) {
+        throw new Error(result.error || 'Failed to submit enquiry');
+      }
+
+      setIsSubmitted(true);
+
+      // Start closing animation after showing success
       setTimeout(() => {
-        setIsSubmitted(false);
-        setIsClosing(false);
-        setFormData({ name: "", email: "", phone: "", projectDetails: "" });
-      }, 300);
-    }, 2500);
+        setIsClosing(true);
+      }, 1800);
+
+      // Close modal after animation completes
+      setTimeout(() => {
+        onOpenChange(false);
+        // Reset state after modal is closed
+        setTimeout(() => {
+          setIsSubmitted(false);
+          setIsClosing(false);
+          setFormData({ name: "", email: "", phone: "", projectDetails: "" });
+        }, 300);
+      }, 2500);
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'Something went wrong. Please try again.');
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   // Reset state when modal is closed externally
@@ -63,6 +88,7 @@ export function ContactFormModal({ open, onOpenChange }: ContactFormModalProps) 
       setTimeout(() => {
         setIsSubmitted(false);
         setIsClosing(false);
+        setError(null);
       }, 300);
     }
   }, [open]);
@@ -184,12 +210,28 @@ export function ContactFormModal({ open, onOpenChange }: ContactFormModalProps) 
                   />
                 </div>
 
+                {error && (
+                  <div className="bg-red-500/10 border border-red-500/30 text-red-400 px-4 py-3 text-sm rounded-sm mt-4">
+                    {error}
+                  </div>
+                )}
+
                 <button
                   type="submit"
-                  className="w-full bg-signal text-obsidian px-8 py-4 typo-headline text-sm hover:bg-white hover:text-obsidian transition-all duration-300 flex items-center justify-center gap-2 shadow-[0_0_15px_rgba(255,79,0,0.4)] mt-6"
+                  disabled={isLoading}
+                  className="w-full bg-signal text-obsidian px-8 py-4 typo-headline text-sm hover:bg-white hover:text-obsidian transition-all duration-300 flex items-center justify-center gap-2 shadow-[0_0_15px_rgba(255,79,0,0.4)] mt-6 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-signal"
                 >
-                  Submit Inquiry
-                  <ArrowRight className="w-4 h-4" />
+                  {isLoading ? (
+                    <>
+                      <Loader2 className="w-4 h-4 animate-spin" />
+                      Submitting...
+                    </>
+                  ) : (
+                    <>
+                      Submit Inquiry
+                      <ArrowRight className="w-4 h-4" />
+                    </>
+                  )}
                 </button>
               </form>
 
