@@ -31,17 +31,17 @@ export function Footer() {
           <div>
             <h4 className="typo-tech text-platinum text-xs mb-6">Support</h4>
             <ul className="space-y-4">
-              <li><a href="#" className="typo-subhead text-tungsten text-sm hover:text-signal transition-colors">Contact via WhatsApp</a></li>
-              <li><Link href="/pricing" className="typo-subhead text-tungsten text-sm hover:text-signal transition-colors">Pricing Plans</Link></li>
-              <li><a href="#" className="typo-subhead text-tungsten text-sm hover:text-signal transition-colors">FAQs</a></li>
+              <li><a href="https://wa.me/9190088989642" target="_blank" rel="noopener noreferrer" className="typo-subhead text-tungsten text-sm hover:text-signal transition-colors">Contact via WhatsApp</a></li>
+              <li><a href="mailto:not.jitin@gmail.com" className="typo-subhead text-tungsten text-sm hover:text-signal transition-colors">Contact via Email</a></li>
+              <li><Link href="/faq" className="typo-subhead text-tungsten text-sm hover:text-signal transition-colors">FAQs</Link></li>
             </ul>
           </div>
 
           <div>
             <h4 className="typo-tech text-platinum text-xs mb-6">Legal</h4>
             <ul className="space-y-4">
-              <li><a href="#" className="typo-subhead text-tungsten text-sm hover:text-signal transition-colors">Privacy Policy</a></li>
-              <li><a href="#" className="typo-subhead text-tungsten text-sm hover:text-signal transition-colors">Terms of Service</a></li>
+              <li><Link href="/privacy-policy" className="typo-subhead text-tungsten text-sm hover:text-signal transition-colors">Privacy Policy</Link></li>
+              <li><Link href="/terms-of-service" className="typo-subhead text-tungsten text-sm hover:text-signal transition-colors">Terms of Service</Link></li>
             </ul>
           </div>
         </div>
