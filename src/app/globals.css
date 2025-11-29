@@ -223,3 +223,44 @@ body {
   95% { clip: rect(11px, 9999px, 69px, 0); }
   100% { clip: rect(1px, 9999px, 89px, 0); }
 }
+
+.prose h2 {
+    font-family: 'Manrope', sans-serif;
+    font-weight: 800; /* ExtraBold */
+    text-transform: uppercase;
+    letter-spacing: 0.02em; /* +2% */
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid hsl(var(--border));
+}
+
+.prose h3 {
+    font-family: 'Manrope', sans-serif;
+    font-weight: 500; /* Medium */
+    font-size: 1.25rem;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+}
+
+.prose h4 {
+    font-family: 'Manrope', sans-serif;
+    font-weight: 500; /* Medium */
+    font-size: 1.1rem;
+    margin-top: 1.5rem;
+    margin-bottom: 0.5rem;
+    color: hsl(var(--platinum));
+}
+
+.prose p, .prose li {
+    font-family: 'Manrope', sans-serif;
+    font-weight: 400; /* Regular */
+    line-height: 1.7;
+}
+
+.prose a {
+  transition: color 0.2s ease-in-out;
+}
+.prose a:hover {
+  color: hsl(var(--platinum));
+}
