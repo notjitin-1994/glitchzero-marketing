@@ -2,7 +2,7 @@ export function TermsOfServiceContent() {
   return (
     <section className="py-24 px-6">
       <div className="max-w-3xl mx-auto prose prose-invert prose-p:text-tungsten prose-headings:text-platinum prose-strong:text-platinum prose-a:text-signal prose-li:text-tungsten prose-ul:list-disc prose-ul:ml-6">
-        <p>Last updated: July 29, 2024</p>
+        <p>Last updated: July 29, 2025</p>
         
         <h2>1. Agreement to Terms</h2>
         <p>

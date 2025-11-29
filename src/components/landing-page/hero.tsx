@@ -1,6 +1,12 @@
+"use client";
+
+import { useState } from 'react';
 import { ArrowRight, MessageCircle, Store, Wifi, TrendingUp, CheckCircle2, Smartphone } from 'lucide-react';
+import { ContactFormModal } from '@/components/contact-form-modal';
 
 export function Hero() {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   return (
     <section className="relative pt-32 pb-20 md:pt-48 md:pb-32 px-6">
       <div className="absolute top-0 right-0 w-1/3 h-full bg-gradient-to-l from-carbon/20 to-transparent pointer-events-none"></div>
@@ -24,15 +30,25 @@ export function Hero() {
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 pt-4">
-            <button className="bg-signal text-obsidian px-8 py-4 typo-headline text-sm hover:bg-white hover:text-obsidian transition-all duration-300 flex items-center justify-center gap-2 shadow-[0_0_15px_rgba(255,79,0,0.4)]">
+            <button
+              onClick={() => setIsModalOpen(true)}
+              className="bg-signal text-obsidian px-8 py-4 typo-headline text-sm hover:bg-white hover:text-obsidian transition-all duration-300 flex items-center justify-center gap-2 shadow-[0_0_15px_rgba(255,79,0,0.4)]"
+            >
               Start Building Now
               <ArrowRight className="w-4 h-4" />
             </button>
-            <button className="border border-tungsten/30 text-platinum px-8 py-4 typo-headline text-sm hover:bg-carbon hover:border-platinum transition-all duration-300 flex items-center justify-center gap-2">
+            <a
+              href="https://wa.me/919008898642"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="border border-tungsten/30 text-platinum px-8 py-4 typo-headline text-sm hover:bg-carbon hover:border-platinum transition-all duration-300 flex items-center justify-center gap-2"
+            >
               <MessageCircle className="w-4 h-4" />
               Chat on WhatsApp
-            </button>
+            </a>
           </div>
+
+          <ContactFormModal open={isModalOpen} onOpenChange={setIsModalOpen} />
         </div>
 
         <div className="relative group">

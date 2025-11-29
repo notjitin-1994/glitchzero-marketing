@@ -1,4 +1,6 @@
-import { TrendingUp, Mail, Menu, Home, Briefcase, Info, Pricetag, X } from 'lucide-react';
+"use client";
+
+import { Mail, Menu, X } from 'lucide-react';
 import Link from 'next/link';
 import { Sheet, SheetContent, SheetTrigger, SheetClose } from '@/components/ui/sheet';
 import { Button } from '@/components/ui/button';
@@ -12,7 +14,7 @@ const navLinks = [
 export function Header() {
   return (
     <header className="fixed w-full z-50 bg-obsidian/90 backdrop-blur-md border-b border-carbon">
-      <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+      <div className="max-w-7xl mx-auto px-6 py-3 flex items-center justify-between">
         <Link href="/" className="flex items-center gap-2 group cursor-pointer">
           <div className="w-8 h-8 bg-signal flex items-center justify-center">
             <span className="typo-headline text-lg text-obsidian font-bold">G0</span>
@@ -31,10 +33,13 @@ export function Header() {
         </div>
 
         <div className="flex items-center gap-2">
-            <Button variant="outline" size="sm" className="hidden md:flex items-center gap-2 border-tungsten/30 text-platinum hover:border-signal hover:text-signal hover:bg-carbon group">
+            <a
+              href="mailto:not.jitin@gmail.com"
+              className="hidden md:flex items-center gap-2 border border-tungsten/30 text-platinum hover:border-signal hover:text-signal hover:bg-carbon px-3 py-1.5 rounded-md transition-colors group"
+            >
                 <Mail className="w-4 h-4 text-tungsten group-hover:text-signal" />
                 <span className="typo-tech text-xs text-platinum group-hover:text-signal">Contact Us</span>
-            </Button>
+            </a>
           
             <div className="md:hidden">
                 <Sheet>
@@ -70,10 +75,13 @@ export function Header() {
                             </nav>
                         </div>
                         <div className="p-6 mt-auto">
-                             <Button variant="outline" className="w-full border-tungsten/30 text-platinum hover:border-signal hover:text-signal hover:bg-carbon group">
-                                <Mail className="w-4 h-4 text-tungsten group-hover:text-signal mr-2" />
+                             <a
+                               href="mailto:not.jitin@gmail.com"
+                               className="w-full flex items-center justify-center gap-2 border border-tungsten/30 text-platinum hover:border-signal hover:text-signal hover:bg-carbon px-4 py-2.5 rounded-md transition-colors group"
+                             >
+                                <Mail className="w-4 h-4 text-tungsten group-hover:text-signal" />
                                 <span className="typo-tech text-xs text-platinum group-hover:text-signal">Contact Us</span>
-                            </Button>
+                            </a>
                         </div>
                     </div>
                 </SheetContent>

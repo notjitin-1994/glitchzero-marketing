@@ -14,16 +14,16 @@ export function Footer() {
               <span className="typo-headline text-lg text-platinum">GlitchZero</span>
             </Link>
             <p className="typo-body text-tungsten text-sm">
-              Helping Indian businesses go digital. <br />Based in Bengaluru & Delhi.
+              Your vision, flawlessly executed.
             </p>
           </div>
           
           <div>
             <h4 className="typo-tech text-platinum text-xs mb-6">Our Services</h4>
             <ul className="space-y-4">
-              <li><Link href="/services/ecommerce-apps" className="typo-subhead text-tungsten text-sm hover:text-signal transition-colors">E-commerce Apps</Link></li>
-              <li><Link href="/services/business-websites" className="typo-subhead text-tungsten text-sm hover:text-signal transition-colors">Business Websites</Link></li>
               <li><Link href="/services/business-software" className="typo-subhead text-tungsten text-sm hover:text-signal transition-colors">Business Software</Link></li>
+              <li><Link href="/services/business-websites" className="typo-subhead text-tungsten text-sm hover:text-signal transition-colors">Business Websites</Link></li>
+              <li><Link href="/services/ecommerce-apps" className="typo-subhead text-tungsten text-sm hover:text-signal transition-colors">E-commerce Apps</Link></li>
               <li><Link href="/services/app-maintenance" className="typo-subhead text-tungsten text-sm hover:text-signal transition-colors">Website/App Maintenance</Link></li>
             </ul>
           </div>
@@ -31,8 +31,8 @@ export function Footer() {
           <div>
             <h4 className="typo-tech text-platinum text-xs mb-6">Support</h4>
             <ul className="space-y-4">
-              <li><a href="https://wa.me/919008898964" target="_blank" rel="noopener noreferrer" className="typo-subhead text-tungsten text-sm hover:text-signal transition-colors">Contact via WhatsApp</a></li>
               <li><a href="mailto:not.jitin@gmail.com" className="typo-subhead text-tungsten text-sm hover:text-signal transition-colors">Contact via Email</a></li>
+              <li><a href="https://wa.me/919008898642" target="_blank" rel="noopener noreferrer" className="typo-subhead text-tungsten text-sm hover:text-signal transition-colors">Contact via WhatsApp</a></li>
               <li><Link href="/faq" className="typo-subhead text-tungsten text-sm hover:text-signal transition-colors">FAQs</Link></li>
             </ul>
           </div>
@@ -47,11 +47,11 @@ export function Footer() {
         </div>
 
         <div className="border-t border-tungsten/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
-          <span className="typo-tech text-[10px] text-tungsten text-center md:text-left">© 2024 GlitchZero. Proudly Made in India. 🇮🇳</span>
+          <span className="typo-tech text-[10px] text-signal text-center md:text-left">© 2025 GlitchZero. Proudly Made in India.</span>
           <div className="flex gap-4">
-            <a href="#" className="text-tungsten hover:text-platinum transition-colors"><Facebook className="w-4 h-4" /></a>
-            <a href="#" className="text-tungsten hover:text-platinum transition-colors"><Instagram className="w-4 h-4" /></a>
-            <a href="#" className="text-tungsten hover:text-platinum transition-colors"><Linkedin className="w-4 h-4" /></a>
+            <a href="#" className="text-signal hover:text-platinum transition-colors"><Facebook className="w-4 h-4" /></a>
+            <a href="#" className="text-signal hover:text-platinum transition-colors"><Instagram className="w-4 h-4" /></a>
+            <a href="#" className="text-signal hover:text-platinum transition-colors"><Linkedin className="w-4 h-4" /></a>
           </div>
         </div>
       </div>

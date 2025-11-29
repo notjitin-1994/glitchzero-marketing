@@ -81,10 +81,15 @@ export function AppMaintenanceDetails() {
                     </li>
                 </ul>
 
-                <button className="w-full bg-signal text-obsidian px-10 py-3 typo-headline text-base hover:bg-white transition-colors shadow-[0_0_20px_rgba(255,79,0,0.5)] hover:shadow-[0_0_30px_rgba(255,79,0,0.5)] flex items-center justify-center gap-2">
-                    View Plans
+                <a
+                    href="https://wa.me/919008898642"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-full bg-signal text-obsidian px-10 py-3 typo-headline text-base hover:bg-white transition-colors shadow-[0_0_20px_rgba(255,79,0,0.5)] hover:shadow-[0_0_30px_rgba(255,79,0,0.5)] flex items-center justify-center gap-2"
+                >
+                    From ₹25,000/year
                     <ArrowRight className="w-4 h-4" />
-                </button>
+                </a>
             </div>
         </div>
       </div>

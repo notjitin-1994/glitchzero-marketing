@@ -1,0 +1,141 @@
+"use client";
+
+import * as React from "react";
+import { ArrowRight } from "lucide-react";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogDescription,
+} from "@/components/ui/dialog";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+
+interface ContactFormModalProps {
+  open: boolean;
+  onOpenChange: (open: boolean) => void;
+}
+
+export function ContactFormModal({ open, onOpenChange }: ContactFormModalProps) {
+  const [formData, setFormData] = React.useState({
+    name: "",
+    email: "",
+    phone: "",
+    projectDetails: "",
+  });
+
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    // Backend functionality to be added later
+    console.log("Form submitted:", formData);
+    onOpenChange(false);
+  };
+
+  return (
+    <Dialog open={open} onOpenChange={onOpenChange}>
+      <DialogContent className="bg-obsidian border border-carbon p-0 max-w-md w-[calc(100%-2rem)] sm:w-full mx-auto rounded-none sm:rounded-sm overflow-hidden">
+        <div className="relative">
+          <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-signal to-orange-400" />
+
+          <div className="p-6 sm:p-8 pt-8 sm:pt-10">
+            <DialogHeader className="space-y-3 mb-6">
+              <DialogTitle className="typo-headline text-2xl sm:text-3xl text-platinum">
+                Let's Build Together
+              </DialogTitle>
+              <DialogDescription className="typo-body text-tungsten text-sm sm:text-base">
+                Tell us about your project and we'll get back to you within 24 hours.
+              </DialogDescription>
+            </DialogHeader>
+
+            <form onSubmit={handleSubmit} className="space-y-4">
+              <div className="space-y-2">
+                <label htmlFor="name" className="typo-tech text-xs text-tungsten">
+                  Full Name
+                </label>
+                <Input
+                  id="name"
+                  name="name"
+                  type="text"
+                  placeholder="Your name"
+                  value={formData.name}
+                  onChange={handleChange}
+                  required
+                  className="bg-carbon border-tungsten/20 text-platinum placeholder:text-tungsten/50 focus:border-signal focus:ring-signal/20 rounded-none h-12"
+                />
+              </div>
+
+              <div className="space-y-2">
+                <label htmlFor="email" className="typo-tech text-xs text-tungsten">
+                  Email Address
+                </label>
+                <Input
+                  id="email"
+                  name="email"
+                  type="email"
+                  placeholder="you@example.com"
+                  value={formData.email}
+                  onChange={handleChange}
+                  required
+                  className="bg-carbon border-tungsten/20 text-platinum placeholder:text-tungsten/50 focus:border-signal focus:ring-signal/20 rounded-none h-12"
+                />
+              </div>
+
+              <div className="space-y-2">
+                <label htmlFor="phone" className="typo-tech text-xs text-tungsten">
+                  Phone Number
+                </label>
+                <Input
+                  id="phone"
+                  name="phone"
+                  type="tel"
+                  placeholder="+91 98765 43210"
+                  value={formData.phone}
+                  onChange={handleChange}
+                  className="bg-carbon border-tungsten/20 text-platinum placeholder:text-tungsten/50 focus:border-signal focus:ring-signal/20 rounded-none h-12"
+                />
+              </div>
+
+              <div className="space-y-2">
+                <label htmlFor="projectDetails" className="typo-tech text-xs text-tungsten">
+                  Project Details
+                </label>
+                <Textarea
+                  id="projectDetails"
+                  name="projectDetails"
+                  placeholder="Tell us about your project..."
+                  value={formData.projectDetails}
+                  onChange={handleChange}
+                  rows={4}
+                  className="bg-carbon border-tungsten/20 text-platinum placeholder:text-tungsten/50 focus:border-signal focus:ring-signal/20 rounded-none resize-none"
+                />
+              </div>
+
+              <button
+                type="submit"
+                className="w-full bg-signal text-obsidian px-8 py-4 typo-headline text-sm hover:bg-white hover:text-obsidian transition-all duration-300 flex items-center justify-center gap-2 shadow-[0_0_15px_rgba(255,79,0,0.4)] mt-6"
+              >
+                Submit Inquiry
+                <ArrowRight className="w-4 h-4" />
+              </button>
+            </form>
+
+            <p className="typo-body text-tungsten/60 text-xs text-center mt-4">
+              By submitting, you agree to our{" "}
+              <a href="/privacy-policy" className="text-signal hover:underline">
+                Privacy Policy
+              </a>
+            </p>
+          </div>
+        </div>
+      </DialogContent>
+    </Dialog>
+  );
+}
