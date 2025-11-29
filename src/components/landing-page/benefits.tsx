@@ -42,7 +42,7 @@ export function Benefits() {
               </div>
               <div>
                 <h4 className="typo-subhead text-platinum mb-1">Direct WhatsApp Support</h4>
-                <p className="typo-body text-tungsten text-sm">No ticket delays. Get instant answers and updates directly from the team. We speak English, Hindi, and Hinglish.</p>
+                <p className="typo-body text-tungsten text-sm">No ticket delays. Get instant answers and updates directly from the team. We speak English, Kannada, Malayalam, and Hindi.</p>
               </div>
             </div>
           </div>
