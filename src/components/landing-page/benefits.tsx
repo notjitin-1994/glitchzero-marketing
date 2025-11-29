@@ -1,4 +1,4 @@
-import { IndianRupee, MessageSquare, ShieldCheck } from 'lucide-react';
+import { BrainCircuit, IndianRupee, MessageSquare, ShieldCheck } from 'lucide-react';
 
 export function Benefits() {
   return (
@@ -14,11 +14,23 @@ export function Benefits() {
           <div className="space-y-6">
             <div className="flex items-start gap-4">
               <div className="mt-1">
+                <BrainCircuit className="w-5 h-5 text-tungsten" />
+              </div>
+              <div>
+                <h4 className="typo-subhead text-platinum mb-1">AI-Accelerated Development</h4>
+                <p className="typo-body text-tungsten text-sm">We leverage secure, proprietary AI to accelerate our development process by an average of 60%, delivering your project faster than traditional agencies.</p>
+              </div>
+            </div>
+
+            <div className="w-full h-px bg-carbon"></div>
+
+            <div className="flex items-start gap-4">
+              <div className="mt-1">
                 <IndianRupee className="w-5 h-5 text-tungsten" />
               </div>
               <div>
-                <h4 className="typo-subhead text-platinum mb-1">Affordable Pricing</h4>
-                <p className="typo-body text-tungsten text-sm">Our rapid development cycle means lower costs. We offer packages designed for small businesses with no hidden fees.</p>
+                <h4 className="typo-subhead text-platinum mb-1">Affordable & Transparent</h4>
+                <p className="typo-body text-tungsten text-sm">Our rapid, AI-driven cycle means lower costs. We offer clear packages designed for small businesses with no hidden fees.</p>
               </div>
             </div>
             
@@ -31,18 +43,6 @@ export function Benefits() {
               <div>
                 <h4 className="typo-subhead text-platinum mb-1">Direct WhatsApp Support</h4>
                 <p className="typo-body text-tungsten text-sm">No ticket delays. Get instant answers and updates directly from the team. We speak English, Hindi, and Hinglish.</p>
-              </div>
-            </div>
-
-            <div className="w-full h-px bg-carbon"></div>
-
-            <div className="flex items-start gap-4">
-              <div className="mt-1">
-                <ShieldCheck className="w-5 h-5 text-tungsten" />
-              </div>
-              <div>
-                <h4 className="typo-subhead text-platinum mb-1">Secure & Reliable, Fast</h4>
-                <p className="typo-body text-tungsten text-sm">We use the latest security standards without compromising on speed, so you can focus on sales, sooner.</p>
               </div>
             </div>
           </div>
