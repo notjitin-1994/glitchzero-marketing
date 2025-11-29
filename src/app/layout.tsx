@@ -4,9 +4,57 @@ import { cn } from '@/lib/utils';
 import { Toaster } from '@/components/ui/toaster';
 
 export const metadata: Metadata = {
-  title: 'GlitchZero | Digital Solutions for Indian Businesses',
+  metadataBase: new URL('https://glitchzero.dev'),
+  title: {
+    default: 'GlitchZero | Digital Solutions for Indian Businesses',
+    template: `%s | GlitchZero`,
+  },
   description:
-    'Custom web and mobile applications for small businesses in India. We turn your vision into reality with bespoke digital solutions.',
+    'Custom web and mobile applications for small businesses in India. We turn your vision into reality with bespoke digital solutions, delivered at speed.',
+  keywords: [
+    'Web Development India',
+    'Mobile App Development India',
+    'Small Business Websites',
+    'E-commerce Solutions',
+    'Custom Software India',
+    'React Development',
+    'Next.js Development',
+    'AI-powered development',
+  ],
+  authors: [{ name: 'GlitchZero', url: 'https://glitchzero.dev' }],
+  creator: 'GlitchZero',
+  openGraph: {
+    title: 'GlitchZero | Digital Solutions for Indian Businesses',
+    description: 'Custom web and mobile applications for small businesses in India, delivered at speed.',
+    url: 'https://glitchzero.dev',
+    siteName: 'GlitchZero',
+    images: [
+      {
+        url: '/og-image.png', // Must be an absolute URL
+        width: 1200,
+        height: 630,
+      },
+    ],
+    locale: 'en_IN',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'GlitchZero | Digital Solutions for Indian Businesses',
+    description: 'Custom web and mobile applications for small businesses in India, delivered at speed.',
+    images: ['/og-image.png'], // Must be an absolute URL
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
 };
 
 export default function RootLayout({
