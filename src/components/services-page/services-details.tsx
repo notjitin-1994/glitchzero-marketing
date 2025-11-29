@@ -4,6 +4,7 @@ import {
   MonitorSmartphone,
   Smartphone,
   Cpu,
+  ArrowRight,
 } from 'lucide-react';
 
 const services = [
@@ -109,6 +110,10 @@ export function ServicesDetails() {
                     </li>
                   ))}
                 </ul>
+                 <a href="#" className="inline-flex items-center gap-2 text-sm text-signal typo-tech mt-8 hover:underline">
+                  View Portfolio
+                  <ArrowRight className="w-4 h-4" />
+                </a>
               </div>
             </div>
           ))}
