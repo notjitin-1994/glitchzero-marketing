@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from 'react';
-import { Mail, Menu, X, Download } from 'lucide-react';
+import { Mail, Menu, X } from 'lucide-react';
 import { Sheet, SheetContent, SheetTrigger, SheetClose } from '@/components/ui/sheet';
 import { Button } from '@/components/ui/button';
 import { TransitionLink } from '@/components/ui/page-transition';
@@ -28,14 +28,6 @@ export function Header() {
               <span style={{ textShadow: '0 0 8px rgba(255, 255, 255, 0.5), 0 0 16px rgba(255, 255, 255, 0.25)' }}>Zero</span>
             </span>
           </TransitionLink>
-          <a
-            href="/glitchzero-logo.svg"
-            download="glitchzero-logo.svg"
-            className="p-1.5 text-tungsten hover:text-signal hover:bg-carbon rounded transition-colors"
-            title="Download Logo"
-          >
-            <Download className="w-4 h-4" />
-          </a>
         </div>
 
         <div className="hidden md:flex items-center gap-8">
