@@ -8,8 +8,14 @@ export function Cta() {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   return (
-    <section className="py-32 px-6 text-center relative overflow-hidden">
-      <div className="absolute inset-0 bg-signal/5 -skew-y-3 transform scale-125 z-0 pointer-events-none"></div>
+    <section className="py-32 px-6 text-center relative overflow-hidden bg-obsidian border-y border-tungsten/20">
+      {/* Background Pattern */}
+      <div className="absolute inset-0 opacity-5">
+        <div className="absolute inset-0" style={{
+          backgroundImage: `radial-gradient(circle at 2px 2px, currentColor 1px, transparent 0)`,
+          backgroundSize: '24px 24px'
+        }}></div>
+      </div>
 
       <div className="relative z-10 max-w-3xl mx-auto">
         <BlurFadeIn>

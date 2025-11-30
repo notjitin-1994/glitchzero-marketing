@@ -70,19 +70,19 @@ const projects: Project[] = [
     color: 'terminal',
   },
   {
-    id: 'solara',
-    title: 'Solara Learning Engine',
-    subtitle: 'AI Learning Ecosystem',
-    description: 'The world\'s first AI-native learning platform featuring six integrated modules. Stunning dark-themed design with interactive product showcases, animated statistics, and enterprise-grade architecture.',
-    categories: ['SaaS', 'AI Platform', 'Enterprise'],
-    image: '/portfolio/solara-home.png',
-    link: 'https://solara.smartslate.io/',
+    id: 'glitchzero',
+    title: 'GlitchZero',
+    subtitle: 'Digital Agency Website',
+    description: 'Our own sleek, high-performance marketing website built for speed and conversion. Features a bold dark theme, animated hero sections, interactive service showcases, and seamless mobile responsiveness.',
+    categories: ['Marketing', 'Agency', 'Web App'],
+    image: '/portfolio/glitchzero-home.png',
+    link: 'https://glitchzerolabs.com/',
     metrics: [
-      { label: 'Faster Dev', value: '70-80%', icon: <Zap className="w-4 h-4" /> },
-      { label: 'Completion', value: '3-5x', icon: <GraduationCap className="w-4 h-4" /> },
-      { label: 'Tools Replaced', value: '7-15', icon: <Sparkles className="w-4 h-4" /> },
+      { label: 'Delivery', value: '24 Hours*', icon: <Zap className="w-4 h-4" /> },
+      { label: 'Performance', value: '98/100', icon: <TrendingUp className="w-4 h-4" /> },
+      { label: 'Mobile UX', value: 'A+', icon: <Sparkles className="w-4 h-4" /> },
     ],
-    technologies: ['Next.js', 'React', 'Tailwind CSS', 'AI Integration'],
+    technologies: ['Next.js', 'TypeScript', 'Tailwind CSS', 'Framer Motion'],
     color: 'signal',
     featured: true,
   },
@@ -135,6 +135,13 @@ export function WebsitesPortfolioShowcase() {
             ))}
           </StaggerContainer>
         </AnimatePresence>
+
+        {/* Footnote */}
+        <FadeInSection delay={0.3} direction="up">
+          <p className="typo-tech text-xs text-tungsten/60 text-left mt-16">
+            *MVP ready in 24 hours. Additional iterations for complete satisfaction.
+          </p>
+        </FadeInSection>
       </div>
     </section>
   );
@@ -151,6 +158,7 @@ interface ProjectCardProps {
 function ProjectCard({ project, index, isHovered, onHover, onLeave }: ProjectCardProps) {
   const isReversed = index % 2 !== 0;
   const isSignal = project.color === 'signal';
+  const isSelfSite = project.id === 'glitchzero';
 
   return (
     <motion.article
@@ -200,12 +208,14 @@ function ProjectCard({ project, index, isHovered, onHover, onLeave }: ProjectCar
               />
 
               {/* Hover Overlay */}
-              <div className="absolute inset-0 bg-gradient-to-t from-obsidian/90 via-obsidian/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end justify-center pb-8">
-                <span className={`inline-flex items-center gap-2 px-6 py-3 typo-tech text-sm ${isSignal ? 'bg-signal text-obsidian' : 'bg-terminal text-obsidian'}`}>
-                  View Live Site
-                  <ArrowUpRight className="w-4 h-4" />
-                </span>
-              </div>
+              {!isSelfSite && (
+                <div className="absolute inset-0 bg-gradient-to-t from-obsidian/90 via-obsidian/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end justify-center pb-8">
+                  <span className={`inline-flex items-center gap-2 px-6 py-3 typo-tech text-sm ${isSignal ? 'bg-signal text-obsidian' : 'bg-terminal text-obsidian'}`}>
+                    View Live Site
+                    <ArrowUpRight className="w-4 h-4" />
+                  </span>
+                </div>
+              )}
             </div>
           </div>
 
@@ -273,17 +283,19 @@ function ProjectCard({ project, index, isHovered, onHover, onLeave }: ProjectCar
         </div>
 
         {/* CTA */}
-        <div className={isReversed ? 'lg:text-right' : ''}>
-          <a
-            href={project.link}
-            target="_blank"
-            rel="noopener noreferrer"
-            className={`inline-flex items-center gap-2 typo-tech text-sm hover:gap-3 transition-all duration-300 group ${isSignal ? 'text-signal' : 'text-terminal'}`}
-          >
-            Explore Project
-            <ArrowUpRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-          </a>
-        </div>
+        {!isSelfSite && (
+          <div className={isReversed ? 'lg:text-right' : ''}>
+            <a
+              href={project.link}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={`inline-flex items-center gap-2 typo-tech text-sm hover:gap-3 transition-all duration-300 group ${isSignal ? 'text-signal' : 'text-terminal'}`}
+            >
+              Explore Project
+              <ArrowUpRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+            </a>
+          </div>
+        )}
       </div>
     </motion.article>
   );
