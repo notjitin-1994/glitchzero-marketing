@@ -1,0 +1,1122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>S-TEX Website Rebuild Strategy</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Manrope:wght@300;400;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <!-- React & Tailwind -->
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        signal: '#FF4F00',
+                        obsidian: '#121212',
+                        carbon: '#1C1C1E',
+                        platinum: '#E5E5E7',
+                        tungsten: '#8E8E93',
+                        terminal: '#30D158',
+                        stexNavy: '#0F2143',
+                        stexWhite: '#FFFFFF',
+                        stexIvory: '#E4E4DE',
+                        stexCopper: '#D9B18E',
+                        stexForest: '#164A24',
+                    },
+                    fontFamily: {
+                        sans: ['Manrope', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                        serif: ['Playfair Display', 'serif'],
+                    },
+                    spacing: {
+                        '128': '32rem',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Custom Scrollbar - Refined */
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: #0a0a0a; }
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(180deg, #2a2a2a 0%, #1C1C1E 100%);
+            border-radius: 3px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(180deg, #FF4F00 0%, #cc3f00 100%);
+        }
+
+        /* Premium Glass Effects */
+        .glitch-hover:hover { text-shadow: 2px 0 #FF4F00, -2px 0 #30D158; }
+        .header-glass {
+            background: rgba(12, 12, 12, 0.92);
+            backdrop-filter: blur(20px) saturate(180%);
+            -webkit-backdrop-filter: blur(20px) saturate(180%);
+            border-bottom: 1px solid rgba(255, 79, 0, 0.1);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Premium Card Styles */
+        .premium-card {
+            background: linear-gradient(145deg, #1C1C1E 0%, #161618 100%);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .premium-card:hover {
+            border-color: rgba(255, 79, 0, 0.3);
+            box-shadow: 0 8px 32px rgba(255, 79, 0, 0.1), 0 0 0 1px rgba(255, 79, 0, 0.1);
+            transform: translateY(-2px);
+        }
+
+        /* Accent Glow */
+        .glow-accent {
+            box-shadow: 0 0 20px rgba(255, 79, 0, 0.15), 0 0 40px rgba(255, 79, 0, 0.05);
+        }
+        .glow-accent-soft {
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3), 0 0 40px rgba(255, 79, 0, 0.03);
+        }
+
+        /* Gradient Text */
+        .gradient-text {
+            background: linear-gradient(135deg, #FF4F00 0%, #FF7A33 50%, #FF4F00 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* Subtle Patterns */
+        .noise-bg {
+            position: relative;
+        }
+        .noise-bg::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+            opacity: 0.02;
+            pointer-events: none;
+        }
+
+        /* Animated Gradient Border */
+        .animated-border {
+            position: relative;
+            background: #121212;
+        }
+        .animated-border::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: inherit;
+            padding: 1px;
+            background: linear-gradient(135deg, #FF4F00, transparent, #30D158);
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            opacity: 0.5;
+        }
+
+        /* Smooth Transitions */
+        * {
+            transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        /* Focus States */
+        button:focus-visible, a:focus-visible {
+            outline: 2px solid #FF4F00;
+            outline-offset: 2px;
+        }
+
+        /* Selection */
+        ::selection {
+            background: rgba(255, 79, 0, 0.3);
+            color: #fff;
+        }
+
+        /* ===== COMPREHENSIVE TEXT OVERFLOW PREVENTION ===== */
+        /* Prevent text bleeding from card containers */
+        .card-contain {
+            overflow: hidden;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+            word-break: break-word;
+            -webkit-hyphens: auto;
+            hyphens: auto;
+        }
+
+        /* Ensure flex children can shrink below content size */
+        .flex-shrink-text {
+            min-width: 0;
+            max-width: 100%;
+        }
+
+        /* Force text wrapping for long unbroken strings */
+        .text-wrap-anywhere {
+            overflow-wrap: anywhere;
+            word-break: break-word;
+        }
+
+        /* Grid item text containment */
+        .grid > * {
+            min-width: 0;
+        }
+
+        /* Flex item text containment */
+        .flex > * {
+            min-width: 0;
+        }
+
+        /* Universal card styling for proper containment */
+        [class*="bg-[#1C1C1E]"] {
+            overflow: hidden;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+        }
+
+        /* Ensure all text in bordered elements stays contained */
+        [class*="border"] > * {
+            max-width: 100%;
+        }
+
+        /* ===== MOBILE-SPECIFIC OVERFLOW FIXES ===== */
+        /* Ensure body doesn't allow horizontal scroll */
+        html, body {
+            overflow-x: hidden;
+            max-width: 100vw;
+        }
+
+        /* Mobile container safety */
+        @media (max-width: 640px) {
+            /* Force all containers to respect viewport */
+            .a4-page,
+            .a4-page > *,
+            [class*="grid"],
+            [class*="flex"] {
+                max-width: 100%;
+                box-sizing: border-box;
+            }
+
+            /* Aggressive text wrapping on mobile */
+            p, span, div, li, h1, h2, h3, h4, h5, h6 {
+                word-wrap: break-word;
+                overflow-wrap: break-word;
+                word-break: break-word;
+                hyphens: auto;
+                -webkit-hyphens: auto;
+            }
+
+            /* Force images to stay contained */
+            img {
+                max-width: 100%;
+                height: auto;
+            }
+
+            /* Ensure grids don't overflow */
+            .grid {
+                width: 100%;
+            }
+
+            /* Prevent flex items from overflowing */
+            .flex {
+                flex-wrap: wrap;
+            }
+
+            /* Force table-like layouts to wrap */
+            [class*="grid-cols-2"],
+            [class*="grid-cols-3"],
+            [class*="grid-cols-4"] {
+                gap: 0.75rem !important;
+            }
+
+            /* Ensure padding doesn't cause overflow */
+            [class*="p-"] {
+                box-sizing: border-box;
+            }
+
+            /* Fix absolute positioned elements */
+            .absolute {
+                max-width: 100%;
+            }
+        }
+
+        /* Extra small screens (below 375px) */
+        @media (max-width: 375px) {
+            .a4-page {
+                padding: 1rem;
+            }
+
+            /* Smaller text on tiny screens */
+            .text-xs {
+                font-size: 0.65rem;
+            }
+
+            .text-sm {
+                font-size: 0.75rem;
+            }
+
+            /* Reduce gaps further */
+            [class*="gap-"] {
+                gap: 0.5rem;
+            }
+        }
+
+        /* RESPONSIVE A4 Sizing - Mobile first, reduced subtle padding */
+        .a4-page {
+            width: 100%;
+            max-width: 210mm;
+            min-height: auto;
+            padding: 1rem;
+            margin: 0 auto;
+            background: linear-gradient(180deg, #131315 0%, #0f0f11 100%);
+            position: relative;
+            box-sizing: border-box;
+            border: none;
+            margin-bottom: 1.5rem;
+            border-radius: 0;
+        }
+
+        /* Tablet - subtle padding */
+        @media (min-width: 640px) {
+            .a4-page {
+                padding: 1.5rem;
+                border: 1px solid rgba(255, 255, 255, 0.06);
+                border-radius: 3px;
+                margin-bottom: 2rem;
+                box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5),
+                            0 0 0 1px rgba(255, 79, 0, 0.03);
+            }
+        }
+
+        /* Desktop - A4 with reduced padding for more content space */
+        @media (min-width: 768px) {
+            .a4-page {
+                width: 210mm;
+                min-height: 297mm;
+                padding: 15mm;
+                margin-bottom: 2.5rem;
+                box-shadow: 0 25px 80px -12px rgba(0, 0, 0, 0.6),
+                            0 0 0 1px rgba(255, 79, 0, 0.05),
+                            inset 0 1px 0 rgba(255, 255, 255, 0.02);
+            }
+        }
+
+        /* Large screens - slightly more padding */
+        @media (min-width: 1024px) {
+            .a4-page {
+                padding: 18mm;
+            }
+        }
+
+        /* Page hover effect */
+        .a4-page {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        @media (min-width: 768px) {
+            .a4-page:hover {
+                box-shadow: 0 30px 100px -12px rgba(0, 0, 0, 0.7),
+                            0 0 0 1px rgba(255, 79, 0, 0.08),
+                            inset 0 1px 0 rgba(255, 255, 255, 0.03);
+            }
+        }
+
+        /* PDF Generation Styles */
+        @media print {
+            @page { size: A4; margin: 0; }
+            body {
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+                background-color: #121212 !important;
+            }
+            .no-print { display: none !important; }
+
+            /* Remove web-only spacing/borders */
+            .a4-page {
+                margin: 0;
+                border: none;
+                page-break-after: always;
+                min-height: 297mm;
+                height: 297mm; /* Force exact height */
+                overflow: hidden; /* Prevent bleed */
+            }
+
+            /* Ensure the last page doesn't spawn an empty extra page */
+            .a4-page:last-child {
+                page-break-after: avoid;
+            }
+        }
+    </style>
+</head>
+<body class="bg-obsidian text-platinum font-sans selection:bg-signal selection:text-white">
+    <div id="root"></div>
+
+    <script type="text/babel">
+        // --- Icons (Inline SVGs) ---
+        const IconFileText = ({ size = 24, className = "" }) => (
+            <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+        );
+        const IconZap = ({ size = 24, className = "" }) => (
+            <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+        );
+        const IconLayers = ({ size = 24, className = "" }) => (
+            <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>
+        );
+        const IconLayout = ({ size = 24, className = "" }) => (
+            <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="3" y1="9" x2="21" y2="9"></line><line x1="9" y1="21" x2="9" y2="9"></line></svg>
+        );
+        const IconHash = ({ size = 24, className = "" }) => (
+            <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}><line x1="4" y1="9" x2="20" y2="9"></line><line x1="4" y1="15" x2="20" y2="15"></line><line x1="10" y1="3" x2="8" y2="21"></line><line x1="16" y1="3" x2="14" y2="21"></line></svg>
+        );
+        const IconPenTool = ({ size = 24, className = "" }) => (
+            <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}><path d="M12 19l7-7 3 3-7 7-3-3z"></path><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"></path><path d="M2 2l7.586 7.586"></path><circle cx="11" cy="11" r="2"></circle></svg>
+        );
+        const IconMapPin = ({ size = 24, className = "" }) => (
+            <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+        );
+        const IconPhone = ({ size = 24, className = "" }) => (
+            <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+        );
+        const IconClock = ({ size = 24, className = "" }) => (
+            <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+        );
+        const IconHistory = ({ size = 24, className = "" }) => (
+            <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}><path d="M3 3v5h5"></path><path d="M3.05 13A9 9 0 1 0 6 5.3L3 8"></path><path d="M12 7v5l4 2"></path></svg>
+        );
+        const IconAward = ({ size = 24, className = "" }) => (
+            <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}><circle cx="12" cy="8" r="7"></circle><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline></svg>
+        );
+        const IconUsers = ({ size = 24, className = "" }) => (
+            <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+        );
+        const IconMonitor = ({ size = 24, className = "" }) => (
+            <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
+        );
+        const IconSun = ({ size = 24, className = "" }) => (
+            <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+        );
+        const IconAnchor = ({ size = 24, className = "" }) => (
+            <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}><circle cx="12" cy="5" r="3"></circle><line x1="12" y1="22" x2="12" y2="8"></line><path d="M5 12H2a10 10 0 0 0 20 0h-3"></path></svg>
+        );
+        const IconGlobe = ({ size = 24, className = "" }) => (
+            <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+        );
+        const IconPalette = ({ size = 24, className = "" }) => (
+            <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}><path d="M13.5 22.1c1.8-7.2 6.3-10.8 13.5-10.8 10.8 0 12.15 8.1 17.55 9.45 3.6.9 6.75-.45 9.45-4.05-1.8 7.2-6.3 10.8-13.5 10.8-10.8 0-12.15-8.1-17.55-9.45-3.6-.9-6.75.45-9.45 4.05zM0 38.3c1.8-7.2 6.3-10.8 13.5-10.8 10.8 0 12.15 8.1 17.55 9.45 3.6.9 6.75-.45 9.45-4.05-1.8 7.2-6.3 10.8-13.5 10.8-10.8 0-12.15-8.1-17.55-9.45-3.6-.9-6.75.45-9.45 4.05z"/></svg>
+        );
+
+        // Reusable Page Wrapper for EXACT A4 Sizing
+        const A4Page = ({ children, className = "" }) => (
+            <div className={`a4-page flex flex-col ${className}`}>
+                <div className="flex-grow">
+                    {children}
+                </div>
+                {/* Footer Line for every page */}
+                <div className="mt-auto pt-6 sm:pt-8 border-t border-[#1C1C1E] flex justify-between items-center text-[9px] sm:text-[10px] text-[#8E8E93] font-mono">
+                    <span>S-TEX STRATEGY V5.0</span>
+                    <span>CONFIDENTIAL</span>
+                </div>
+            </div>
+        );
+
+        const SectionHeader = ({ number, title, sub, icon: Icon }) => (
+            <div className="relative flex flex-col sm:flex-row sm:items-end pb-5 sm:pb-6 mb-10 sm:mb-12 mt-4 sm:mt-2 gap-3 sm:gap-0 group">
+                {/* Gradient border line */}
+                <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-[#FF4F00] via-[#FF4F00]/50 to-transparent"></div>
+                <div className="absolute bottom-0 left-0 w-20 h-px bg-[#FF4F00] shadow-[0_0_12px_rgba(255,79,0,0.5)]"></div>
+
+                {/* Number badge */}
+                <div className="flex items-center gap-4 mr-0 sm:mr-6">
+                    <div className="w-11 h-11 sm:w-14 sm:h-14 bg-gradient-to-br from-[#FF4F00] to-[#cc3f00] flex items-center justify-center shadow-lg shadow-[#FF4F00]/25 rounded-sm">
+                        <span className="font-mono text-white text-sm sm:text-lg font-bold">{number}</span>
+                    </div>
+                </div>
+
+                <div className="flex-grow">
+                    <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white uppercase tracking-tight leading-none">{title}</h2>
+                    {sub && <div className="text-[#8E8E93] text-[10px] sm:text-xs font-mono mt-2 uppercase tracking-[0.25em]">{sub}</div>}
+                </div>
+                {Icon && (
+                    <div className="hidden sm:flex items-center justify-center w-16 h-16 rounded-full bg-gradient-to-br from-[#1C1C1E] to-[#0f0f11] border border-[#2a2a2a] opacity-50 group-hover:opacity-100 transition-opacity">
+                        <Icon className="text-[#FF4F00]" size={26} />
+                    </div>
+                )}
+            </div>
+        );
+
+        const SubSection = ({ title, children, className = "" }) => (
+            <div className={`mb-8 sm:mb-10 min-w-0 ${className}`}>
+                <h3 className="font-mono text-[#FF4F00] text-xs uppercase tracking-widest mb-3 border-l-2 border-[#FF4F00] pl-4 min-w-0" style={{wordBreak: 'break-word', overflowWrap: 'anywhere'}}>
+                    {title}
+                </h3>
+                <div className="text-[#E5E5E7] leading-relaxed text-sm pl-5 border-l border-[#2a2a2a] min-w-0" style={{wordBreak: 'break-word', overflowWrap: 'anywhere'}}>
+                    {children}
+                </div>
+            </div>
+        );
+
+        const ContentBlock = ({ label, content, className = "" }) => (
+            <div className={`mb-5 sm:mb-6 min-w-0 ${className}`}>
+                <div className="text-[10px] font-mono text-[#8E8E93] uppercase mb-2 tracking-wider min-w-0" style={{wordBreak: 'break-word', overflowWrap: 'anywhere'}}>{label}</div>
+                <div className="text-[#E5E5E7] text-sm leading-relaxed whitespace-pre-line min-w-0" style={{wordBreak: 'break-word', overflowWrap: 'anywhere'}}>{content}</div>
+            </div>
+        );
+
+        const GridCard = ({ title, children, icon: Icon, sub }) => (
+            <div className="bg-[#1C1C1E] p-5 sm:p-6 border border-[#2a2a2a] hover:border-[#FF4F00]/50 transition-colors h-full flex flex-col rounded-sm overflow-hidden min-w-0">
+                <div className="flex items-start justify-between mb-4 gap-3 min-w-0">
+                    <h4 className="font-bold text-white text-sm sm:text-base leading-tight break-words min-w-0 flex-1" style={{wordBreak: 'break-word', overflowWrap: 'anywhere'}}>{title}</h4>
+                    {Icon && <Icon size={16} className="text-[#FF4F00] flex-shrink-0 flex-grow-0" />}
+                </div>
+                <div className="text-xs sm:text-sm text-[#a0a0a5] leading-relaxed mb-4 flex-grow min-w-0" style={{wordBreak: 'break-word', overflowWrap: 'anywhere'}}>
+                    {children}
+                </div>
+                {sub && (
+                    <div className="text-[10px] sm:text-xs text-[#8E8E93] font-mono border-t border-[#2a2a2a] pt-3 mt-auto min-w-0" style={{wordBreak: 'break-word', overflowWrap: 'anywhere'}}>
+                        {sub}
+                    </div>
+                )}
+            </div>
+        );
+
+        const InfoCard = ({ label, value, sub }) => (
+            <div className="bg-[#1C1C1E] p-5 sm:p-6 border-l-2 border-[#3a3a3a] hover:border-[#FF4F00] transition-colors rounded-sm overflow-hidden min-w-0">
+                <div className="font-mono text-[10px] uppercase text-[#8E8E93] mb-2 tracking-wider min-w-0" style={{wordBreak: 'break-word', overflowWrap: 'anywhere'}}>{label}</div>
+                <div className="text-white font-bold text-xl sm:text-2xl leading-tight min-w-0" style={{wordBreak: 'break-word', overflowWrap: 'anywhere'}}>{value}</div>
+                {sub && <div className="text-[#30D158] text-xs font-mono mt-3 flex items-center gap-2 min-w-0"><span className="w-1.5 h-1.5 rounded-full bg-[#30D158] flex-shrink-0"></span><span className="min-w-0 flex-1" style={{wordBreak: 'break-word', overflowWrap: 'anywhere'}}>{sub}</span></div>}
+            </div>
+        );
+
+        const TableRow = ({ left, right }) => (
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 py-4 sm:py-5 border-b border-[#1C1C1E] min-w-0">
+                <div className="font-mono text-[#8E8E93] text-xs uppercase min-w-0" style={{wordBreak: 'break-word', overflowWrap: 'anywhere'}}>{left}</div>
+                <div className="md:col-span-2 text-[#E5E5E7] text-sm min-w-0" style={{wordBreak: 'break-word', overflowWrap: 'anywhere'}}>{right}</div>
+            </div>
+        );
+
+        const Divider = () => (
+            <div className="h-px w-full bg-[#1C1C1E] my-10 sm:my-12 relative overflow-hidden">
+                <div className="absolute top-0 left-0 h-full w-32 bg-gradient-to-r from-transparent via-signal to-transparent opacity-40"></div>
+            </div>
+        );
+
+        const App = () => {
+            return (
+                <div className="min-h-screen bg-[#121212] text-[#E5E5E7] font-sans">
+                    
+                    {/* Fixed Navigation Bar (Excluded from PDF) */}
+                    <nav className="fixed top-0 left-0 w-full header-glass z-50 px-3 sm:px-6 md:px-8 h-14 sm:h-16 md:h-20 flex justify-between items-center no-print overflow-hidden">
+                        <div className="font-mono font-bold text-xl tracking-tighter glitch-hover cursor-pointer flex items-center gap-1 sm:gap-3 min-w-0 max-w-full overflow-hidden">
+                            <img src="https://i.ibb.co/ymQNRRrT/stex-logo.webp" alt="S-TEX Logo" className="h-5 sm:h-8 md:h-10 w-auto object-contain brightness-0 invert flex-shrink-0" />
+                            <span className="h-4 sm:h-6 w-px bg-tungsten/30 mx-0.5 sm:mx-2 flex-shrink-0"></span>
+                            <div className="flex items-center gap-1 sm:gap-2 select-none flex-shrink-0">
+                                <div className="bg-signal text-black w-5 h-5 sm:w-7 sm:h-7 flex items-center justify-center text-[10px] sm:text-xs font-extrabold font-sans leading-none pt-0.5 rounded-sm flex-shrink-0">G0</div>
+                                <div className="hidden md:flex items-baseline leading-none text-sm md:text-base font-bold font-sans tracking-tight">
+                                    <span className="text-signal">GLITCH</span><span className="text-white">ZERO</span>
+                                </div>
+                            </div>
+                            <span className="hidden sm:block h-4 sm:h-6 w-px bg-tungsten/30 mx-0.5 sm:mx-2 flex-shrink-0"></span>
+                            <span className="hidden sm:block text-signal tracking-wider sm:tracking-widest text-[9px] sm:text-xs uppercase font-mono flex-shrink-0 whitespace-nowrap">WEBSITE PLAN</span>
+                        </div>
+                    </nav>
+
+                    {/* Main Content - Wrapper for all pages */}
+                    <div className="pt-16 sm:pt-20 md:pt-24 print:pt-0 px-2 sm:px-3 md:px-0">
+
+                        {/* --- PAGE 1: COVER --- */}
+                        <div className="a4-page flex flex-col justify-between relative border-r border-l border-[#1C1C1E] shadow-2xl print:shadow-none print:border-none min-h-[80vh] sm:min-h-[297mm]">
+                            <div className="w-full h-2 bg-[#FF4F00]"></div>
+                            <div className="flex flex-col sm:flex-row justify-between items-start gap-3 sm:gap-0 pt-4">
+                                <div className="text-[10px] sm:text-xs font-mono text-[#8E8E93] border border-[#8E8E93] px-2 py-1 inline-block">DOC_ID: STEX_REBUILD_V5.0</div>
+                                <div className="text-left sm:text-right">
+                                    <div className="text-[#FF4F00] font-bold text-xl tracking-tighter">
+                                        <img src="https://i.ibb.co/ymQNRRrT/stex-logo.webp" alt="S-TEX Logo" className="h-6 sm:h-8 w-auto object-contain brightness-0 invert inline-block" />
+                                    </div>
+                                    <div className="text-[10px] font-mono text-[#8E8E93] uppercase mt-1">Luxury Performance Textiles</div>
+                                </div>
+                            </div>
+                            <div className="my-auto py-8 sm:py-12">
+                                <div className="w-14 h-14 sm:w-18 sm:h-18 bg-gradient-to-br from-[#FF4F00] to-[#cc3f00] flex items-center justify-center mb-6 sm:mb-8 shadow-lg shadow-[#FF4F00]/20">
+                                    <IconZap className="text-white" size={28} />
+                                </div>
+                                <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-[0.85] text-white mb-4 sm:mb-6 uppercase tracking-tight">
+                                    Website<br/>Rebuild<br/><span className="bg-gradient-to-r from-[#FF4F00] to-[#FF7A33] bg-clip-text text-transparent">Strategy</span>
+                                </h1>
+                                <p className="text-base sm:text-lg md:text-xl text-[#8E8E93] max-w-lg leading-relaxed">
+                                    Copy & Structure Document transforming S-Tex from a product storefront into a premium brand experience.
+                                </p>
+                            </div>
+                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-8 border-t border-[#2a2a2a] pt-6 sm:pt-8 mb-8 sm:mb-12">
+                                <div className="group">
+                                    <span className="flex items-center gap-2 text-[10px] font-mono text-[#FF4F00]/70 uppercase mb-1.5 tracking-wider">
+                                        <span className="w-3 h-px bg-[#FF4F00]/40 group-hover:w-5 transition-all"></span>Prepared For
+                                    </span>
+                                    <span className="block text-white font-bold text-base sm:text-lg">S-Tex Management</span>
+                                </div>
+                                <div className="group">
+                                    <span className="flex items-center gap-2 text-[10px] font-mono text-[#FF4F00]/70 uppercase mb-1.5 tracking-wider">
+                                        <span className="w-3 h-px bg-[#FF4F00]/40 group-hover:w-5 transition-all"></span>Date
+                                    </span>
+                                    <span className="block text-white font-bold text-base sm:text-lg">November 2025</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        {/* --- PAGE 2: EXEC SUMMARY --- */}
+                        <A4Page>
+                            <SectionHeader number="01" title="Executive Summary" icon={IconFileText} />
+                            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 sm:gap-10 mb-10 sm:mb-12">
+                                <div className="lg:col-span-2 text-[#E5E5E7] text-sm leading-relaxed">
+                                    <p className="mb-4">This document outlines the complete website rebuild strategy for S-Tex (<span className="text-[#FF4F00]">stex.co.in</span>), transforming it from a product-focused storefront into a premium marketing website that positions S-Tex as India's leading luxury performance textile manufacturer.</p>
+                                    <p className="text-[#8E8E93]">The new website will serve as a brand showcase, not a storefront. There will be no e-commerce functionality or products for sale. Instead, the site will communicate S-Tex's heritage, manufacturing excellence, global partnerships, and commitment to innovation — driving inquiries from architects, interior designers, hospitality groups, and furniture manufacturers.</p>
+                                </div>
+                                <div className="bg-gradient-to-br from-[#1C1C1E] to-[#151517] p-6 border-l-4 border-[#30D158] relative overflow-hidden min-w-0">
+                                    <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-[#30D158]/10 to-transparent rounded-full blur-2xl"></div>
+                                    <h5 className="relative font-mono text-[#30D158] text-xs uppercase mb-4 font-bold tracking-wider min-w-0" style={{wordBreak: 'break-word', overflowWrap: 'anywhere'}}>Key Objectives</h5>
+                                    <ul className="relative space-y-3 text-xs text-[#E5E5E7]">
+                                        <li className="flex items-center gap-3 min-w-0"><span className="w-5 h-5 rounded-full bg-[#30D158]/20 flex items-center justify-center text-[#30D158] text-[10px] flex-shrink-0">✓</span><span className="min-w-0" style={{wordBreak: 'break-word', overflowWrap: 'anywhere'}}>Establish luxury positioning</span></li>
+                                        <li className="flex items-center gap-3 min-w-0"><span className="w-5 h-5 rounded-full bg-[#30D158]/20 flex items-center justify-center text-[#30D158] text-[10px] flex-shrink-0">✓</span><span className="min-w-0" style={{wordBreak: 'break-word', overflowWrap: 'anywhere'}}>Communicate 20+ years heritage</span></li>
+                                        <li className="flex items-center gap-3 min-w-0"><span className="w-5 h-5 rounded-full bg-[#30D158]/20 flex items-center justify-center text-[#30D158] text-[10px] flex-shrink-0">✓</span><span className="min-w-0" style={{wordBreak: 'break-word', overflowWrap: 'anywhere'}}>Attract B2B inquiries</span></li>
+                                        <li className="flex items-center gap-3 min-w-0"><span className="w-5 h-5 rounded-full bg-[#30D158]/20 flex items-center justify-center text-[#30D158] text-[10px] flex-shrink-0">✓</span><span className="min-w-0" style={{wordBreak: 'break-word', overflowWrap: 'anywhere'}}>Showcase innovation</span></li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <SectionHeader number="02" title="Brand Positioning" icon={IconZap} />
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-10 mb-10 sm:mb-12">
+                                <div className="group bg-gradient-to-br from-[#1C1C1E] to-[#161618] p-5 sm:p-6 relative overflow-hidden border border-[#2a2a2a] hover:border-[#FF4F00]/30 transition-all duration-300 min-w-0">
+                                    <div className="absolute inset-0 bg-gradient-to-br from-[#FF4F00]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                                    <h3 className="relative text-[#FF4F00] font-mono text-[10px] uppercase mb-3 tracking-wider flex items-center gap-2 min-w-0">
+                                        <span className="w-2 h-2 bg-[#FF4F00] rounded-full flex-shrink-0"></span><span style={{wordBreak: 'break-word', overflowWrap: 'anywhere'}}>Brand Essence</span>
+                                    </h3>
+                                    <div className="relative text-lg sm:text-xl font-bold text-white mb-3 leading-tight min-w-0" style={{wordBreak: 'break-word', overflowWrap: 'anywhere'}}>"Where Heritage Meets Performance"</div>
+                                    <p className="relative text-[#8E8E93] text-xs sm:text-sm leading-relaxed min-w-0" style={{wordBreak: 'break-word', overflowWrap: 'anywhere'}}>S-Tex represents the intersection of India's rich textile heritage with cutting-edge performance innovation. With manufacturing facilities in Kerala and Tamil Nadu, a design team in the USA, and partnerships with global giants, S-Tex delivers textiles that don't compromise — beautiful, durable, and made to last.</p>
+                                </div>
+                                <div className="grid grid-cols-1 xs:grid-cols-2 gap-4 sm:gap-6">
+                                    <InfoCard label="Pioneer Spirit" value="First in India" sub="Jacquard Blackouts" />
+                                    <InfoCard label="Global Trust" value="4 Continents" sub="USA/EU/Asia/Middle East" />
+                                </div>
+                            </div>
+
+                            {/* Brand Pillars */}
+                            <div className="flex items-center gap-4 mb-6 sm:mb-8">
+                                <h4 className="font-mono text-[#8E8E93] text-xs uppercase tracking-[0.25em]">Brand Pillars</h4>
+                                <div className="flex-grow h-px bg-gradient-to-r from-[#2a2a2a] to-transparent"></div>
+                            </div>
+                            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 mb-10 sm:mb-12">
+                                <GridCard title="Pioneer Spirit" icon={IconZap}>
+                                    First in India to introduce Jacquard blackouts and dim-outs up to 114" width. First to launch 100% PU indoor/outdoor leatherettes. First to offer outdoor fabrics with 2000+ hour UV guarantees.
+                                </GridCard>
+                                <GridCard title="Global Excellence" icon={IconGlobe}>
+                                    Trusted by Crate and Barrel, Pottery Barn, West Elm, Dillard's, Anthropologie, and major importers across the USA, Europe, Japan, and the Middle East.
+                                </GridCard>
+                                <GridCard title="Craft & Innovation" icon={IconAward}>
+                                    Over two decades of weaving excellence combined with continuous innovation in performance textiles, leatherettes, and outdoor fabrics.
+                                </GridCard>
+                                <GridCard title="Complete Solutions" icon={IconLayers}>
+                                    From residential luxury to hospitality, marine applications to poolside living — S-Tex provides comprehensive textile solutions for every environment.
+                                </GridCard>
+                            </div>
+
+                            {/* Tone of Voice */}
+                            <div className="flex items-center gap-3 mb-5">
+                                <h4 className="font-mono text-[#8E8E93] text-xs uppercase tracking-[0.2em]">Tone of Voice</h4>
+                                <div className="flex-grow h-px bg-gradient-to-r from-[#2a2a2a] to-transparent"></div>
+                            </div>
+                            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+                                <div className="bg-[#1C1C1E] p-5 sm:p-6 border-l-2 border-[#FF4F00] rounded-sm overflow-hidden min-w-0">
+                                    <div className="text-white font-bold text-sm sm:text-base mb-2 min-w-0" style={{wordBreak: 'break-word', overflowWrap: 'anywhere'}}>Sophisticated but Approachable</div>
+                                    <div className="text-[#8E8E93] text-xs sm:text-sm leading-relaxed min-w-0" style={{wordBreak: 'break-word', overflowWrap: 'anywhere'}}>Confident expertise without pretension</div>
+                                </div>
+                                <div className="bg-[#1C1C1E] p-5 sm:p-6 border-l-2 border-[#FF4F00] rounded-sm overflow-hidden min-w-0">
+                                    <div className="text-white font-bold text-sm sm:text-base mb-2 min-w-0" style={{wordBreak: 'break-word', overflowWrap: 'anywhere'}}>Warm but Professional</div>
+                                    <div className="text-[#8E8E93] text-xs sm:text-sm leading-relaxed min-w-0" style={{wordBreak: 'break-word', overflowWrap: 'anywhere'}}>Indian hospitality meets global standards</div>
+                                </div>
+                                <div className="bg-[#1C1C1E] p-5 sm:p-6 border-l-2 border-[#FF4F00] rounded-sm overflow-hidden min-w-0">
+                                    <div className="text-white font-bold text-sm sm:text-base mb-2 min-w-0" style={{wordBreak: 'break-word', overflowWrap: 'anywhere'}}>Innovative but Grounded</div>
+                                    <div className="text-[#8E8E93] text-xs sm:text-sm leading-relaxed min-w-0" style={{wordBreak: 'break-word', overflowWrap: 'anywhere'}}>Future-forward with deep manufacturing roots</div>
+                                </div>
+                                <div className="bg-[#1C1C1E] p-5 sm:p-6 border-l-2 border-[#FF4F00] rounded-sm overflow-hidden min-w-0">
+                                    <div className="text-white font-bold text-sm sm:text-base mb-2 min-w-0" style={{wordBreak: 'break-word', overflowWrap: 'anywhere'}}>Aspirational but Authentic</div>
+                                    <div className="text-[#8E8E93] text-xs sm:text-sm leading-relaxed min-w-0" style={{wordBreak: 'break-word', overflowWrap: 'anywhere'}}>Luxury that's earned through quality, not marketing</div>
+                                </div>
+                            </div>
+                        </A4Page>
+
+                        {/* --- PAGE 3: STRUCTURE --- */}
+                        <A4Page>
+                            <SectionHeader number="03" title="Structure Overview" icon={IconLayers} />
+                            <div className="flex flex-col gap-10 sm:gap-12 mb-12 sm:mb-14">
+                                <div className="bg-gradient-to-br from-[#1C1C1E] to-[#141416] p-6 sm:p-8 border border-[#2a2a2a] relative overflow-hidden min-w-0 rounded-sm">
+                                    <div className="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg width=&quot;40&quot; height=&quot;40&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot;%3E%3Cpath d=&quot;M0 0h40v40H0z&quot; fill=&quot;none&quot;/%3E%3Cpath d=&quot;M0 40L40 0&quot; stroke=&quot;%23ffffff&quot; stroke-width=&quot;0.5&quot; opacity=&quot;0.02&quot;/%3E%3C/svg%3E')] opacity-50"></div>
+                                    <div className="relative min-w-0">
+                                        <div className="flex items-center justify-center gap-2 mb-4 min-w-0">
+                                            <span className="w-8 h-px bg-gradient-to-r from-transparent to-[#FF4F00]/50 flex-shrink-0"></span>
+                                            <span className="font-mono text-[#FF4F00] text-xs uppercase tracking-wider min-w-0" style={{wordBreak: 'break-word', overflowWrap: 'anywhere'}}>User Journey Philosophy</span>
+                                            <span className="w-8 h-px bg-gradient-to-l from-transparent to-[#FF4F00]/50 flex-shrink-0"></span>
+                                        </div>
+                                        <div className="text-xs text-[#8E8E93] text-center mb-5 min-w-0" style={{wordBreak: 'break-word', overflowWrap: 'anywhere'}}>Designed for B2B visitors — architects, interior designers, procurement teams.</div>
+                                        {/* Mobile: stacked flow */}
+                                        <div className="flex md:hidden flex-wrap justify-center items-center text-xs font-bold text-[#E5E5E7] gap-2 min-w-0">
+                                            <span className="px-3 py-1.5 bg-[#1C1C1E] border border-[#2a2a2a] rounded overflow-hidden min-w-0" style={{wordBreak: 'break-word', overflowWrap: 'anywhere'}}>Inspiration (Home)</span>
+                                            <span className="text-[#FF4F00] text-lg flex-shrink-0">→</span>
+                                            <span className="px-3 py-1.5 bg-[#1C1C1E] border border-[#2a2a2a] rounded overflow-hidden min-w-0" style={{wordBreak: 'break-word', overflowWrap: 'anywhere'}}>Trust (About)</span>
+                                            <span className="text-[#FF4F00] text-lg flex-shrink-0">→</span>
+                                            <span className="px-3 py-1.5 bg-[#1C1C1E] border border-[#2a2a2a] rounded overflow-hidden min-w-0" style={{wordBreak: 'break-word', overflowWrap: 'anywhere'}}>Capability (Collections)</span>
+                                            <span className="text-[#FF4F00] text-lg flex-shrink-0">→</span>
+                                            <span className="px-3 py-2 bg-gradient-to-r from-[#FF4F00] to-[#cc3f00] text-white shadow-lg shadow-[#FF4F00]/20 rounded overflow-hidden min-w-0" style={{wordBreak: 'break-word', overflowWrap: 'anywhere'}}>Action (Contact)</span>
+                                        </div>
+                                        {/* Desktop: 2 boxes per line */}
+                                        <div className="hidden md:flex flex-col gap-4 text-sm font-bold text-[#E5E5E7]">
+                                            {/* Row 1: Inspiration → Trust */}
+                                            <div className="flex items-center justify-center gap-4">
+                                                <span className="px-5 py-2.5 bg-[#1C1C1E] border border-[#2a2a2a] rounded flex-1 text-center">Inspiration (Home)</span>
+                                                <span className="text-[#FF4F00] text-xl flex-shrink-0">→</span>
+                                                <span className="px-5 py-2.5 bg-[#1C1C1E] border border-[#2a2a2a] rounded flex-1 text-center">Trust (About)</span>
+                                            </div>
+                                            {/* Arrow down between rows */}
+                                            <div className="flex justify-center">
+                                                <span className="text-[#FF4F00] text-xl">↓</span>
+                                            </div>
+                                            {/* Row 2: Capability → Action */}
+                                            <div className="flex items-center justify-center gap-4">
+                                                <span className="px-5 py-2.5 bg-[#1C1C1E] border border-[#2a2a2a] rounded flex-1 text-center">Capability (Collections)</span>
+                                                <span className="text-[#FF4F00] text-xl flex-shrink-0">→</span>
+                                                <span className="px-5 py-3 bg-gradient-to-r from-[#FF4F00] to-[#cc3f00] text-white shadow-lg shadow-[#FF4F00]/20 rounded flex-1 text-center">Action (Contact)</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div>
+                                    <h4 className="font-bold text-white mb-4">Primary Sitemap</h4>
+                                    <ul className="space-y-4">
+                                        <TableRow left="Home" right="Brand introduction, hero statement, value props" />
+                                        <TableRow left="About Us" right="Company story, founder, global presence, milestones" />
+                                        <TableRow left="Collections" right="Fabric categories (No e-commerce)" />
+                                        <TableRow left="Applications" right="Industries and use cases served" />
+                                        <TableRow left="Why S-Tex" right="Differentiators, quality assurance, partnerships" />
+                                        <TableRow left="Contact" right="Inquiry form, locations, business hours" />
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div className="border border-[#1C1C1E] p-6 sm:p-8 bg-[#000000] mt-8 overflow-hidden min-w-0 rounded-sm">
+                                <div className="flex flex-wrap justify-between items-center mb-6 border-b border-[#333] pb-4 gap-2 min-w-0">
+                                    <img src="https://i.ibb.co/ymQNRRrT/stex-logo.webp" alt="S-TEX Logo" className="h-6 w-auto object-contain brightness-0 invert flex-shrink-0" />
+                                    <div className="hidden md:flex gap-4 text-[10px] font-mono text-[#8E8E93] flex-wrap min-w-0">
+                                        <span>HOME</span>
+                                        <span>ABOUT US</span>
+                                        <span>OUR COLLECTIONS</span>
+                                        <span>WHY S-TEX</span>
+                                    </div>
+                                    <div className="bg-[#FF4F00] text-black text-[10px] px-3 py-1 font-bold flex-shrink-0 rounded-sm">CONTACT</div>
+                                </div>
+                                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8 min-w-0">
+                                    <div className="min-w-0"><h5 className="text-stexCopper text-xs uppercase font-mono mb-1" style={{wordBreak: 'break-word', overflowWrap: 'anywhere'}}>Desktop Header</h5><p className="text-xs text-stexIvory/70 min-w-0" style={{wordBreak: 'break-word', overflowWrap: 'anywhere'}}>Minimal, elegant, fixed on scroll. Transparent on hero, transitions to white/off-white on scroll.</p></div>
+                                    <div className="min-w-0"><h5 className="text-stexCopper text-xs uppercase font-mono mb-1" style={{wordBreak: 'break-word', overflowWrap: 'anywhere'}}>Mobile Header</h5><p className="text-xs text-stexIvory/70 min-w-0" style={{wordBreak: 'break-word', overflowWrap: 'anywhere'}}>Logo (left) | Hamburger menu (right). Full-screen overlay navigation.</p></div>
+                                </div>
+                            </div>
+                        </A4Page>
+
+                        {/* --- PAGE 4: HOME DETAILED --- */}
+                        <A4Page>
+                            <SectionHeader number="04" title="Home Page" sub="Strategy & Copy" icon={IconLayout} />
+
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-10 mb-10 sm:mb-12">
+                                <div className="bg-[#1C1C1E] p-4 sm:p-6 border-l-2 border-[#FF4F00] overflow-hidden min-w-0 rounded-sm">
+                                    <h4 className="font-mono text-[#FF4F00] text-xs uppercase mb-3 min-w-0" style={{wordBreak: 'break-word', overflowWrap: 'anywhere'}}>Hero Section</h4>
+                                    <ContentBlock label="Headline" content='"Crafting Excellence. Defining Performance."' />
+                                    <ContentBlock label="Subheadline" content='"India&#39;s pioneer in luxury performance textiles — trusted by the world&#39;s finest furniture brands for over two decades."' />
+                                    <ContentBlock label="CTA Button" content='"Discover Our Story"' />
+                                    <ContentBlock label="Visual Direction" content='Full-bleed lifestyle imagery showing S-Tex fabrics in aspirational settings — a luxury outdoor terrace, an elegant living room, a five-star hotel lobby. Subtle fabric texture overlays. Slow, cinematic parallax on scroll.' />
+                                </div>
+                                <div>
+                                    <SubSection title="Introduction Section">
+                                        <p className="mb-2 italic text-[#8E8E93]">Headline: "Where Heritage Meets Performance"</p>
+                                        <p className="text-xs mb-2">"Since 2001, S-Tex has been weaving quality fabric from our manufacturing facilities in Kerala and Tamil Nadu. What began as a visionary dream has evolved into a global textile house — supplying the world's most prestigious home furnishing brands while pioneering innovations in performance textiles for the Indian market.</p>
+                                        <p className="text-xs">Our fabrics dress the interiors of landmark hotels, grace the collections of international retailers, and transform outdoor spaces across four continents. Every yard we produce carries forward a legacy of craftsmanship refined over two decades."</p>
+                                        <div className="mt-2 text-[10px] font-mono text-[#FF4F00]">CTA: "Learn About Us →"</div>
+                                    </SubSection>
+                                    <SubSection title="Pioneer Statement">
+                                        <div className="text-[10px] font-mono text-[#8E8E93] uppercase mb-1">Headline: Pioneering Performance in India</div>
+                                        <ul className="list-disc pl-4 space-y-1 text-xs text-[#E5E5E7]">
+                                            <li>First in India to introduce Jacquard Blackouts & Dim-Outs up to 114" width</li>
+                                            <li>First in India to launch 100% PU Indoor & Outdoor Leatherettes</li>
+                                            <li>First in India to offer Outdoor Fabrics with 2000+ hour UV guarantees</li>
+                                        </ul>
+                                        <div className="mt-2 text-[10px] font-mono text-[#FF4F00]">CTA: "Discover Why S-Tex →"</div>
+                                    </SubSection>
+                                </div>
+                            </div>
+
+                            <h4 className="font-mono text-[#8E8E93] text-xs uppercase mb-6 tracking-widest">Capabilities Showcase: "Textiles for Every Vision"</h4>
+                            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 mb-8 sm:mb-10">
+                                <GridCard title="Indoor Fabrics" icon={IconLayers}>Upholstery, drapery, and cushion fabrics in natural and performance yarns. Timeless patterns meet modern durability.</GridCard>
+                                <GridCard title="Outdoor Perf." icon={IconSun}>UV-resistant, water-repellent fabrics engineered for poolside luxury, marine applications, and al fresco living. Tested to 2000+ hours.</GridCard>
+                                <GridCard title="Blackouts" icon={IconFileText}>India's first jacquard blackout and dim-out fabrics in widths up to 114". Precision light control with design sophistication.</GridCard>
+                                <GridCard title="Leatherette" icon={IconAward}>Premium 100% PU leatherettes for indoor and outdoor applications. The look and feel of leather with superior performance.</GridCard>
+                            </div>
+                            <div className="text-center mb-6 sm:mb-8">
+                                <div className="text-[10px] font-mono text-[#FF4F00]">CTA: "Explore Collections →"</div>
+                            </div>
+
+                            <div className="border-t border-[#2a2a2a] pt-8 sm:pt-10">
+                                <h4 className="font-mono text-[#8E8E93] text-xs uppercase mb-6 tracking-widest">Global Trust Section: "Trusted by the World's Finest"</h4>
+                                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
+                                    <div>
+                                        <div className="text-[10px] font-mono text-[#FF4F00] uppercase mb-1">Partner Logos Grid</div>
+                                        <div className="text-xs sm:text-sm font-bold text-white mb-2">Crate & Barrel | Pottery Barn | West Elm | Dillard's | Anthropologie</div>
+                                        <p className="text-[10px] text-[#8E8E93]">"Our fabrics have found their way into homes and hospitality spaces across the USA, Europe, Japan, the Middle East, and Far East Asia."</p>
+                                        <p className="text-[10px] text-[#8E8E93] mt-1">"...and leading furniture manufacturers, architects, interior designers, and hospitality groups worldwide."</p>
+                                    </div>
+                                    <div className="space-y-2 sm:space-y-3 min-w-0">
+                                        <h5 className="font-mono text-[#8E8E93] text-[10px] uppercase min-w-0" style={{wordBreak: 'break-word', overflowWrap: 'anywhere'}}>Testimonial Carousel (2-3 Testimonials)</h5>
+                                        <div className="bg-[#1C1C1E] p-3 sm:p-4 italic text-[10px] text-[#8E8E93] border-l border-[#FF4F00] overflow-hidden min-w-0 rounded-sm" style={{wordBreak: 'break-word', overflowWrap: 'anywhere'}}>"We stumbled upon the S-Tex store and there's been no looking back. Their choice of fabrics is unique and of great quality. What really sets their team apart is their in-depth knowledge, informed suggestions, and committed effort to see a designer's vision realized." — Interior Design Studio</div>
+                                        <div className="bg-[#1C1C1E] p-3 sm:p-4 italic text-[10px] text-[#8E8E93] border-l border-[#333] overflow-hidden min-w-0 rounded-sm" style={{wordBreak: 'break-word', overflowWrap: 'anywhere'}}>"S-Tex has always been one of our go-to vendors. The extensive, exquisite range allows for an idyllic fabric solution. We specifically applaud their outdoor performance fabric collection — not only durable but elegantly crafted in distinct patterns and vivid colours." — Architect & Design Firm</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </A4Page>
+
+                        {/* --- PAGE 5: ABOUT DETAILED --- */}
+                        <A4Page>
+                            <SectionHeader number="05" title="About Us Page" sub="Strategy & Copy" icon={IconHistory} />
+
+                            <div className="mb-10 sm:mb-12 bg-[#1C1C1E] p-5 sm:p-6 border border-[#2a2a2a] rounded-sm overflow-hidden min-w-0">
+                                <ContentBlock label="Hero Headline" content='"Our Story"' />
+                                <ContentBlock label="Subheadline" content='"Two decades of weaving excellence, from the looms of South India to living spaces across the world."' />
+                                <ContentBlock label="Visual Direction" content='Manufacturing imagery — looms in motion, artisan hands, fabric details. Warm, golden lighting suggesting heritage and craftsmanship.' />
+                            </div>
+
+                            <div className="grid md:grid-cols-2 gap-8 sm:gap-10 mb-10 sm:mb-12">
+                                <SubSection title="The Story: A Vision Woven Into Reality">
+                                    <p className="text-xs mb-3">"Established in 2001 and headquartered in Bangalore, S-Tex began with a singular vision: to create textiles that bridge the gap between India's rich weaving heritage and the performance demands of modern living.</p>
+                                    <p className="text-xs">Founded by Mr. Srinith Sreedharan — a respected figure in both the Indian textile industry and the American furniture sector — S-Tex quickly distinguished itself through uncompromising quality and design innovation."</p>
+                                </SubSection>
+                                <div>
+                                    <SubSection title="Leadership">
+                                        <p className="text-xs">"Mr. Srinith Sreedharan brings a unique dual perspective to S-Tex — deep roots in India's textile manufacturing tradition combined with firsthand understanding of what the world's leading furniture brands demand."</p>
+                                    </SubSection>
+                                    <SubSection title="Where Craftsmanship Lives">
+                                        <p className="text-xs">"Our manufacturing facilities in Kerala and Tamil Nadu are where tradition meets technology. With over 20 years of experience... every fabric that bears the S-Tex name represents the pinnacle of what's possible."</p>
+                                    </SubSection>
+                                </div>
+                            </div>
+
+                            <Divider />
+
+                            <div className="grid md:grid-cols-2 gap-8 sm:gap-10">
+                                <div>
+                                    <h4 className="font-mono text-[#FF4F00] text-xs uppercase mb-4 tracking-wider">A Global Footprint</h4>
+                                    <ul className="text-xs text-[#E5E5E7] space-y-2">
+                                        <li><strong className="text-white">United States & Europe:</strong> Major home furnishing retailers & manufacturers</li>
+                                        <li><strong className="text-white">Japan:</strong> Precision-focused design partnerships</li>
+                                        <li><strong className="text-white">Middle East:</strong> Luxury hospitality and residential projects</li>
+                                        <li><strong className="text-white">Far East Asia:</strong> Growing markets with discerning taste</li>
+                                        <li><strong className="text-white">India:</strong> Architects, interior designers, hospitality groups</li>
+                                    </ul>
+                                </div>
+                                <div className="min-w-0">
+                                    <h4 className="font-mono text-[#FF4F00] text-xs uppercase mb-3" style={{wordBreak: 'break-word', overflowWrap: 'anywhere'}}>Our Journey</h4>
+                                    <div className="bg-[#1C1C1E] p-4 sm:p-5 border-l border-[#30D158] overflow-hidden min-w-0 rounded-sm">
+                                        <ul className="space-y-2 text-[10px] text-[#E5E5E7] min-w-0">
+                                            <li className="min-w-0" style={{wordBreak: 'break-word', overflowWrap: 'anywhere'}}><span className="text-[#30D158] font-bold">2001:</span> S-Tex founded in Bangalore; mfg in Kerala/TN</li>
+                                            <li className="min-w-0" style={{wordBreak: 'break-word', overflowWrap: 'anywhere'}}><span className="text-[#30D158] font-bold">2005:</span> First exports to USA; major partnerships</li>
+                                            <li className="min-w-0" style={{wordBreak: 'break-word', overflowWrap: 'anywhere'}}><span className="text-[#30D158] font-bold">2010:</span> Expansion into EU & Japanese markets</li>
+                                            <li className="min-w-0" style={{wordBreak: 'break-word', overflowWrap: 'anywhere'}}><span className="text-[#30D158] font-bold">2015:</span> Pioneer: India's first Jacquard Blackouts</li>
+                                            <li className="min-w-0" style={{wordBreak: 'break-word', overflowWrap: 'anywhere'}}><span className="text-[#30D158] font-bold">2017:</span> Introduction of 100% PU Leatherettes</li>
+                                            <li className="min-w-0" style={{wordBreak: 'break-word', overflowWrap: 'anywhere'}}><span className="text-[#30D158] font-bold">2018:</span> First S-Tex studio opens in Bangalore (HRBR)</li>
+                                            <li className="min-w-0" style={{wordBreak: 'break-word', overflowWrap: 'anywhere'}}><span className="text-[#30D158] font-bold">2020:</span> Launch of Outdoor fabrics (2000+ hr UV)</li>
+                                            <li className="min-w-0" style={{wordBreak: 'break-word', overflowWrap: 'anywhere'}}><span className="text-[#30D158] font-bold">Today:</span> 20+ years of excellence; serving 4 continents</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </A4Page>
+
+                        {/* --- PAGE 6: COLLECTIONS DETAILED --- */}
+                        <A4Page>
+                            <SectionHeader number="06" title="Our Collections Page" sub="Strategy & Copy" icon={IconLayers} />
+
+                            <div className="mb-10 sm:mb-12 bg-[#1C1C1E] p-5 sm:p-6 border border-[#2a2a2a] rounded-sm overflow-hidden min-w-0">
+                                <div className="text-sm text-[#E5E5E7] italic font-bold mb-3 min-w-0" style={{wordBreak: 'break-word', overflowWrap: 'anywhere'}}>Headline: "Our Collections"<br/>Sub: "Curated textiles for spaces that demand both beauty and performance."</div>
+                                <p className="text-sm text-[#8E8E93] leading-relaxed min-w-0" style={{wordBreak: 'break-word', overflowWrap: 'anywhere'}}>"As a home furnishing fabric brand that aspires to encapsulate elegance, quality, and style through all its pieces, our fabrics are primarily inspired by modern stories, an extensive range of textures, and dynamic colour palettes."</p>
+                            </div>
+
+                            <div className="grid md:grid-cols-2 gap-6 sm:gap-8">
+                                <GridCard title="1. Indoor Upholstery Fabrics" sub="Apps: Sofas, armchairs, dining seating">
+                                    "From plush velvets to textured weaves, our upholstery collection brings together natural and performance yarns for furniture that lives beautifully."
+                                </GridCard>
+                                <GridCard title="2. Drapery & Curtain Fabrics" sub="Apps: Window treatments, room dividers">
+                                    "Light-filtering sheers to dramatic statement fabrics. Our drapery collection transforms windows into design elements."
+                                </GridCard>
+                                <GridCard title="3. Jacquard Blackouts & Dim-Outs" sub="Apps: Hotels, home theaters, bedrooms">
+                                    "India's first jacquard blackout and dim-out fabrics in widths up to 114\". Where most blackouts sacrifice aesthetics for function, our collection delivers complete light control without compromising on design."
+                                </GridCard>
+                                <GridCard title="4. Outdoor Performance Fabrics" sub="Apps: Poolside furniture, patio cushions">
+                                    "Engineered to thrive in the harshest conditions. Our outdoor fabrics resist UV degradation, water, mold, and mildew — tested to 2000+ hours under UV exposure."
+                                </GridCard>
+                                <GridCard title="5. Leatherette & PU Collection" sub="Apps: Contract seating, automotive, hospitality">
+                                    "India's first 100% PU leatherettes suitable for both indoor and outdoor use. The aesthetic appeal and tactile pleasure of leather with superior durability."
+                                </GridCard>
+                                <GridCard title="6. Cushion & Pillow Fabrics" sub="Apps: Decorative pillows, seat cushions">
+                                    "The finishing touches that complete a space. Our cushion and pillow fabrics range from everyday performance to luxurious statement pieces."
+                                </GridCard>
+                            </div>
+                            
+                            <div className="mt-10 sm:mt-12 flex justify-center">
+                                <div className="border border-[#FF4F00] px-6 sm:px-8 py-4 text-[#FF4F00] font-mono text-xs uppercase tracking-widest text-center rounded-sm overflow-hidden min-w-0 max-w-full" style={{wordBreak: 'break-word', overflowWrap: 'anywhere'}}>
+                                    CTA: "Contact Us for Specifications"<br/><span className="text-xs normal-case opacity-70 mt-2 block">"Interested in our collections? Our team is ready to assist with fabric selection."</span>
+                                </div>
+                            </div>
+                        </A4Page>
+
+                        {/* --- PAGE 7: APPLICATIONS DETAILED --- */}
+                        <A4Page>
+                            <SectionHeader number="07" title="Applications Page" sub="Strategy & Copy" icon={IconGlobe} />
+
+                            <div className="mb-10 sm:mb-12">
+                                <ContentBlock label="Headline" content='"Applications"' />
+                                <ContentBlock label="Subheadline" content='"From five-star hotels to private residences, from yacht decks to corporate headquarters — S-Tex fabrics perform beautifully everywhere."' />
+                            </div>
+
+                            <div className="grid md:grid-cols-3 gap-5 sm:gap-6 mb-10 sm:mb-12">
+                                <GridCard title="Hospitality" icon={IconUsers} sub="We serve: Hotels, resorts, restaurants">
+                                    "Hotels, resorts, and restaurants demand fabrics that can withstand heavy use while maintaining their luxury appearance."
+                                </GridCard>
+                                <GridCard title="Residential Luxury" icon={IconMonitor} sub="We serve: Private residences, luxury apartments">
+                                    "For interior designers and homeowners who refuse to compromise, our residential collections offer the sophistication of high fashion with the durability of performance textiles."
+                                </GridCard>
+                                <GridCard title="Outdoor & Poolside" icon={IconSun} sub="We serve: Pool areas, patios, terraces">
+                                    "Sun, rain, chlorine, salt spray — our outdoor fabrics are engineered to thrive in challenging conditions. UV-tested to 2000+ hours."
+                                </GridCard>
+                                <GridCard title="Marine" icon={IconAnchor} sub="We serve: Yachts, boats, marine canvas">
+                                    "From yacht upholstery to marine canvas, our fabrics are built to handle the unique demands of life on the water."
+                                </GridCard>
+                                <GridCard title="Shades & Awnings" icon={IconSun} sub="We serve: Commercial shading, awnings">
+                                    "Shade sails, awnings, and umbrellas demand fabrics that can handle constant UV exposure while maintaining their structural integrity and colour."
+                                </GridCard>
+                                <GridCard title="Corporate & Commercial" icon={IconLayout} sub="We serve: Corporate offices, co-working">
+                                    "Office environments, corporate cafeterias, and commercial spaces require fabrics that project professionalism while withstanding high-traffic use."
+                                </GridCard>
+                            </div>
+
+                            <SubSection title="Our Clients Include">
+                                <p className="text-xs text-[#E5E5E7] font-bold">Furniture Manufacturers | Architects | Interior Designers | Hospitality Groups | Retailers | Wholesalers</p>
+                            </SubSection>
+                        </A4Page>
+
+                        {/* --- PAGE 8: WHY S-TEX DETAILED --- */}
+                        <A4Page>
+                            <SectionHeader number="08" title="Why S-Tex Page" sub="Strategy & Copy" icon={IconAward} />
+
+                            <div className="mb-8 sm:mb-10">
+                                <ContentBlock label="Hero" content='"What sets us apart in a world of textiles."' />
+                            </div>
+
+                            <div className="grid md:grid-cols-2 gap-6 sm:gap-8 mb-10 sm:mb-12">
+                                <div className="bg-[#1C1C1E] p-5 sm:p-6 border-t-2 border-[#FF4F00] overflow-hidden min-w-0 rounded-sm">
+                                    <h4 className="font-mono text-white text-sm font-bold mb-3 min-w-0" style={{wordBreak: 'break-word', overflowWrap: 'anywhere'}}>Pioneering Performance in India</h4>
+                                    <ul className="space-y-1 text-xs text-[#E5E5E7] min-w-0">
+                                        <li className="min-w-0" style={{wordBreak: 'break-word', overflowWrap: 'anywhere'}}>• First in India: Jacquard Blackouts & Dim-Outs (114")</li>
+                                        <li className="min-w-0" style={{wordBreak: 'break-word', overflowWrap: 'anywhere'}}>• First in India: 100% PU Indoor & Outdoor Leatherettes</li>
+                                        <li className="min-w-0" style={{wordBreak: 'break-word', overflowWrap: 'anywhere'}}>• First in India: Outdoor Fabrics with 2000+ Hr UV Guarantee</li>
+                                    </ul>
+                                </div>
+                                <div className="bg-[#1C1C1E] p-5 sm:p-6 border-t-2 border-[#FF4F00] overflow-hidden min-w-0 rounded-sm">
+                                    <h4 className="font-mono text-white text-sm font-bold mb-3 min-w-0" style={{wordBreak: 'break-word', overflowWrap: 'anywhere'}}>Trusted by Global Leaders</h4>
+                                    <p className="text-xs text-[#E5E5E7] leading-relaxed min-w-0" style={{wordBreak: 'break-word', overflowWrap: 'anywhere'}}>
+                                        "Our relationships with the world's leading home furnishing brands aren't just transactions — they're partnerships built on consistent quality, reliable delivery, and design excellence."
+                                    </p>
+                                </div>
+                            </div>
+
+                            <SubSection title="Design That Serves">
+                                <p className="text-xs">"With our design team based in the USA and manufacturing excellence rooted in India, S-Tex offers the best of both worlds. We don't just follow trends — we interpret global design movements through the lens of performance and practicality."</p>
+                            </SubSection>
+
+                            <SubSection title="Uncompromising Quality">
+                                <p className="text-xs mb-2">"Quality at S-Tex isn't a department — it's a culture. From raw material selection to final inspection, every step of our process is designed to ensure the textiles you receive exceed your expectations."</p>
+                                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4">
+                                    <div className="border border-[#2a2a2a] p-3 sm:p-4 text-xs sm:text-sm text-[#E5E5E7] rounded-sm overflow-hidden min-w-0" style={{wordBreak: 'break-word', overflowWrap: 'anywhere'}}>Rigorous UV testing (2000+ hrs)</div>
+                                    <div className="border border-[#2a2a2a] p-3 sm:p-4 text-xs sm:text-sm text-[#E5E5E7] rounded-sm overflow-hidden min-w-0" style={{wordBreak: 'break-word', overflowWrap: 'anywhere'}}>Colorfastness to intl standards</div>
+                                    <div className="border border-[#2a2a2a] p-3 sm:p-4 text-xs sm:text-sm text-[#E5E5E7] rounded-sm overflow-hidden min-w-0" style={{wordBreak: 'break-word', overflowWrap: 'anywhere'}}>Abrasion & durability testing</div>
+                                    <div className="border border-[#2a2a2a] p-3 sm:p-4 text-xs sm:text-sm text-[#E5E5E7] rounded-sm overflow-hidden min-w-0" style={{wordBreak: 'break-word', overflowWrap: 'anywhere'}}>Fire safety compliance</div>
+                                </div>
+                            </SubSection>
+
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 mt-8 sm:mt-10">
+                                <SubSection title="Manufacturing Heritage">
+                                    <p className="text-xs">"Our facilities in Kerala and Tamil Nadu represent over two decades of textile manufacturing excellence. We've invested continuously in state-of-the-art equipment while preserving the artisanal skills that make our fabrics special. This balance of tradition and technology is what allows us to deliver textiles that meet the most demanding international standards."</p>
+                                </SubSection>
+                                <SubSection title="Partnership Approach: More Than a Supplier">
+                                    <p className="text-xs">"At S-Tex, we see ourselves as partners in your success, not just suppliers. Whether you're a global retailer launching a new collection or an interior designer working on a signature project, we bring the same level of commitment, communication, and care to every relationship. Our team works closely with you to understand your needs, recommend appropriate textiles, and ensure seamless delivery."</p>
+                                </SubSection>
+                            </div>
+                        </A4Page>
+
+                        {/* --- PAGE 9: CONTACT DETAILED --- */}
+                        <A4Page>
+                            <SectionHeader number="09" title="Contact Page" sub="Strategy & Copy" icon={IconPhone} />
+
+                            <div className="grid md:grid-cols-2 gap-8 sm:gap-12">
+                                <div>
+                                    <ContentBlock label="Headline" content='"Let&#39;s Connect"' />
+                                    <div className="mt-10 sm:mt-12 space-y-8 sm:space-y-10">
+                                        <div>
+                                            <div className="flex items-center gap-2 text-[#FF4F00] font-bold text-xs uppercase mb-3"><IconMapPin size={14}/> Visit Our Studio</div>
+                                            <p className="text-xs text-[#E5E5E7]">S-Tex Studio — Bangalore<br/>#702, PAMA Arcade, 3rd Cross<br/>1st Block, HRBR Layout, Kalyan Nagar<br/>Bangalore, Karnataka 560043</p>
+                                        </div>
+                                        <div>
+                                            <div className="flex items-center gap-2 text-[#FF4F00] font-bold text-xs uppercase mb-3"><IconPhone size={14}/> Direct Contact</div>
+                                            <p className="text-xs text-[#E5E5E7]">+91 80 4166 3631 (Direct)<br/>+91 98450 XXXXX (Mobile)<br/>info@stex.co.in</p>
+                                        </div>
+                                        <div>
+                                            <div className="flex items-center gap-2 text-[#FF4F00] font-bold text-xs uppercase mb-3"><IconClock size={14}/> Business Hours</div>
+                                            <p className="text-xs text-[#E5E5E7]">Monday – Saturday: 10:00 AM – 7:00 PM IST<br/>Sunday: By Appointment Only</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div className="bg-[#1C1C1E] p-6 sm:p-8 border border-[#333] rounded-sm overflow-hidden min-w-0">
+                                    <h4 className="font-mono text-[#E5E5E7] text-xs uppercase mb-5 sm:mb-6 min-w-0" style={{wordBreak: 'break-word', overflowWrap: 'anywhere'}}>Inquiry Form Fields</h4>
+                                    <ul className="space-y-4 min-w-0">
+                                        <li className="bg-[#121212] p-3 text-xs text-[#E5E5E7] border-l-2 border-[#FF4F00] rounded-sm overflow-hidden min-w-0" style={{wordBreak: 'break-word', overflowWrap: 'anywhere'}}>Full Name (Required)</li>
+                                        <li className="bg-[#121212] p-3 text-xs text-[#E5E5E7] border-l-2 border-[#FF4F00] rounded-sm overflow-hidden min-w-0" style={{wordBreak: 'break-word', overflowWrap: 'anywhere'}}>Email Address (Required)</li>
+                                        <li className="bg-[#121212] p-3 text-xs text-[#8E8E93] border-l-2 border-[#8E8E93] rounded-sm overflow-hidden min-w-0" style={{wordBreak: 'break-word', overflowWrap: 'anywhere'}}>Phone Number (Optional)</li>
+                                        <li className="bg-[#121212] p-3 text-xs text-[#8E8E93] border-l-2 border-[#8E8E93] rounded-sm overflow-hidden min-w-0" style={{wordBreak: 'break-word', overflowWrap: 'anywhere'}}>Company / Organization</li>
+                                        <li className="bg-[#121212] p-3 text-xs text-[#8E8E93] border-l-2 border-[#8E8E93] rounded-sm overflow-hidden min-w-0" style={{wordBreak: 'break-word', overflowWrap: 'anywhere'}}>Industry/Role (Dropdown: Interior Designer, Architect, Hospitality, Furniture Mfg, Retailer, Other)</li>
+                                        <li className="bg-[#121212] p-3 text-xs text-[#8E8E93] border-l-2 border-[#8E8E93] rounded-sm overflow-hidden min-w-0" style={{wordBreak: 'break-word', overflowWrap: 'anywhere'}}>Project Type (Dropdown: Residential, Hospitality, Commercial, Marine, Retail, Other)</li>
+                                        <li className="bg-[#121212] p-3 text-xs text-[#8E8E93] border-l-2 border-[#8E8E93] rounded-sm overflow-hidden min-w-0" style={{wordBreak: 'break-word', overflowWrap: 'anywhere'}}>Collections of Interest (Checkbox: Indoor, Outdoor, Blackouts, Leatherette)</li>
+                                        <li className="bg-[#121212] p-3 text-xs text-[#8E8E93] border-l-2 border-[#8E8E93] rounded-sm overflow-hidden min-w-0" style={{wordBreak: 'break-word', overflowWrap: 'anywhere'}}>Message (Textarea)</li>
+                                    </ul>
+                                    <div className="mt-6 bg-[#FF4F00] text-white text-center py-3 text-xs font-bold uppercase rounded-sm">Submit Button: "Send Inquiry"</div>
+                                    <div className="mt-6 bg-[#121212] p-4 border border-[#333] rounded-sm">
+                                        <div className="text-[10px] text-[#8E8E93] uppercase font-bold mb-2">Map Integration</div>
+                                        <div className="text-[10px] text-[#555]">Embed Google Maps showing studio location with custom S-Tex branding pin</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </A4Page>
+
+                        {/* --- PAGE 10: FOOTER & GUIDELINES --- */}
+                        <A4Page>
+                            <SectionHeader number="10" title="Footer & Guidelines" icon={IconPenTool} />
+
+                            <div className="grid md:grid-cols-4 gap-6 sm:gap-8 mb-10 sm:mb-12 bg-[#0a1628] p-6 sm:p-8 border-t-4 border-[#FF4F00] overflow-hidden min-w-0 rounded-sm">
+                                <div className="col-span-1 min-w-0">
+                                    {/* REPLACED S-TEX TEXT WITH LOGO */}
+                                    <img src="https://i.ibb.co/ymQNRRrT/stex-logo.webp" alt="S-TEX Logo" className="h-6 w-auto object-contain brightness-0 invert mb-1" />
+                                    <div className="text-[10px] text-[#8E8E93] min-w-0" style={{wordBreak: 'break-word', overflowWrap: 'anywhere'}}>"Crafting Excellence. Defining Performance."</div>
+                                </div>
+                                <div className="col-span-3 grid grid-cols-1 sm:grid-cols-3 gap-4 text-[10px] text-[#E5E5E7] min-w-0">
+                                    <ul className="space-y-1 min-w-0">
+                                        <li className="font-bold text-stexCopper mb-1">Quick Links</li>
+                                        <li>Home</li><li>About Us</li><li>Our Collections</li>
+                                    </ul>
+                                    <ul className="space-y-1 min-w-0">
+                                        <li className="font-bold text-stexCopper mb-1">Collections</li>
+                                        <li>Indoor Fabrics</li><li>Outdoor Performance</li><li>Blackouts</li>
+                                    </ul>
+                                    <ul className="space-y-1 min-w-0">
+                                        <li className="font-bold text-stexCopper mb-1">Contact</li>
+                                        <li style={{wordBreak: 'break-word', overflowWrap: 'anywhere'}}>+91 80 4166 3631</li><li style={{wordBreak: 'break-word', overflowWrap: 'anywhere'}}>info@stex.co.in</li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 sm:gap-10">
+                                <div>
+                                    <h4 className="font-mono text-[#FF4F00] text-xs uppercase mb-4 sm:mb-5">Color Palette (Updated)</h4>
+                                    <div className="grid grid-cols-2 gap-2">
+                                        <div className="flex items-center gap-2">
+                                            <div className="w-6 h-6 bg-stexNavy border border-white/20"></div>
+                                            <span className="text-[10px] text-[#E5E5E7]">Stex Navy (#0F2143)</span>
+                                        </div>
+                                        <div className="flex items-center gap-2">
+                                            <div className="w-6 h-6 bg-stexWhite border border-white/20"></div>
+                                            <span className="text-[10px] text-[#E5E5E7]">Stex White (#FFFFFF)</span>
+                                        </div>
+                                        <div className="flex items-center gap-2">
+                                            <div className="w-6 h-6 bg-stexIvory border border-white/20"></div>
+                                            <span className="text-[10px] text-[#E5E5E7]">Ethereal Ivory (#E4E4DE)</span>
+                                        </div>
+                                        <div className="flex items-center gap-2">
+                                            <div className="w-6 h-6 bg-stexCopper border border-white/20"></div>
+                                            <span className="text-[10px] text-[#E5E5E7]">Burnished Copper (#D9B18E)</span>
+                                        </div>
+                                        <div className="flex items-center gap-2">
+                                            <div className="w-6 h-6 bg-stexForest border border-white/20"></div>
+                                            <span className="text-[10px] text-[#E5E5E7]">Forest Shadow (#164A24)</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <h4 className="font-mono text-[#FF4F00] text-xs uppercase mb-4 sm:mb-5">Typography</h4>
+                                    <div className="text-sm font-serif text-white">Headlines: Playfair Display / Cormorant Garamond</div>
+                                    <div className="text-sm font-sans text-[#8E8E93]">Body: Inter / Source Sans Pro</div>
+                                </div>
+                            </div>
+
+                            <div className="mt-10 sm:mt-12">
+                                <h4 className="font-mono text-[#FF4F00] text-xs uppercase mb-4 sm:mb-5">Interactive Elements Preview</h4>
+                                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
+                                    <div className="bg-stexIvory p-3 rounded">
+                                        <span className="text-[10px] text-stexNavy font-bold block mb-2">PRIMARY BUTTON</span>
+                                        <button className="bg-stexNavy text-white px-4 py-2 text-xs font-bold hover:text-stexCopper transition-colors">ADD TO CART</button>
+                                    </div>
+                                    <div className="bg-stexIvory p-3 rounded">
+                                        <span className="text-[10px] text-stexNavy font-bold block mb-2">SECONDARY/LINK</span>
+                                        <span className="text-stexCopper text-xs font-bold border-b border-stexCopper">Discover More</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div className="mt-8 sm:mt-10 grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
+                                <div>
+                                    <h4 className="font-mono text-[#FF4F00] text-xs uppercase mb-3 sm:mb-4">Visual Style & Photography</h4>
+                                    <ul className="text-[10px] text-[#8E8E93] space-y-1">
+                                        <li>• Lifestyle: Fabrics in aspirational settings</li>
+                                        <li>• Detail shots: Texture, weave, close-ups</li>
+                                        <li>• Manufacturing: Looms, artisan hands</li>
+                                        <li>• Warm, golden tones for heritage feel</li>
+                                    </ul>
+                                </div>
+                                <div>
+                                    <h4 className="font-mono text-[#FF4F00] text-xs uppercase mb-3 sm:mb-4">Responsive Considerations</h4>
+                                    <ul className="text-[10px] text-[#8E8E93] space-y-1">
+                                        <li>• Mobile-first design approach</li>
+                                        <li>• Touch-friendly navigation</li>
+                                        <li>• Optimized images all screens</li>
+                                        <li>• Target load time: &lt; 3s mobile</li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div className="mt-8 sm:mt-10 bg-[#1C1C1E] p-4 sm:p-5 border border-[#333] rounded-sm overflow-hidden min-w-0">
+                                <h4 className="font-mono text-[#FF4F00] text-xs uppercase mb-2 sm:mb-3 min-w-0" style={{wordBreak: 'break-word', overflowWrap: 'anywhere'}}>Inspiration References</h4>
+                                <p className="text-[10px] text-[#8E8E93] min-w-0" style={{wordBreak: 'break-word', overflowWrap: 'anywhere'}}>Design inspired by: Sunbrella, Perennials, Kravet, Schumacher — premium textile brand aesthetic.</p>
+                            </div>
+                        </A4Page>
+
+                    </div>
+                </div>
+            );
+        };
+
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+        root.render(<App />);
+    </script>
+</body>
+</html>
