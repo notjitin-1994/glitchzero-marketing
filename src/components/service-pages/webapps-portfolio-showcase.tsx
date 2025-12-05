@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect, useCallback } from 'react';
+import { createPortal } from 'react-dom';
 import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FadeInSection, BlurFadeIn } from '@/components/ui/fade-in-section';
@@ -77,7 +78,14 @@ const capabilities = [
 export function WebappsPortfolioShowcase() {
   const [activeIndex, setActiveIndex] = useState(0);
   const [isFullscreen, setIsFullscreen] = useState(false);
+  const [isMounted, setIsMounted] = useState(false);
   const activeScreenshot = screenshots[activeIndex];
+
+  // Track if component is mounted for portal
+  useEffect(() => {
+    setIsMounted(true);
+    return () => setIsMounted(false);
+  }, []);
 
   const nextSlide = useCallback(() => {
     setActiveIndex((prev) => (prev + 1) % screenshots.length);
@@ -128,7 +136,7 @@ export function WebappsPortfolioShowcase() {
           <FadeInSection delay={0.1} direction="up">
             <span className="typo-tech text-signal text-xs inline-flex items-center gap-2 mb-4">
               <AppWindow className="w-3 h-3" />
-              Case Study
+              Featured Projects
             </span>
           </FadeInSection>
 
@@ -388,111 +396,105 @@ export function WebappsPortfolioShowcase() {
         </FadeInSection>
       </div>
 
-      {/* Fullscreen Modal */}
-      <AnimatePresence>
-        {isFullscreen && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.3 }}
-            className="fixed inset-0 z-50 bg-obsidian/95 backdrop-blur-sm flex items-center justify-center"
-            onClick={closeFullscreen}
-          >
-            {/* Close Button */}
-            <button
-              onClick={closeFullscreen}
-              className="absolute top-6 right-6 w-12 h-12 bg-carbon border border-tungsten/20 flex items-center justify-center text-platinum hover:bg-signal hover:text-obsidian hover:border-signal transition-all duration-300 z-10"
-              aria-label="Close fullscreen"
-            >
-              <X className="w-6 h-6" />
-            </button>
-
-            {/* Image Counter */}
-            <div className="absolute top-6 left-6 z-10">
-              <span className="typo-tech text-sm text-platinum bg-carbon/80 px-4 py-2 border border-tungsten/20">
-                {String(activeIndex + 1).padStart(2, '0')} / {String(screenshots.length).padStart(2, '0')} — {activeScreenshot.title}
-              </span>
-            </div>
-
-            {/* Navigation Arrows */}
-            <button
-              onClick={(e) => {
-                e.stopPropagation();
-                prevSlide();
-              }}
-              className="absolute left-6 top-1/2 -translate-y-1/2 w-14 h-14 bg-carbon border border-tungsten/20 flex items-center justify-center text-platinum hover:bg-signal hover:text-obsidian hover:border-signal transition-all duration-300 z-10"
-              aria-label="Previous screenshot"
-            >
-              <ChevronLeft className="w-7 h-7" />
-            </button>
-            <button
-              onClick={(e) => {
-                e.stopPropagation();
-                nextSlide();
-              }}
-              className="absolute right-6 top-1/2 -translate-y-1/2 w-14 h-14 bg-carbon border border-tungsten/20 flex items-center justify-center text-platinum hover:bg-signal hover:text-obsidian hover:border-signal transition-all duration-300 z-10"
-              aria-label="Next screenshot"
-            >
-              <ChevronRight className="w-7 h-7" />
-            </button>
-
-            {/* Fullscreen Image */}
+      {/* Fullscreen Modal - rendered via portal to escape parent transforms */}
+      {isMounted && createPortal(
+        <AnimatePresence>
+          {isFullscreen && (
             <motion.div
-              key={activeScreenshot.id}
-              initial={{ opacity: 0, scale: 0.95 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.95 }}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
               transition={{ duration: 0.3 }}
-              className="relative w-[90vw] h-[85vh] max-w-[1800px]"
-              onClick={(e) => e.stopPropagation()}
+              className="fixed inset-0 z-[9999] bg-obsidian/98 backdrop-blur-md flex items-center justify-center"
+              onClick={closeFullscreen}
             >
-              <Image
-                src={activeScreenshot.image}
-                alt={activeScreenshot.title}
-                fill
-                className="object-contain"
-                sizes="90vw"
-                quality={100}
-                priority
-              />
+              {/* Close Button */}
+              <button
+                onClick={closeFullscreen}
+                className="absolute top-4 right-4 md:top-6 md:right-6 w-10 h-10 md:w-12 md:h-12 bg-carbon border border-tungsten/20 flex items-center justify-center text-platinum hover:bg-signal hover:text-obsidian hover:border-signal transition-all duration-300 z-10"
+                aria-label="Close fullscreen"
+              >
+                <X className="w-5 h-5 md:w-6 md:h-6" />
+              </button>
+
+              {/* Image Counter */}
+              <div className="absolute top-4 left-4 md:top-6 md:left-6 z-10">
+                <span className="typo-tech text-xs md:text-sm text-platinum bg-carbon/80 px-3 py-1.5 md:px-4 md:py-2 border border-tungsten/20">
+                  {String(activeIndex + 1).padStart(2, '0')} / {String(screenshots.length).padStart(2, '0')} — {activeScreenshot.title}
+                </span>
+              </div>
+
+              {/* Navigation Arrows */}
+              <button
+                onClick={(e) => { e.stopPropagation(); prevSlide(); }}
+                className="absolute left-2 md:left-6 top-1/2 -translate-y-1/2 w-10 h-10 md:w-14 md:h-14 bg-carbon border border-tungsten/20 flex items-center justify-center text-platinum hover:bg-signal hover:text-obsidian hover:border-signal transition-all duration-300 z-10"
+                aria-label="Previous screenshot"
+              >
+                <ChevronLeft className="w-5 h-5 md:w-7 md:h-7" />
+              </button>
+              <button
+                onClick={(e) => { e.stopPropagation(); nextSlide(); }}
+                className="absolute right-2 md:right-6 top-1/2 -translate-y-1/2 w-10 h-10 md:w-14 md:h-14 bg-carbon border border-tungsten/20 flex items-center justify-center text-platinum hover:bg-signal hover:text-obsidian hover:border-signal transition-all duration-300 z-10"
+                aria-label="Next screenshot"
+              >
+                <ChevronRight className="w-5 h-5 md:w-7 md:h-7" />
+              </button>
+
+              {/* Fullscreen Image */}
+              <motion.div
+                key={activeScreenshot.id}
+                initial={{ opacity: 0, scale: 0.95 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.95 }}
+                transition={{ duration: 0.3 }}
+                className="relative w-[85vw] h-[60vh] md:w-[80vw] md:h-[70vh] max-w-[1400px]"
+                onClick={(e) => e.stopPropagation()}
+              >
+                <Image
+                  src={activeScreenshot.image}
+                  alt={activeScreenshot.title}
+                  fill
+                  className="object-contain"
+                  sizes="85vw"
+                  quality={100}
+                  priority
+                />
+              </motion.div>
+
+              {/* Thumbnail Strip */}
+              <div className="absolute bottom-16 md:bottom-6 left-1/2 -translate-x-1/2 flex gap-2 md:gap-3 bg-carbon/80 p-2 md:p-3 border border-tungsten/20 z-10">
+                {screenshots.map((screenshot, idx) => (
+                  <button
+                    key={screenshot.id}
+                    onClick={(e) => { e.stopPropagation(); setActiveIndex(idx); }}
+                    className={`relative w-16 h-10 md:w-24 md:h-14 overflow-hidden border-2 transition-all duration-300 ${
+                      idx === activeIndex
+                        ? 'border-signal shadow-[0_0_10px_rgba(255,79,0,0.3)]'
+                        : 'border-tungsten/20 opacity-60 hover:opacity-100 hover:border-tungsten/40'
+                    }`}
+                  >
+                    <Image
+                      src={screenshot.image}
+                      alt={screenshot.title}
+                      fill
+                      className="object-contain"
+                      sizes="96px"
+                    />
+                  </button>
+                ))}
+              </div>
+
+              {/* Keyboard Hint */}
+              <div className="absolute bottom-4 right-4 md:bottom-6 md:right-6 z-10 hidden md:block">
+                <span className="typo-tech text-[10px] text-tungsten">
+                  ESC to close • ← → to navigate
+                </span>
+              </div>
             </motion.div>
-
-            {/* Thumbnail Strip */}
-            <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-3 bg-carbon/80 p-3 border border-tungsten/20 z-10">
-              {screenshots.map((screenshot, idx) => (
-                <button
-                  key={screenshot.id}
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    setActiveIndex(idx);
-                  }}
-                  className={`relative w-24 h-14 overflow-hidden border-2 transition-all duration-300 ${
-                    idx === activeIndex
-                      ? 'border-signal shadow-[0_0_10px_rgba(255,79,0,0.3)]'
-                      : 'border-tungsten/20 opacity-60 hover:opacity-100 hover:border-tungsten/40'
-                  }`}
-                >
-                  <Image
-                    src={screenshot.image}
-                    alt={screenshot.title}
-                    fill
-                    className="object-contain"
-                    sizes="96px"
-                  />
-                </button>
-              ))}
-            </div>
-
-            {/* Keyboard Hint */}
-            <div className="absolute bottom-6 right-6 z-10">
-              <span className="typo-tech text-[10px] text-tungsten">
-                ESC to close • ← → to navigate
-              </span>
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+          )}
+        </AnimatePresence>,
+        document.body
+      )}
     </section>
   );
 }
