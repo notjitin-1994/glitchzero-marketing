@@ -1,6 +1,7 @@
 import { Footer } from '@/components/landing-page/footer';
 import { WebappsHero } from '@/components/service-pages/webapps-hero';
 import { WebappsFeatures } from '@/components/service-pages/webapps-features';
+import { WebappsPortfolioShowcase } from '@/components/service-pages/webapps-portfolio-showcase';
 import { ConsultationCta } from '@/components/service-pages/consultation-cta';
 import { Metadata } from 'next';
 
@@ -23,6 +24,7 @@ export default function WebappsPage() {
     <>
       <main>
         <WebappsHero />
+        <WebappsPortfolioShowcase />
         <WebappsFeatures />
         <ConsultationCta
           headline="Your Vision, Our Expertise"

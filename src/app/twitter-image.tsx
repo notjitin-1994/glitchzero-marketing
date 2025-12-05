@@ -10,6 +10,15 @@ export const size = {
 export const contentType = 'image/png';
 
 export default async function Image() {
+  // Fetch the logo image
+  const logoData = await fetch(
+    new URL('/glitchzero-logo.png', process.env.NEXT_PUBLIC_SITE_URL || 'https://glitchzerolabs.com')
+  ).then((res) => res.arrayBuffer()).catch(() => null);
+
+  const logoSrc = logoData
+    ? `data:image/png;base64,${Buffer.from(logoData).toString('base64')}`
+    : null;
+
   return new ImageResponse(
     (
       <div
@@ -68,29 +77,40 @@ export default async function Image() {
               gap: '20px',
             }}
           >
-            {/* G0 Box */}
-            <div
-              style={{
-                width: '80px',
-                height: '80px',
-                backgroundColor: '#FF4F00',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                boxShadow: '0 0 60px rgba(255, 79, 0, 0.4)',
-              }}
-            >
-              <span
+            {/* G0 Logo Image */}
+            {logoSrc ? (
+              <img
+                src={logoSrc}
+                width={80}
+                height={80}
                 style={{
-                  fontSize: '48px',
-                  fontWeight: 800,
-                  color: '#121212',
-                  letterSpacing: '0.02em',
+                  boxShadow: '0 0 60px rgba(255, 79, 0, 0.4)',
+                }}
+              />
+            ) : (
+              <div
+                style={{
+                  width: '80px',
+                  height: '80px',
+                  backgroundColor: '#FF4F00',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  boxShadow: '0 0 60px rgba(255, 79, 0, 0.4)',
                 }}
               >
-                G0
-              </span>
-            </div>
+                <span
+                  style={{
+                    fontSize: '48px',
+                    fontWeight: 800,
+                    color: '#121212',
+                    letterSpacing: '0.02em',
+                  }}
+                >
+                  G0
+                </span>
+              </div>
+            )}
 
             {/* GlitchZero text */}
             <div style={{ display: 'flex', alignItems: 'center' }}>

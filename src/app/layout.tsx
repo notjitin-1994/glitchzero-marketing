@@ -24,6 +24,14 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: 'GlitchZero', url: 'https://glitchzerolabs.com' }],
   creator: 'GlitchZero',
+  icons: {
+    icon: [
+      { url: '/glitchzero-logo.png', sizes: '500x500', type: 'image/png' },
+    ],
+    apple: [
+      { url: '/glitchzero-logo.png', sizes: '500x500', type: 'image/png' },
+    ],
+  },
   openGraph: {
     title: 'GlitchZero | Zero Glitches. Infinite Possibilities.',
     description: 'Build your dream app with GlitchZero. Custom web & mobile solutions for Indian businesses - from idea to launch in weeks, not months.',
@@ -58,6 +66,13 @@ export default function RootLayout({
   return (
     <html lang="en" className="scroll-smooth">
       <head>
+        {/* Static title and favicon - loads before React hydration */}
+        <title>GlitchZero | Zero Glitches. Infinite Possibilities.</title>
+        <meta name="description" content="Build your dream app with GlitchZero. Custom web & mobile solutions for Indian businesses - from idea to launch in weeks, not months." />
+        <link rel="icon" href="/glitchzero-logo.png" type="image/png" />
+        <link rel="shortcut icon" href="/glitchzero-logo.png" type="image/png" />
+        <link rel="apple-touch-icon" href="/glitchzero-logo.png" />
+
         {/* OG tags for social sharing - must be static HTML for crawlers */}
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://glitchzerolabs.com" />

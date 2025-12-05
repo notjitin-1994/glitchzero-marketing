@@ -1,5 +1,6 @@
 'use client';
 
+import Image from 'next/image';
 import { TrendingUp, Facebook, Instagram, Linkedin } from 'lucide-react';
 import { TransitionLink } from '@/components/ui/page-transition';
 
@@ -10,9 +11,13 @@ export function Footer() {
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-12 mb-16">
           <div className="col-span-1 sm:col-span-2 md:col-span-1">
             <TransitionLink href="/" className="flex items-center gap-2 mb-6">
-              <div className="w-8 h-8 bg-signal flex items-center justify-center">
-                <span className="typo-headline text-lg text-obsidian font-bold">G0</span>
-              </div>
+              <Image
+                src="/glitchzero-logo.png"
+                alt="GlitchZero Logo"
+                width={32}
+                height={32}
+                className="w-8 h-8"
+              />
               <span className="typo-headline text-lg"><span className="text-signal">Glitch</span><span className="text-platinum" style={{ textShadow: '0 0 8px rgba(255, 255, 255, 0.5), 0 0 16px rgba(255, 255, 255, 0.25)' }}>Zero</span></span>
             </TransitionLink>
             <p className="typo-body text-tungsten text-sm">

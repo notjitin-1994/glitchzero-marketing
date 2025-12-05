@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from 'react';
+import Image from 'next/image';
 import { Mail, Menu, X } from 'lucide-react';
 import { Sheet, SheetContent, SheetTrigger, SheetClose } from '@/components/ui/sheet';
 import { Button } from '@/components/ui/button';
@@ -20,9 +21,13 @@ export function Header() {
       <div className="max-w-7xl mx-auto px-6 py-3 flex items-center justify-between">
         <div className="flex items-center gap-2">
           <TransitionLink href="/" className="flex items-center gap-2 group cursor-pointer">
-            <div className="w-8 h-8 bg-signal flex items-center justify-center">
-              <span className="typo-headline text-lg text-obsidian font-bold">G0</span>
-            </div>
+            <Image
+              src="/glitchzero-logo.png"
+              alt="GlitchZero Logo"
+              width={32}
+              height={32}
+              className="w-8 h-8"
+            />
             <span className="typo-headline text-xl text-platinum group-hover:text-signal transition-colors">
               <span className="glitch" data-text="Glitch">Glitch</span>
               <span style={{ textShadow: '0 0 8px rgba(255, 255, 255, 0.5), 0 0 16px rgba(255, 255, 255, 0.25)' }}>Zero</span>
@@ -58,9 +63,13 @@ export function Header() {
                     <div className="flex flex-col h-full">
                         <div className="p-6 border-b border-carbon flex items-center justify-between">
                              <TransitionLink href="/" className="flex items-center gap-2 group cursor-pointer" onClick={() => setIsSheetOpen(false)}>
-                                <div className="w-8 h-8 bg-signal flex items-center justify-center">
-                                    <span className="typo-headline text-lg text-obsidian font-bold">G0</span>
-                                </div>
+                                <Image
+                                  src="/glitchzero-logo.png"
+                                  alt="GlitchZero Logo"
+                                  width={32}
+                                  height={32}
+                                  className="w-8 h-8"
+                                />
                                 <span className="typo-headline text-xl text-platinum">
                                   Glitch<span style={{ textShadow: '0 0 8px rgba(255, 255, 255, 0.5), 0 0 16px rgba(255, 255, 255, 0.25)' }}>Zero</span>
                                 </span>

@@ -15,6 +15,8 @@ import {
   LucideIcon,
 } from 'lucide-react';
 import { FadeInSection } from '@/components/ui/fade-in-section';
+import { Vortex } from '@/components/ui/vortex';
+import { GlowingEffect } from '@/components/ui/glowing-effect';
 
 interface ServiceFeature {
   text: string;
@@ -312,34 +314,49 @@ export function ServicesDetails() {
 
       </div>
 
-      {/* Bottom CTA Section - Full Width */}
-      <FadeInSection direction="up" className="mt-32">
-        <div className="bg-obsidian border-y border-tungsten/20 py-16 md:py-20 relative overflow-hidden">
-          {/* Background Pattern */}
-          <div className="absolute inset-0 opacity-5">
-            <div className="absolute inset-0" style={{
-              backgroundImage: `radial-gradient(circle at 2px 2px, currentColor 1px, transparent 0)`,
-              backgroundSize: '24px 24px'
-            }}></div>
-          </div>
-
-          <div className="relative z-10 max-w-7xl mx-auto px-6 text-center">
-            <h3 className="typo-headline text-2xl md:text-3xl text-platinum mb-4">
-              Not Sure Which Service You Need?
-            </h3>
-            <p className="typo-body text-tungsten mb-8 max-w-lg mx-auto">
-              Let's discuss your project. We'll help you identify the perfect solution for your business goals.
-            </p>
-            <a
-              href="https://wa.me/919008898642"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 bg-signal text-obsidian px-8 py-4 typo-headline text-base hover:bg-white transition-colors shadow-[0_0_20px_rgba(255,79,0,0.3)] hover:shadow-[0_0_30px_rgba(255,79,0,0.5)]"
-            >
-              Let's Talk
-              <ArrowRight className="w-5 h-5" />
-            </a>
-          </div>
+      {/* Bottom CTA Section - Full Width with Vortex */}
+      <FadeInSection direction="up" className="mt-32 -mb-24">
+        <div className="relative overflow-hidden bg-[#121212]">
+          <Vortex
+            backgroundColor="#121212"
+            particleCount={600}
+            baseRadius={1}
+            rangeRadius={2}
+            className="py-20 md:py-28 w-full"
+          >
+            <div className="max-w-7xl mx-auto px-6 text-center">
+              {/* Glassmorphic Card - subtle blur to see animation through */}
+              <div className="inline-block relative rounded-2xl border border-tungsten/20 p-[2px] md:rounded-3xl">
+                <GlowingEffect
+                  blur={0}
+                  borderWidth={3}
+                  spread={80}
+                  glow={true}
+                  disabled={false}
+                  proximity={64}
+                  inactiveZone={0.01}
+                  variant="orange"
+                />
+                <div className="bg-obsidian/30 backdrop-blur-[8px] rounded-xl md:rounded-2xl px-8 py-10 md:px-12 md:py-12 shadow-2xl">
+                  <h3 className="typo-headline text-2xl md:text-3xl text-platinum mb-4">
+                    Not Sure Which Service You Need?
+                  </h3>
+                  <p className="typo-body text-tungsten mb-8 max-w-lg mx-auto">
+                    Let's discuss your project. We'll help you identify the perfect solution for your business goals.
+                  </p>
+                  <a
+                    href="https://wa.me/919008898642"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 bg-signal text-obsidian px-8 py-4 typo-headline text-base hover:bg-white transition-colors shadow-[0_0_20px_rgba(255,79,0,0.3)] hover:shadow-[0_0_30px_rgba(255,79,0,0.5)]"
+                  >
+                    Let's Talk
+                    <ArrowRight className="w-5 h-5" />
+                  </a>
+                </div>
+              </div>
+            </div>
+          </Vortex>
         </div>
       </FadeInSection>
     </section>

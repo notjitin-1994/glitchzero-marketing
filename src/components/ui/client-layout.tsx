@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import { LoadingScreen } from './loading-screen';
 import { PageTransitionProvider } from './page-transition';
 import { Header } from '@/components/landing-page/header';
@@ -38,10 +38,14 @@ export function ClientLayout({ children }: ClientLayoutProps) {
     });
   };
 
-  // Don't render anything until we've checked sessionStorage (prevents hydration mismatch)
+  // Render a minimal placeholder that doesn't block metadata display
+  // The static <title> and favicon in layout.tsx head will still show
   if (!isReady) {
     return (
-      <div className="fixed inset-0 z-[9999] bg-obsidian" />
+      <div className="fixed inset-0 z-[9999] bg-obsidian flex items-center justify-center">
+        {/* Minimal loading indicator that matches the loading screen */}
+        <div className="w-24 h-24 md:w-32 md:h-32 bg-signal animate-pulse" />
+      </div>
     );
   }
 

@@ -59,8 +59,8 @@ const projects: Project[] = [
     subtitle: 'Luxury E-Commerce',
     description: 'An elegant luxury fabrics and home furnishings e-commerce platform. Features beautiful product carousels, sophisticated category navigation, and a refined aesthetic that matches the premium brand positioning.',
     categories: ['E-Commerce', 'Luxury', 'B2C'],
-    image: '/portfolio/stexcoin-home.png',
-    link: 'https://stexcoin.netlify.app/',
+    image: '/portfolio/stex-heritage-section.png',
+    link: 'https://stex.netlify.app/',
     metrics: [
       { label: 'Products', value: '500+', icon: <ShoppingBag className="w-4 h-4" /> },
       { label: 'Design Score', value: '98%', icon: <Palette className="w-4 h-4" /> },

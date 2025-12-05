@@ -2,6 +2,7 @@
 
 import { motion, AnimatePresence } from 'framer-motion';
 import { useEffect, useState } from 'react';
+import Image from 'next/image';
 
 interface LoadingScreenProps {
   onLoadingComplete?: () => void;
@@ -98,20 +99,30 @@ export function LoadingScreen({ onLoadingComplete, minDuration = 2800 }: Loading
             >
               {/* Glitch layers - using CSS animation for steps effect */}
               <div className="absolute inset-0 flex items-center justify-center animate-glitch-cyan">
-                <div className="w-24 h-24 md:w-32 md:h-32 bg-[#00ffff] flex items-center justify-center">
-                  <span className="typo-headline text-4xl md:text-5xl text-obsidian font-bold">G0</span>
+                <div className="w-24 h-24 md:w-32 md:h-32 relative" style={{ filter: 'hue-rotate(180deg) saturate(2)' }}>
+                  <Image
+                    src="/glitchzero-logo.png"
+                    alt=""
+                    fill
+                    className="object-contain"
+                  />
                 </div>
               </div>
 
               <div className="absolute inset-0 flex items-center justify-center animate-glitch-magenta">
-                <div className="w-24 h-24 md:w-32 md:h-32 bg-[#ff00ff] flex items-center justify-center">
-                  <span className="typo-headline text-4xl md:text-5xl text-obsidian font-bold">G0</span>
+                <div className="w-24 h-24 md:w-32 md:h-32 relative" style={{ filter: 'hue-rotate(270deg) saturate(2)' }}>
+                  <Image
+                    src="/glitchzero-logo.png"
+                    alt=""
+                    fill
+                    className="object-contain"
+                  />
                 </div>
               </div>
 
               {/* Main logo */}
               <motion.div
-                className="relative z-10 w-24 h-24 md:w-32 md:h-32 bg-signal flex items-center justify-center"
+                className="relative z-10 w-24 h-24 md:w-32 md:h-32"
                 animate={{
                   boxShadow: [
                     '0 0 0px rgba(255, 79, 0, 0)',
@@ -127,7 +138,12 @@ export function LoadingScreen({ onLoadingComplete, minDuration = 2800 }: Loading
                   ease: 'easeInOut',
                 }}
               >
-                <span className="typo-headline text-4xl md:text-5xl text-obsidian font-bold">G0</span>
+                <Image
+                  src="/glitchzero-logo.png"
+                  alt="GlitchZero Logo"
+                  fill
+                  className="object-contain"
+                />
               </motion.div>
             </motion.div>
 
