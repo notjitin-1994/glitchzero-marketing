@@ -6,6 +6,7 @@ import { ContactFormModal } from '@/components/contact-form-modal';
 import { FadeInSection, BlurFadeIn } from '@/components/ui/fade-in-section';
 import { SafariFrame } from '@/components/ui/safari';
 import { NeuroBackground } from '@/components/ui/neuro-background';
+import { ContrastText, ContrastWrapper } from '@/components/ui/contrast-text';
 
 export function Hero() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -26,7 +27,7 @@ export function Hero() {
 
       <div className="relative max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center z-10">
 
-        <div className="space-y-8">
+        <ContrastWrapper className="space-y-8">
           <FadeInSection delay={0.1} direction="up">
             <div className="inline-flex items-center gap-3 bg-carbon border border-tungsten/20 px-3 py-1.5 rounded-sm">
               <span className="w-2 h-2 rounded-full bg-terminal animate-pulse"></span>
@@ -35,9 +36,12 @@ export function Hero() {
           </FadeInSection>
 
           <BlurFadeIn delay={0.2}>
-            <h1 className="typo-headline text-5xl md:text-7xl leading-tight text-platinum">
-              Take Your Business <br/>
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-signal to-orange-400">Online Today.</span><br/>
+            <h1 className="typo-headline text-5xl md:text-7xl leading-tight">
+              <ContrastText as="span" variant="monochrome" className="text-platinum">
+                Take Your Business
+              </ContrastText>
+              <br/>
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-signal to-orange-400">Online Today.</span>
             </h1>
           </BlurFadeIn>
 
@@ -69,7 +73,7 @@ export function Hero() {
           </FadeInSection>
 
           <ContactFormModal open={isModalOpen} onOpenChange={setIsModalOpen} />
-        </div>
+        </ContrastWrapper>
 
         <FadeInSection delay={0.3} direction="right" className="relative group">
           <div className="absolute -inset-1 bg-gradient-to-r from-signal to-carbon rounded-sm opacity-20 group-hover:opacity-50 blur transition duration-500"></div>
