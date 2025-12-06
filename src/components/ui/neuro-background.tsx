@@ -3,11 +3,64 @@
 import { useEffect, useRef, useState } from "react";
 import { cn } from "@/lib/utils";
 
+/**
+ * Brand-compliant color themes for the neuro background effect.
+ * Each theme uses a monochromatic palette based on GlitchZero brand colors.
+ */
+export type ColorTheme =
+  | "signal"      // Signal orange (#FF4F00) - Primary brand, energy, action
+  | "terminal"    // Terminal green (#30D158) - Success, reliability, uptime
+  | "ember"       // Deep amber/rust - Warmth, value, trust
+  | "cyber"       // Cool cyan/teal - Tech, connectivity, innovation
+  | "purple"      // Deep purple - Premium, enterprise, software
+  | "crimson";    // Deep red - Urgency, importance, alerts
+
+interface ColorPalette {
+  base: [number, number, number];
+  dark: [number, number, number];
+  bright: [number, number, number];
+}
+
+const COLOR_THEMES: Record<ColorTheme, ColorPalette> = {
+  signal: {
+    base: [1.0, 0.31, 0.0],      // #FF4F00
+    dark: [0.6, 0.18, 0.0],
+    bright: [1.0, 0.45, 0.1],
+  },
+  terminal: {
+    base: [0.19, 0.82, 0.35],    // #30D158
+    dark: [0.1, 0.5, 0.2],
+    bright: [0.3, 0.95, 0.45],
+  },
+  ember: {
+    base: [0.85, 0.35, 0.1],     // Deep amber
+    dark: [0.5, 0.2, 0.05],
+    bright: [1.0, 0.5, 0.2],
+  },
+  cyber: {
+    base: [0.0, 0.7, 0.8],       // Cyan/teal
+    dark: [0.0, 0.4, 0.5],
+    bright: [0.2, 0.9, 1.0],
+  },
+  purple: {
+    base: [0.5, 0.2, 0.8],       // Deep purple
+    dark: [0.3, 0.1, 0.5],
+    bright: [0.7, 0.4, 1.0],
+  },
+  crimson: {
+    base: [0.8, 0.15, 0.2],      // Deep red
+    dark: [0.5, 0.08, 0.1],
+    bright: [1.0, 0.3, 0.35],
+  },
+};
+
 interface NeuroBackgroundProps {
   /** Overall intensity of the effect (0-2, default 1.2) */
   intensity?: number;
   /** Speed of the animation (0.1-1, default 0.29) */
   speed?: number;
+  /** Color theme for the effect */
+  colorTheme?: ColorTheme;
   className?: string;
 }
 
@@ -33,6 +86,9 @@ const fragmentShader = `
   uniform float u_ratio;
   uniform float u_scroll_progress;
   uniform float u_intensity;
+  uniform vec3 u_color_base;
+  uniform vec3 u_color_dark;
+  uniform vec3 u_color_bright;
 
   vec2 rotate(vec2 uv, float th) {
     return mat2(cos(th), sin(th), -sin(th), cos(th)) * uv;
@@ -71,16 +127,9 @@ const fragmentShader = `
     noise = max(.0, noise - .5);
     noise *= (1. - length(vUv - .5));
 
-    // Signal orange base color: #FF4F00 = rgb(1.0, 0.31, 0.0)
-    vec3 signalOrange = vec3(1.0, 0.31, 0.0);
-
-    // Monochromatic palette - darker and lighter variations of signal orange
-    vec3 darkOrange = vec3(0.6, 0.18, 0.0);   // Darker shade
-    vec3 brightOrange = vec3(1.0, 0.45, 0.1); // Brighter tint
-
     // Create depth by mixing between dark and bright based on noise intensity
     float colorMix = smoothstep(0.0, 1.0, noise * 2.0);
-    vec3 baseColor = mix(darkOrange, signalOrange, colorMix);
+    vec3 baseColor = mix(u_color_dark, u_color_base, colorMix);
 
     // Add subtle brightness variation based on scroll
     float brightness = 0.8 + 0.2 * sin(u_scroll_progress * 2.0);
@@ -89,7 +138,7 @@ const fragmentShader = `
     vec3 color = baseColor * noise * u_intensity * brightness;
 
     // Subtle glow in brighter areas
-    color += brightOrange * pow(noise, 4.0) * 0.3;
+    color += u_color_bright * pow(noise, 4.0) * 0.3;
 
     gl_FragColor = vec4(color, noise * 0.95);
   }
@@ -105,6 +154,9 @@ interface WebGLState {
     u_ratio: WebGLUniformLocation | null;
     u_scroll_progress: WebGLUniformLocation | null;
     u_intensity: WebGLUniformLocation | null;
+    u_color_base: WebGLUniformLocation | null;
+    u_color_dark: WebGLUniformLocation | null;
+    u_color_bright: WebGLUniformLocation | null;
   };
   attributes: {
     position: number;
@@ -148,6 +200,7 @@ function createProgram(gl: WebGLRenderingContext, vertexShader: WebGLShader, fra
 export function NeuroBackground({
   intensity = 1.2,
   speed = 0.29,
+  colorTheme = "signal",
   className,
 }: NeuroBackgroundProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -155,6 +208,12 @@ export function NeuroBackground({
   const glStateRef = useRef<WebGLState | null>(null);
   const [isReady, setIsReady] = useState(false);
   const timeScaleRef = useRef(speed);
+  const colorsRef = useRef(COLOR_THEMES[colorTheme]);
+
+  // Update colors when theme changes
+  useEffect(() => {
+    colorsRef.current = COLOR_THEMES[colorTheme];
+  }, [colorTheme]);
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -198,6 +257,9 @@ export function NeuroBackground({
         u_ratio: gl.getUniformLocation(program, "u_ratio"),
         u_scroll_progress: gl.getUniformLocation(program, "u_scroll_progress"),
         u_intensity: gl.getUniformLocation(program, "u_intensity"),
+        u_color_base: gl.getUniformLocation(program, "u_color_base"),
+        u_color_dark: gl.getUniformLocation(program, "u_color_dark"),
+        u_color_bright: gl.getUniformLocation(program, "u_color_bright"),
       };
 
       // Create position buffer (fullscreen quad)
@@ -276,6 +338,7 @@ export function NeuroBackground({
 
     const render = () => {
       const currentTime = performance.now();
+      const colors = colorsRef.current;
 
       // Clear
       gl.clearColor(0, 0, 0, 0);
@@ -289,6 +352,11 @@ export function NeuroBackground({
       gl.uniform1f(uniforms.u_ratio, canvas.width / canvas.height);
       gl.uniform1f(uniforms.u_scroll_progress, window.scrollY / (2 * window.innerHeight));
       gl.uniform1f(uniforms.u_intensity, intensity);
+
+      // Set color uniforms
+      gl.uniform3fv(uniforms.u_color_base, colors.base);
+      gl.uniform3fv(uniforms.u_color_dark, colors.dark);
+      gl.uniform3fv(uniforms.u_color_bright, colors.bright);
 
       // Bind position buffer
       gl.bindBuffer(gl.ARRAY_BUFFER, positionBuffer);
