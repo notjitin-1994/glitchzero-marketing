@@ -2,6 +2,7 @@
 
 import { TransitionLink } from '@/components/ui/page-transition';
 import { FadeInSection } from '@/components/ui/fade-in-section';
+import { SafariFrame } from '@/components/ui/safari';
 import { Database, Settings, BarChart3, CheckCircle2, Cpu, FileSpreadsheet } from 'lucide-react';
 
 export function BusinessSoftwareHero() {
@@ -36,50 +37,52 @@ export function BusinessSoftwareHero() {
         <FadeInSection delay={0.3} direction="right" className="relative group hidden lg:block">
           <div className="absolute -inset-1 bg-gradient-to-r from-signal to-carbon rounded-sm opacity-20 group-hover:opacity-50 blur transition duration-500"></div>
 
-          <div className="relative bg-obsidian border border-carbon rounded-sm p-6 shadow-2xl">
-            <div className="flex items-center justify-between mb-6 border-b border-carbon pb-4">
-              <div className="flex items-center gap-2">
-                <div className="w-8 h-8 bg-carbon rounded-full flex items-center justify-center">
-                  <Cpu className="w-4 h-4 text-platinum" />
-                </div>
-                <div>
-                  <span className="typo-subhead text-sm text-platinum block">Custom ERP System</span>
-                  <span className="typo-tech text-[10px] text-terminal">● Active</span>
-                </div>
-              </div>
-              <Settings className="w-4 h-4 text-tungsten animate-spin" style={{ animationDuration: '8s' }} />
-            </div>
-
-            <div className="space-y-4">
-              <div className="bg-carbon/50 p-4 rounded border border-tungsten/10">
-                <span className="typo-tech text-xs text-tungsten">Data Processed</span>
-                <div className="flex items-end justify-between mt-1">
-                  <span className="typo-headline text-2xl text-platinum">12,450</span>
-                  <span className="text-terminal text-xs flex items-center gap-1">
-                    <BarChart3 className="w-3 h-3" /> entries
-                  </span>
-                </div>
-              </div>
-
-              <div className="grid grid-cols-2 gap-4">
-                <div className="bg-carbon/50 p-4 rounded border border-tungsten/10">
-                  <span className="typo-tech text-xs text-tungsten">Modules</span>
-                  <div className="typo-headline text-xl text-platinum mt-1 flex items-center gap-2">
-                    <Database className="w-4 h-4 text-signal" /> 8
+          <SafariFrame url="erp.yourbusiness.com" glowOnHover={true}>
+            <div className="p-6">
+              <div className="flex items-center justify-between mb-6 border-b border-carbon pb-4">
+                <div className="flex items-center gap-2">
+                  <div className="w-8 h-8 bg-carbon rounded-full flex items-center justify-center">
+                    <Cpu className="w-4 h-4 text-platinum" />
+                  </div>
+                  <div>
+                    <span className="typo-subhead text-sm text-platinum block">Custom ERP System</span>
+                    <span className="typo-tech text-[10px] text-terminal">● Active</span>
                   </div>
                 </div>
-                <div className="bg-carbon/50 p-4 rounded border border-tungsten/10">
-                  <span className="typo-tech text-xs text-tungsten">Users</span>
-                  <div className="typo-headline text-xl text-platinum mt-1">24</div>
-                </div>
+                <Settings className="w-4 h-4 text-tungsten animate-spin" style={{ animationDuration: '8s' }} />
               </div>
 
-              <div className="flex gap-3 items-center bg-terminal/10 p-3 rounded border border-terminal/20 mt-4">
-                <CheckCircle2 className="w-4 h-4 text-terminal" />
-                <span className="text-terminal text-sm font-medium">Report Generated Successfully</span>
+              <div className="space-y-4">
+                <div className="bg-carbon/50 p-4 rounded border border-tungsten/10">
+                  <span className="typo-tech text-xs text-tungsten">Data Processed</span>
+                  <div className="flex items-end justify-between mt-1">
+                    <span className="typo-headline text-2xl text-platinum">12,450</span>
+                    <span className="text-terminal text-xs flex items-center gap-1">
+                      <BarChart3 className="w-3 h-3" /> entries
+                    </span>
+                  </div>
+                </div>
+
+                <div className="grid grid-cols-2 gap-4">
+                  <div className="bg-carbon/50 p-4 rounded border border-tungsten/10">
+                    <span className="typo-tech text-xs text-tungsten">Modules</span>
+                    <div className="typo-headline text-xl text-platinum mt-1 flex items-center gap-2">
+                      <Database className="w-4 h-4 text-signal" /> 8
+                    </div>
+                  </div>
+                  <div className="bg-carbon/50 p-4 rounded border border-tungsten/10">
+                    <span className="typo-tech text-xs text-tungsten">Users</span>
+                    <div className="typo-headline text-xl text-platinum mt-1">24</div>
+                  </div>
+                </div>
+
+                <div className="flex gap-3 items-center bg-terminal/10 p-3 rounded border border-terminal/20 mt-4">
+                  <CheckCircle2 className="w-4 h-4 text-terminal" />
+                  <span className="text-terminal text-sm font-medium">Report Generated Successfully</span>
+                </div>
               </div>
             </div>
-          </div>
+          </SafariFrame>
 
           <div className="absolute -bottom-6 -right-6 bg-carbon border border-tungsten/20 p-4 shadow-xl">
             <div className="typo-tech text-[10px] text-tungsten mb-1">Replaces</div>

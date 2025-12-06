@@ -23,7 +23,7 @@ export function Cta() {
           <div className="relative rounded-2xl border border-tungsten/20 p-[2px] md:rounded-3xl">
             <GlowingEffect
               blur={0}
-              borderWidth={3}
+              borderWidth={1.5}
               spread={80}
               glow={true}
               disabled={false}
@@ -31,7 +31,7 @@ export function Cta() {
               inactiveZone={0.01}
               variant="orange"
             />
-            <div className="bg-obsidian/30 backdrop-blur-[8px] rounded-xl md:rounded-2xl px-8 py-12 md:px-12 md:py-14 shadow-2xl">
+            <div className="bg-obsidian/30 backdrop-blur-[3px] rounded-xl md:rounded-2xl px-8 py-12 md:px-12 md:py-14 shadow-2xl">
               <BlurFadeIn>
                 <h2 className="typo-headline text-4xl md:text-5xl text-platinum mb-8">Launch in Weeks, Not Months.</h2>
               </BlurFadeIn>

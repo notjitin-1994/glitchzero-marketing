@@ -4,18 +4,29 @@ import { useState } from 'react';
 import { ArrowRight, MessageCircle, Store, Wifi, TrendingUp, CheckCircle2, Smartphone } from 'lucide-react';
 import { ContactFormModal } from '@/components/contact-form-modal';
 import { FadeInSection, BlurFadeIn } from '@/components/ui/fade-in-section';
+import { SafariFrame } from '@/components/ui/safari';
+import { NeuroBackground } from '@/components/ui/neuro-background';
 
 export function Hero() {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   return (
-    <section className="relative pt-32 pb-20 md:pt-48 md:pb-32 px-6">
-      <div className="absolute top-0 right-0 w-1/3 h-full bg-gradient-to-l from-carbon/20 to-transparent pointer-events-none"></div>
-      <div className="absolute bottom-0 left-0 w-96 h-96 bg-signal/5 blur-[120px] rounded-full pointer-events-none"></div>
+    <section className="relative pt-32 pb-20 md:pt-48 md:pb-32 px-6 overflow-hidden">
+      {/* Neuro shader background - monochromatic signal orange */}
+      <NeuroBackground
+        intensity={1.3}
+        speed={0.29}
+        className="opacity-85"
+      />
 
-      <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+      {/* Overlay gradients for depth */}
+      <div className="absolute inset-0 bg-gradient-to-b from-obsidian/40 via-transparent to-obsidian/60 pointer-events-none z-[1]"></div>
+      <div className="absolute top-0 right-0 w-1/3 h-full bg-gradient-to-l from-carbon/30 to-transparent pointer-events-none z-[1]"></div>
+      <div className="absolute bottom-0 left-0 w-96 h-96 bg-signal/5 blur-[120px] rounded-full pointer-events-none z-[1]"></div>
 
-        <div className="space-y-8 z-10">
+      <div className="relative max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center z-10">
+
+        <div className="space-y-8">
           <FadeInSection delay={0.1} direction="up">
             <div className="inline-flex items-center gap-3 bg-carbon border border-tungsten/20 px-3 py-1.5 rounded-sm">
               <span className="w-2 h-2 rounded-full bg-terminal animate-pulse"></span>
@@ -62,50 +73,52 @@ export function Hero() {
 
         <FadeInSection delay={0.3} direction="right" className="relative group">
           <div className="absolute -inset-1 bg-gradient-to-r from-signal to-carbon rounded-sm opacity-20 group-hover:opacity-50 blur transition duration-500"></div>
-          
-          <div className="relative bg-obsidian border border-carbon rounded-sm p-6 shadow-2xl">
-            <div className="flex items-center justify-between mb-6 border-b border-carbon pb-4">
-              <div className="flex items-center gap-2">
-                 <div className="w-8 h-8 bg-carbon rounded-full flex items-center justify-center">
-                    <Store className="w-4 h-4 text-platinum" />
-                 </div>
-                 <div>
-                    <span className="typo-subhead text-sm text-platinum block">Your Business App</span>
-                    <span className="typo-tech text-[10px] text-terminal">● Live</span>
-                 </div>
-              </div>
-              <Wifi className="w-4 h-4 text-tungsten" />
-            </div>
 
-            <div className="space-y-4">
-              <div className="bg-carbon/50 p-4 rounded border border-tungsten/10">
-                <span className="typo-tech text-xs text-tungsten">Today's Sales</span>
-                <div className="flex items-end justify-between mt-1">
-                  <span className="typo-headline text-2xl text-platinum">₹24,500</span>
-                  <span className="text-terminal text-xs flex items-center gap-1">
-                    <TrendingUp className="w-3 h-3" /> +12%
-                  </span>
+          <SafariFrame url="dashboard.yourbusiness.com" glowOnHover={true}>
+            <div className="p-6">
+              <div className="flex items-center justify-between mb-6 border-b border-carbon pb-4">
+                <div className="flex items-center gap-2">
+                   <div className="w-8 h-8 bg-carbon rounded-full flex items-center justify-center">
+                      <Store className="w-4 h-4 text-platinum" />
+                   </div>
+                   <div>
+                      <span className="typo-subhead text-sm text-platinum block">Your Business App</span>
+                      <span className="typo-tech text-[10px] text-terminal">● Live</span>
+                   </div>
                 </div>
+                <Wifi className="w-4 h-4 text-tungsten" />
               </div>
 
-              <div className="grid grid-cols-2 gap-4">
+              <div className="space-y-4">
                 <div className="bg-carbon/50 p-4 rounded border border-tungsten/10">
-                  <span className="typo-tech text-xs text-tungsten">New Orders</span>
-                  <div className="typo-headline text-xl text-platinum mt-1">42</div>
+                  <span className="typo-tech text-xs text-tungsten">Today's Sales</span>
+                  <div className="flex items-end justify-between mt-1">
+                    <span className="typo-headline text-2xl text-platinum">₹24,500</span>
+                    <span className="text-terminal text-xs flex items-center gap-1">
+                      <TrendingUp className="w-3 h-3" /> +12%
+                    </span>
+                  </div>
                 </div>
-                <div className="bg-carbon/50 p-4 rounded border border-tungsten/10">
-                  <span className="typo-tech text-xs text-tungsten">Customers</span>
-                  <div className="typo-headline text-xl text-platinum mt-1">1.2k</div>
-                </div>
-              </div>
 
-              <div className="flex gap-3 items-center bg-terminal/10 p-3 rounded border border-terminal/20 mt-4">
-                <CheckCircle2 className="w-4 h-4 text-terminal" />
-                <span className="text-terminal text-sm font-medium">Payment Received: ₹1,500</span>
+                <div className="grid grid-cols-2 gap-4">
+                  <div className="bg-carbon/50 p-4 rounded border border-tungsten/10">
+                    <span className="typo-tech text-xs text-tungsten">New Orders</span>
+                    <div className="typo-headline text-xl text-platinum mt-1">42</div>
+                  </div>
+                  <div className="bg-carbon/50 p-4 rounded border border-tungsten/10">
+                    <span className="typo-tech text-xs text-tungsten">Customers</span>
+                    <div className="typo-headline text-xl text-platinum mt-1">1.2k</div>
+                  </div>
+                </div>
+
+                <div className="flex gap-3 items-center bg-terminal/10 p-3 rounded border border-terminal/20 mt-4">
+                  <CheckCircle2 className="w-4 h-4 text-terminal" />
+                  <span className="text-terminal text-sm font-medium">Payment Received: ₹1,500</span>
+                </div>
               </div>
             </div>
-          </div>
-          
+          </SafariFrame>
+
           <div className="absolute -bottom-6 -right-6 bg-carbon border border-tungsten/20 p-4 shadow-xl hidden md:block">
             <div className="typo-tech text-[10px] text-tungsten mb-1">Platform</div>
             <div className="typo-headline text-lg text-platinum flex items-center gap-2">

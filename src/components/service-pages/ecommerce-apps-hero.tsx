@@ -2,6 +2,7 @@
 
 import { TransitionLink } from '@/components/ui/page-transition';
 import { FadeInSection } from '@/components/ui/fade-in-section';
+import { SafariFrame } from '@/components/ui/safari';
 import { ShoppingCart, CreditCard, Package, TrendingUp, CheckCircle2, Smartphone } from 'lucide-react';
 
 export function EcommerceAppsHero() {
@@ -36,50 +37,52 @@ export function EcommerceAppsHero() {
         <FadeInSection delay={0.3} direction="right" className="relative group hidden lg:block">
           <div className="absolute -inset-1 bg-gradient-to-r from-signal to-carbon rounded-sm opacity-20 group-hover:opacity-50 blur transition duration-500"></div>
 
-          <div className="relative bg-obsidian border border-carbon rounded-sm p-6 shadow-2xl">
-            <div className="flex items-center justify-between mb-6 border-b border-carbon pb-4">
-              <div className="flex items-center gap-2">
-                <div className="w-8 h-8 bg-carbon rounded-full flex items-center justify-center">
-                  <ShoppingCart className="w-4 h-4 text-platinum" />
-                </div>
-                <div>
-                  <span className="typo-subhead text-sm text-platinum block">Your Store App</span>
-                  <span className="typo-tech text-[10px] text-terminal">● Live</span>
-                </div>
-              </div>
-              <CreditCard className="w-4 h-4 text-tungsten" />
-            </div>
-
-            <div className="space-y-4">
-              <div className="bg-carbon/50 p-4 rounded border border-tungsten/10">
-                <span className="typo-tech text-xs text-tungsten">Today's Revenue</span>
-                <div className="flex items-end justify-between mt-1">
-                  <span className="typo-headline text-2xl text-platinum">₹52,800</span>
-                  <span className="text-terminal text-xs flex items-center gap-1">
-                    <TrendingUp className="w-3 h-3" /> +24%
-                  </span>
-                </div>
-              </div>
-
-              <div className="grid grid-cols-2 gap-4">
-                <div className="bg-carbon/50 p-4 rounded border border-tungsten/10">
-                  <span className="typo-tech text-xs text-tungsten">Orders</span>
-                  <div className="typo-headline text-xl text-platinum mt-1 flex items-center gap-2">
-                    <Package className="w-4 h-4 text-signal" /> 87
+          <SafariFrame url="store.yourbusiness.com" glowOnHover={true}>
+            <div className="p-6">
+              <div className="flex items-center justify-between mb-6 border-b border-carbon pb-4">
+                <div className="flex items-center gap-2">
+                  <div className="w-8 h-8 bg-carbon rounded-full flex items-center justify-center">
+                    <ShoppingCart className="w-4 h-4 text-platinum" />
+                  </div>
+                  <div>
+                    <span className="typo-subhead text-sm text-platinum block">Your Store App</span>
+                    <span className="typo-tech text-[10px] text-terminal">● Live</span>
                   </div>
                 </div>
-                <div className="bg-carbon/50 p-4 rounded border border-tungsten/10">
-                  <span className="typo-tech text-xs text-tungsten">Conversion</span>
-                  <div className="typo-headline text-xl text-platinum mt-1">4.2%</div>
-                </div>
+                <CreditCard className="w-4 h-4 text-tungsten" />
               </div>
 
-              <div className="flex gap-3 items-center bg-terminal/10 p-3 rounded border border-terminal/20 mt-4">
-                <CheckCircle2 className="w-4 h-4 text-terminal" />
-                <span className="text-terminal text-sm font-medium">New Order: ₹2,499</span>
+              <div className="space-y-4">
+                <div className="bg-carbon/50 p-4 rounded border border-tungsten/10">
+                  <span className="typo-tech text-xs text-tungsten">Today's Revenue</span>
+                  <div className="flex items-end justify-between mt-1">
+                    <span className="typo-headline text-2xl text-platinum">₹52,800</span>
+                    <span className="text-terminal text-xs flex items-center gap-1">
+                      <TrendingUp className="w-3 h-3" /> +24%
+                    </span>
+                  </div>
+                </div>
+
+                <div className="grid grid-cols-2 gap-4">
+                  <div className="bg-carbon/50 p-4 rounded border border-tungsten/10">
+                    <span className="typo-tech text-xs text-tungsten">Orders</span>
+                    <div className="typo-headline text-xl text-platinum mt-1 flex items-center gap-2">
+                      <Package className="w-4 h-4 text-signal" /> 87
+                    </div>
+                  </div>
+                  <div className="bg-carbon/50 p-4 rounded border border-tungsten/10">
+                    <span className="typo-tech text-xs text-tungsten">Conversion</span>
+                    <div className="typo-headline text-xl text-platinum mt-1">4.2%</div>
+                  </div>
+                </div>
+
+                <div className="flex gap-3 items-center bg-terminal/10 p-3 rounded border border-terminal/20 mt-4">
+                  <CheckCircle2 className="w-4 h-4 text-terminal" />
+                  <span className="text-terminal text-sm font-medium">New Order: ₹2,499</span>
+                </div>
               </div>
             </div>
-          </div>
+          </SafariFrame>
 
           <div className="absolute -bottom-6 -right-6 bg-carbon border border-tungsten/20 p-4 shadow-xl">
             <div className="typo-tech text-[10px] text-tungsten mb-1">Platform</div>

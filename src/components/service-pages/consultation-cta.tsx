@@ -47,7 +47,7 @@ export function ConsultationCta({
               <div className="relative rounded-2xl border border-tungsten/20 p-[2px] md:rounded-3xl">
                 <GlowingEffect
                   blur={0}
-                  borderWidth={3}
+                  borderWidth={1.5}
                   spread={80}
                   glow={true}
                   disabled={false}
@@ -55,8 +55,8 @@ export function ConsultationCta({
                   inactiveZone={0.01}
                   variant="orange"
                 />
-                <div className="bg-obsidian/30 backdrop-blur-[8px] rounded-xl md:rounded-2xl p-8 md:p-10 shadow-2xl h-full">
-                <div className="inline-flex items-center gap-3 bg-obsidian/40 backdrop-blur-[4px] border border-tungsten/30 px-3 py-1.5 rounded-sm mb-6">
+                <div className="bg-obsidian/30 backdrop-blur-[3px] rounded-xl md:rounded-2xl p-8 md:p-10 shadow-2xl h-full">
+                <div className="inline-flex items-center gap-3 bg-obsidian/40 backdrop-blur-[3px] border border-tungsten/30 px-3 py-1.5 rounded-sm mb-6">
                   <Sparkles className="w-4 h-4 text-signal" />
                   <span className="typo-tech text-xs text-tungsten">Start Your Journey</span>
                 </div>
@@ -100,7 +100,7 @@ export function ConsultationCta({
               <div className="relative rounded-2xl border border-tungsten/20 p-[2px] md:rounded-3xl">
                 <GlowingEffect
                   blur={0}
-                  borderWidth={3}
+                  borderWidth={1.5}
                   spread={80}
                   glow={true}
                   disabled={false}
@@ -108,7 +108,7 @@ export function ConsultationCta({
                   inactiveZone={0.01}
                   variant="orange"
                 />
-                <div className="bg-obsidian/30 backdrop-blur-[8px] rounded-xl md:rounded-2xl p-8 relative shadow-2xl h-full">
+                <div className="bg-obsidian/30 backdrop-blur-[3px] rounded-xl md:rounded-2xl p-8 relative shadow-2xl h-full">
                   <div className="absolute -top-3 -left-3 bg-signal text-obsidian px-3 py-1 typo-tech text-[10px] uppercase tracking-wider rounded-sm z-10">
                     What You Get
                   </div>

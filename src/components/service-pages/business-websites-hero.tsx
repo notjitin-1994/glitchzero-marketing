@@ -2,7 +2,8 @@
 
 import { TransitionLink } from '@/components/ui/page-transition';
 import { FadeInSection } from '@/components/ui/fade-in-section';
-import { Globe, Search, Zap, CheckCircle2, Eye, MousePointer } from 'lucide-react';
+import { SafariFrame } from '@/components/ui/safari';
+import { Search, CheckCircle2, Eye } from 'lucide-react';
 
 export function BusinessWebsitesHero() {
   return (
@@ -36,22 +37,7 @@ export function BusinessWebsitesHero() {
         <FadeInSection delay={0.3} direction="right" className="relative group hidden lg:block">
           <div className="absolute -inset-1 bg-gradient-to-r from-signal to-carbon rounded-sm opacity-20 group-hover:opacity-50 blur transition duration-500"></div>
 
-          <div className="relative bg-obsidian border border-carbon rounded-sm shadow-2xl overflow-hidden">
-            {/* Browser Chrome */}
-            <div className="flex items-center gap-2 px-4 py-3 bg-carbon/80 border-b border-tungsten/10">
-              <div className="flex gap-1.5">
-                <div className="w-3 h-3 rounded-full bg-red-500/80"></div>
-                <div className="w-3 h-3 rounded-full bg-yellow-500/80"></div>
-                <div className="w-3 h-3 rounded-full bg-green-500/80"></div>
-              </div>
-              <div className="flex-1 mx-4">
-                <div className="bg-obsidian/50 rounded-sm px-3 py-1.5 flex items-center gap-2 text-xs text-tungsten">
-                  <Globe className="w-3 h-3" />
-                  <span className="typo-tech">yourbusiness.com</span>
-                </div>
-              </div>
-            </div>
-
+          <SafariFrame url="yourbusiness.com" glowOnHover={true}>
             {/* Website Preview */}
             <div className="p-6 space-y-4">
               <div className="h-24 bg-gradient-to-r from-signal/20 to-orange-400/20 rounded flex items-center justify-center">
@@ -75,7 +61,7 @@ export function BusinessWebsitesHero() {
                 <span className="text-terminal text-sm font-medium">Page Speed: 98/100</span>
               </div>
             </div>
-          </div>
+          </SafariFrame>
 
           <div className="absolute -bottom-6 -right-6 bg-carbon border border-tungsten/20 p-4 shadow-xl">
             <div className="typo-tech text-[10px] text-tungsten mb-1">SEO Ready</div>

@@ -5,6 +5,7 @@ import { createPortal } from 'react-dom';
 import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FadeInSection, StaggerContainer, StaggerItem, BlurFadeIn } from '@/components/ui/fade-in-section';
+import { SafariFrame } from '@/components/ui/safari';
 import {
   ExternalLink,
   Globe,
@@ -636,24 +637,8 @@ function ProjectCard({ project, index, isHovered, onHover, onLeave }: ProjectCar
           rel="noopener noreferrer"
           className="group block relative"
         >
-          {/* Browser Frame */}
-          <div className="relative bg-carbon border border-tungsten/20 rounded-lg overflow-hidden shadow-2xl transition-all duration-500 group-hover:border-signal/30 group-hover:shadow-[0_20px_60px_rgba(0,0,0,0.5)]">
-            {/* Browser Chrome */}
-            <div className="flex items-center gap-2 px-4 py-3 bg-carbon/90 border-b border-tungsten/10">
-              <div className="flex gap-1.5">
-                <div className="w-3 h-3 rounded-full bg-red-500/80"></div>
-                <div className="w-3 h-3 rounded-full bg-yellow-500/80"></div>
-                <div className="w-3 h-3 rounded-full bg-green-500/80"></div>
-              </div>
-              <div className="flex-1 mx-4">
-                <div className="bg-obsidian/50 rounded-sm px-3 py-1.5 flex items-center gap-2 text-xs text-tungsten max-w-xs">
-                  <Globe className="w-3 h-3" />
-                  <span className="typo-tech truncate">{project.link.replace('https://', '')}</span>
-                </div>
-              </div>
-              <ExternalLink className="w-4 h-4 text-tungsten/50 group-hover:text-signal transition-colors" />
-            </div>
-
+          {/* Safari Browser Frame */}
+          <SafariFrame url={project.link.replace('https://', '')} glowOnHover={true} className="rounded-lg">
             {/* Screenshot */}
             <div className="relative aspect-[16/10] overflow-hidden bg-obsidian">
               <Image
@@ -674,7 +659,7 @@ function ProjectCard({ project, index, isHovered, onHover, onLeave }: ProjectCar
                 </div>
               )}
             </div>
-          </div>
+          </SafariFrame>
 
           {/* Featured Badge */}
           {project.featured && (

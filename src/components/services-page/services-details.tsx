@@ -329,7 +329,7 @@ export function ServicesDetails() {
               <div className="inline-block relative rounded-2xl border border-tungsten/20 p-[2px] md:rounded-3xl">
                 <GlowingEffect
                   blur={0}
-                  borderWidth={3}
+                  borderWidth={1.5}
                   spread={80}
                   glow={true}
                   disabled={false}
@@ -337,7 +337,7 @@ export function ServicesDetails() {
                   inactiveZone={0.01}
                   variant="orange"
                 />
-                <div className="bg-obsidian/30 backdrop-blur-[8px] rounded-xl md:rounded-2xl px-8 py-10 md:px-12 md:py-12 shadow-2xl">
+                <div className="bg-obsidian/30 backdrop-blur-[3px] rounded-xl md:rounded-2xl px-8 py-10 md:px-12 md:py-12 shadow-2xl">
                   <h3 className="typo-headline text-2xl md:text-3xl text-platinum mb-4">
                     Not Sure Which Service You Need?
                   </h3>
