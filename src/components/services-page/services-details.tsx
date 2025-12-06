@@ -133,6 +133,7 @@ const services: Service[] = [
     ],
     isTerminal: true,
     ctaText: 'View Portfolio',
+    ctaLink: '/services/mobile-apps',
   },
   {
     id: 'iot-apps',

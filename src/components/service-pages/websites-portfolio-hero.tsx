@@ -3,17 +3,21 @@
 import { TransitionLink } from '@/components/ui/page-transition';
 import { FadeInSection, BlurFadeIn } from '@/components/ui/fade-in-section';
 import { Globe, Award, Sparkles, TrendingUp, Eye, MousePointer, Zap } from 'lucide-react';
+import { NeuroBackground } from '@/components/ui/neuro-background';
+import { ContrastText, ContrastWrapper } from '@/components/ui/contrast-text';
 
 export function WebsitesPortfolioHero() {
   return (
-    <section className="relative pt-32 pb-20 md:pt-48 md:pb-32 px-6">
+    <section className="relative pt-32 pb-20 md:pt-48 md:pb-32 px-6 overflow-hidden">
+      <NeuroBackground colorTheme="signal" />
+      <div className="absolute inset-0 bg-gradient-to-b from-obsidian/40 via-transparent to-obsidian/60 pointer-events-none z-[1]" />
       {/* Background Elements */}
-      <div className="absolute top-0 right-0 w-1/3 h-full bg-gradient-to-l from-carbon/20 to-transparent pointer-events-none"></div>
-      <div className="absolute bottom-0 left-0 w-96 h-96 bg-signal/5 blur-[120px] rounded-full pointer-events-none"></div>
+      <div className="absolute top-0 right-0 w-1/3 h-full bg-gradient-to-l from-carbon/20 to-transparent pointer-events-none z-[1]"></div>
+      <div className="absolute bottom-0 left-0 w-96 h-96 bg-signal/5 blur-[120px] rounded-full pointer-events-none z-[1]"></div>
 
       <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
         {/* Left Content */}
-        <div className="space-y-8 z-10">
+        <ContrastWrapper className="space-y-8 z-10">
           <FadeInSection delay={0.1} direction="up">
             <div className="inline-flex items-center gap-3 bg-carbon border border-tungsten/20 px-3 py-1.5 rounded-sm">
               <span className="w-2 h-2 rounded-full bg-terminal animate-pulse"></span>
@@ -23,7 +27,7 @@ export function WebsitesPortfolioHero() {
 
           <BlurFadeIn delay={0.2}>
             <h1 className="typo-headline text-5xl md:text-7xl leading-tight text-platinum">
-              Websites We've<br />
+              <ContrastText as="span" variant="monochrome">Websites We've</ContrastText><br />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-signal to-orange-400">Brought to Life.</span>
             </h1>
           </BlurFadeIn>
@@ -59,7 +63,7 @@ export function WebsitesPortfolioHero() {
               </div>
             </div>
           </FadeInSection>
-        </div>
+        </ContrastWrapper>
 
         {/* Right Content - Animated Browser */}
         <FadeInSection delay={0.3} direction="right" className="relative group hidden lg:block">

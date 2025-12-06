@@ -1,17 +1,23 @@
+"use client";
+
 import { Zap, Clock, Shield, TrendingUp, Gauge, Bot, ArrowDown } from 'lucide-react';
+import { NeuroBackground } from '@/components/ui/neuro-background';
+import { ContrastText, ContrastWrapper } from '@/components/ui/contrast-text';
 
 export function WhyUsHero() {
   return (
-    <section className="relative pt-32 pb-20 md:pt-48 md:pb-32 px-6">
-      <div className="absolute top-0 right-0 w-1/3 h-full bg-gradient-to-l from-carbon/20 to-transparent pointer-events-none"></div>
-      <div className="absolute bottom-0 left-0 w-96 h-96 bg-signal/5 blur-[120px] rounded-full pointer-events-none"></div>
+    <section className="relative pt-32 pb-20 md:pt-48 md:pb-32 px-6 overflow-hidden">
+      <NeuroBackground colorTheme="signal" />
+      <div className="absolute inset-0 bg-gradient-to-b from-obsidian/40 via-transparent to-obsidian/60 pointer-events-none z-[1]" />
+      <div className="absolute top-0 right-0 w-1/3 h-full bg-gradient-to-l from-carbon/20 to-transparent pointer-events-none z-[1]"></div>
+      <div className="absolute bottom-0 left-0 w-96 h-96 bg-signal/5 blur-[120px] rounded-full pointer-events-none z-[1]"></div>
 
       <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
 
-        <div className="space-y-8 z-10">
+        <ContrastWrapper className="space-y-8 z-10">
           <span className="typo-tech text-signal text-xs">Why Choose GlitchZero</span>
           <h1 className="typo-headline text-5xl md:text-7xl leading-tight text-platinum">
-            Built for Speed, <br />
+            <ContrastText as="span" variant="monochrome">Built for Speed,</ContrastText> <br />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-signal to-orange-400">
               Designed for Growth.
             </span>
@@ -19,7 +25,7 @@ export function WhyUsHero() {
           <p className="typo-subhead text-lg text-tungsten max-w-lg leading-relaxed">
             In today's market, speed is your greatest competitive advantage. We've rebuilt the development process from the ground up with proprietary AI to deliver high-quality digital solutions faster than anyone else.
           </p>
-        </div>
+        </ContrastWrapper>
 
         <div className="relative group">
           <div className="absolute -inset-1 bg-gradient-to-r from-signal to-carbon rounded-sm opacity-20 group-hover:opacity-50 blur transition duration-500"></div>

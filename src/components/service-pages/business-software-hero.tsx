@@ -4,22 +4,26 @@ import { TransitionLink } from '@/components/ui/page-transition';
 import { FadeInSection } from '@/components/ui/fade-in-section';
 import { SafariFrame } from '@/components/ui/safari';
 import { Database, Settings, BarChart3, CheckCircle2, Cpu, FileSpreadsheet } from 'lucide-react';
+import { NeuroBackground } from '@/components/ui/neuro-background';
+import { ContrastText, ContrastWrapper } from '@/components/ui/contrast-text';
 
 export function BusinessSoftwareHero() {
   return (
-    <section className="relative pt-32 pb-20 md:pt-48 md:pb-24 px-6 bg-carbon">
-      <div className="absolute top-0 right-0 w-1/3 h-full bg-gradient-to-l from-carbon/20 to-transparent pointer-events-none"></div>
-      <div className="absolute bottom-0 left-0 w-96 h-96 bg-signal/5 blur-[120px] rounded-full pointer-events-none"></div>
+    <section className="relative pt-32 pb-20 md:pt-48 md:pb-24 px-6 bg-carbon overflow-hidden">
+      <NeuroBackground colorTheme="purple" />
+      <div className="absolute inset-0 bg-gradient-to-b from-obsidian/40 via-transparent to-obsidian/60 pointer-events-none z-[1]" />
+      <div className="absolute top-0 right-0 w-1/3 h-full bg-gradient-to-l from-carbon/20 to-transparent pointer-events-none z-[1]"></div>
+      <div className="absolute bottom-0 left-0 w-96 h-96 bg-signal/5 blur-[120px] rounded-full pointer-events-none z-[1]"></div>
 
       <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-        <div className="space-y-6 z-10">
+        <ContrastWrapper className="space-y-6 z-10">
           <FadeInSection delay={0.1} direction="up">
             <TransitionLink href="/services" className="typo-tech text-signal text-xs">Our Services</TransitionLink>
           </FadeInSection>
 
           <FadeInSection delay={0.2} direction="up">
             <h1 className="typo-headline text-5xl md:text-7xl leading-tight text-platinum">
-              Custom Business Software,
+              <ContrastText as="span" variant="monochrome">Custom Business Software,</ContrastText>
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-signal to-orange-400">
                 {' '}
                 Built for Your Workflow.
@@ -32,7 +36,7 @@ export function BusinessSoftwareHero() {
               Replace clunky spreadsheets and expensive subscriptions with simple, powerful software designed for your exact business needs. We rapidly build and deploy custom solutions for desktop that streamline your operations.
             </p>
           </FadeInSection>
-        </div>
+        </ContrastWrapper>
 
         <FadeInSection delay={0.3} direction="right" className="relative group hidden lg:block">
           <div className="absolute -inset-1 bg-gradient-to-r from-signal to-carbon rounded-sm opacity-20 group-hover:opacity-50 blur transition duration-500"></div>
