@@ -3,7 +3,14 @@
 import { cn } from "@/lib/utils";
 import React, { useEffect, useRef } from "react";
 import { createNoise3D } from "simplex-noise";
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
+import {
+  detectDeviceCapabilities,
+  shouldDisableAnimations,
+  getOptimizedParticleCount,
+  getOptimizedAnimationSpeed,
+  getOptimizedCanvasResolution,
+} from "@/lib/performance-utils";
 
 interface VortexProps {
   children?: React.ReactNode;
@@ -24,16 +31,22 @@ export const Vortex = (props: VortexProps) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const wrapperRef = useRef<HTMLDivElement>(null);
   const animationFrameId = useRef<number | null>(null);
+  const capabilitiesRef = useRef(detectDeviceCapabilities());
 
   // Particle configuration - optimized for ultra-smooth, slow animation
-  const particleCount = props.particleCount || 800;
+  // Automatically reduces particle count on mobile (800 -> 200) and low-end devices
+  const baseParticleCount = props.particleCount || 800;
+  const particleCount = getOptimizedParticleCount(baseParticleCount, capabilitiesRef.current);
   const particlePropCount = 9;
   const particlePropsLength = particleCount * particlePropCount;
   const rangeY = props.rangeY || 150;
   const baseTTL = 120; // Even longer lifetime for smoother trails
   const rangeTTL = 250;
-  const baseSpeed = props.baseSpeed || 0.05; // 40% slower - ultra slow base movement
-  const rangeSpeed = props.rangeSpeed || 0.35; // 40% slower - reduced speed range
+  // Apply speed optimization based on device capabilities
+  const baseSpeedProp = props.baseSpeed || 0.05;
+  const baseSpeed = getOptimizedAnimationSpeed(baseSpeedProp, capabilitiesRef.current);
+  const rangeSpeedProp = props.rangeSpeed || 0.35;
+  const rangeSpeed = getOptimizedAnimationSpeed(rangeSpeedProp, capabilitiesRef.current);
   const baseRadius = props.baseRadius || 1;
   const rangeRadius = props.rangeRadius || 1.5;
   // Brand signal orange: #FF4F00 is hue 18-19, keeping it pure orange not yellow
@@ -49,6 +62,11 @@ export const Vortex = (props: VortexProps) => {
     const canvas = canvasRef.current;
     const wrapper = wrapperRef.current;
     if (!canvas || !wrapper) return;
+
+    // Check if we should disable animations for performance/accessibility
+    if (shouldDisableAnimations(capabilitiesRef.current)) {
+      return;
+    }
 
     const ctx = canvas.getContext("2d");
     if (!ctx) return;
@@ -98,7 +116,8 @@ export const Vortex = (props: VortexProps) => {
       width = rect.width;
       height = rect.height;
 
-      const dpr = window.devicePixelRatio || 1;
+      // Use optimized canvas resolution based on device capabilities
+      const dpr = getOptimizedCanvasResolution(capabilitiesRef.current);
       canvas.width = width * dpr;
       canvas.height = height * dpr;
       canvas.style.width = `${width}px`;
@@ -163,7 +182,7 @@ export const Vortex = (props: VortexProps) => {
     };
 
     const renderGlow = () => {
-      const dpr = window.devicePixelRatio || 1;
+      const dpr = getOptimizedCanvasResolution(capabilitiesRef.current);
 
       // Outer soft glow - subtle and warm
       ctx.save();
@@ -189,13 +208,14 @@ export const Vortex = (props: VortexProps) => {
     };
 
     const renderToScreen = () => {
+      const dpr = getOptimizedCanvasResolution(capabilitiesRef.current);
       ctx.save();
       ctx.setTransform(1, 0, 0, 1, 0, 0);
       ctx.globalCompositeOperation = "lighter";
       ctx.drawImage(canvas, 0, 0);
       ctx.restore();
       ctx.setTransform(1, 0, 0, 1, 0, 0);
-      ctx.scale(window.devicePixelRatio || 1, window.devicePixelRatio || 1);
+      ctx.scale(dpr, dpr);
     };
 
     const draw = () => {
@@ -234,20 +254,39 @@ export const Vortex = (props: VortexProps) => {
     };
   }, [backgroundColor, baseHue, rangeHue, baseRadius, rangeRadius, baseSpeed, rangeSpeed, rangeY, particlePropsLength, particleCount]);
 
+  // CSS fallback for devices where animations are disabled
+  if (shouldDisableAnimations(capabilitiesRef.current)) {
+    return (
+      <div
+        ref={wrapperRef}
+        className={cn("relative w-full", props.containerClassName)}
+        style={{ backgroundColor }}
+      >
+        <div
+          className="absolute inset-0 z-0 bg-gradient-to-br from-signal/10 via-transparent to-signal/5"
+          style={{ opacity: 0.3 }}
+        />
+        <div className={cn("relative z-10", props.className)}>
+          {props.children}
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div
       ref={wrapperRef}
       className={cn("relative w-full", props.containerClassName)}
       style={{ backgroundColor }}
     >
-      <motion.div
+      <m.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.8 }}
         className="absolute inset-0 z-0"
       >
         <canvas ref={canvasRef} className="absolute inset-0" />
-      </motion.div>
+      </m.div>
 
       <div className={cn("relative z-10", props.className)}>
         {props.children}

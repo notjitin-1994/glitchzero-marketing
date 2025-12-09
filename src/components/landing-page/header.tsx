@@ -27,6 +27,7 @@ export function Header() {
               width={32}
               height={32}
               className="w-8 h-8"
+              priority
             />
             <span className="typo-headline text-xl text-platinum group-hover:text-signal transition-colors">
               <span className="glitch" data-text="Glitch">Glitch</span>
@@ -69,6 +70,7 @@ export function Header() {
                                   width={32}
                                   height={32}
                                   className="w-8 h-8"
+                                  priority
                                 />
                                 <span className="typo-headline text-xl text-platinum">
                                   Glitch<span style={{ textShadow: '0 0 8px rgba(255, 255, 255, 0.5), 0 0 16px rgba(255, 255, 255, 0.25)' }}>Zero</span>

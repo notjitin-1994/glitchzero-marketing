@@ -9,7 +9,7 @@ import {
   useState,
 } from 'react';
 import { usePathname } from 'next/navigation';
-import { motion, AnimatePresence } from 'framer-motion';
+import { m, AnimatePresence } from 'framer-motion';
 import { LayoutRouterContext } from 'next/dist/shared/lib/app-router-context.shared-runtime';
 import Link from 'next/link';
 
@@ -130,7 +130,7 @@ export function PageTransitionProvider({ children }: PageTransitionProviderProps
           setIsTransitioning(false);
         }}
       >
-        <motion.div
+        <m.div
           key={pathname}
           variants={pageVariants}
           initial="initial"
@@ -145,7 +145,7 @@ export function PageTransitionProvider({ children }: PageTransitionProviderProps
           style={{ willChange: 'opacity, transform, filter' }}
         >
           <FrozenRouter>{children}</FrozenRouter>
-        </motion.div>
+        </m.div>
       </AnimatePresence>
     </TransitionContext.Provider>
   );

@@ -12,7 +12,7 @@ export function Benefits() {
           <FadeInSection direction="up">
             <div>
               <span className="typo-tech text-signal text-xs">Why Choose Us</span>
-              <h2 className="typo-headline text-3xl md:text-4xl text-platinum mt-3">From Idea to Launch, Faster.</h2>
+              <h2 className="typo-headline text-3xl md:text-4xl text-platinum mt-3">Why India's Growth-Stage Companies Choose Us</h2>
             </div>
           </FadeInSection>
 
@@ -23,8 +23,8 @@ export function Benefits() {
                   <BrainCircuit className="w-5 h-5 text-tungsten" />
                 </div>
                 <div>
-                  <h4 className="typo-subhead text-platinum mb-1">AI-Accelerated Development</h4>
-                  <p className="typo-body text-tungsten text-sm">We leverage secure, proprietary AI-powered workflows and frameworks to accelerate our development process by an average of 60%, delivering your project faster than traditional agencies.</p>
+                  <h4 className="typo-subhead text-platinum mb-1">Startup Speed, Enterprise Standards</h4>
+                  <p className="typo-body text-tungsten text-sm">We move 60% faster than traditional agencies through AI-accelerated workflows—but never compromise on architecture, security, or scalability. Every line of code is written to handle your next growth phase, not just today's requirements.</p>
                 </div>
               </div>
             </StaggerItem>
@@ -39,8 +39,8 @@ export function Benefits() {
                   <IndianRupee className="w-5 h-5 text-tungsten" />
                 </div>
                 <div>
-                  <h4 className="typo-subhead text-platinum mb-1">Affordable & Transparent</h4>
-                  <p className="typo-body text-tungsten text-sm">Our rapid, AI-driven cycle means lower costs. We offer clear packages designed for small businesses with no hidden fees.</p>
+                  <h4 className="typo-subhead text-platinum mb-1">India-First Product Engineering</h4>
+                  <p className="typo-body text-tungsten text-sm">We understand what it takes to build for the Indian market: UPI integration, Aadhaar verification, multilingual support, and DPDP Act compliance. Plus performance optimization for Indian internet conditions and device diversity.</p>
                 </div>
               </div>
             </StaggerItem>
@@ -55,8 +55,8 @@ export function Benefits() {
                   <MessageSquare className="w-5 h-5 text-tungsten" />
                 </div>
                 <div>
-                  <h4 className="typo-subhead text-platinum mb-1">Direct WhatsApp Support</h4>
-                  <p className="typo-body text-tungsten text-sm">No ticket delays. Get instant answers and updates directly from the team. We speak English, Kannada, Malayalam, and Hindi.</p>
+                  <h4 className="typo-subhead text-platinum mb-1">Founder-Led, Always Accessible</h4>
+                  <p className="typo-body text-tungsten text-sm">Work directly with our founder and lead engineer, not a sales team. Get technical answers in hours via WhatsApp or email. 60% of our clients are referrals—because we deliver on our commitments.</p>
                 </div>
               </div>
             </StaggerItem>

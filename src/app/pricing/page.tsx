@@ -6,14 +6,14 @@ import { Metadata } from 'next';
 
 export const metadata: Metadata = {
   title: 'Pricing',
-  description: 'Affordable and transparent pricing for websites, mobile apps, and custom software. See how our AI-driven efficiency offers an unfair advantage for Indian businesses.',
+  description: 'Investment-grade engineering for India\'s growth-stage companies. Custom proposals for enterprise-grade platforms delivered in 8-12 weeks. Transparent pricing, fixed scope, no hidden fees.',
   openGraph: {
     title: 'Pricing | GlitchZero',
-    description: 'Affordable and transparent pricing for websites, mobile apps, and custom software. See how our AI-driven efficiency offers an unfair advantage for Indian businesses.',
+    description: 'Investment-grade engineering for India\'s growth-stage companies. Custom proposals for enterprise-grade platforms delivered in 8-12 weeks. Transparent pricing, fixed scope, no hidden fees.',
   },
   twitter: {
     title: 'Pricing | GlitchZero',
-    description: 'Affordable and transparent pricing for websites, mobile apps, and custom software. See how our AI-driven efficiency offers an unfair advantage for Indian businesses.',
+    description: 'Investment-grade engineering for India\'s growth-stage companies. Custom proposals for enterprise-grade platforms delivered in 8-12 weeks. Transparent pricing, fixed scope, no hidden fees.',
   }
 };
 

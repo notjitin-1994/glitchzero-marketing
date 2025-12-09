@@ -2,6 +2,12 @@
 
 import { useEffect, useRef, useState } from "react";
 import { cn } from "@/lib/utils";
+import {
+  detectDeviceCapabilities,
+  shouldDisableAnimations,
+  getOptimizedCanvasResolution,
+  rafThrottle,
+} from "@/lib/performance-utils";
 
 /**
  * Brand-compliant color themes for the neuro background effect.
@@ -209,6 +215,8 @@ export function NeuroBackground({
   const [isReady, setIsReady] = useState(false);
   const timeScaleRef = useRef(speed);
   const colorsRef = useRef(COLOR_THEMES[colorTheme]);
+  const scrollProgressRef = useRef(0);
+  const capabilitiesRef = useRef(detectDeviceCapabilities());
 
   // Update colors when theme changes
   useEffect(() => {
@@ -218,6 +226,11 @@ export function NeuroBackground({
   useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
+
+    // Check if we should disable animations for performance/accessibility
+    if (shouldDisableAnimations(capabilitiesRef.current)) {
+      return;
+    }
 
     // Wait for canvas to have dimensions
     const initTimeout = setTimeout(() => {
@@ -229,7 +242,7 @@ export function NeuroBackground({
       const gl = canvas.getContext("webgl", {
         alpha: true,
         premultipliedAlpha: true,
-        antialias: true,
+        antialias: false, // Disable antialiasing on mobile for better performance
       });
 
       if (!gl) {
@@ -308,8 +321,8 @@ export function NeuroBackground({
         },
       };
 
-      // Set canvas size
-      const dpr = Math.min(window.devicePixelRatio, 2);
+      // Set canvas size with optimized resolution based on device capabilities
+      const dpr = getOptimizedCanvasResolution(capabilitiesRef.current);
       canvas.width = width * dpr;
       canvas.height = height * dpr;
       gl.viewport(0, 0, canvas.width, canvas.height);
@@ -350,7 +363,8 @@ export function NeuroBackground({
       // Set uniforms - apply speed multiplier to time
       gl.uniform1f(uniforms.u_time, currentTime * timeScaleRef.current);
       gl.uniform1f(uniforms.u_ratio, canvas.width / canvas.height);
-      gl.uniform1f(uniforms.u_scroll_progress, window.scrollY / (2 * window.innerHeight));
+      // Use cached scroll progress instead of reading from DOM
+      gl.uniform1f(uniforms.u_scroll_progress, scrollProgressRef.current);
       gl.uniform1f(uniforms.u_intensity, intensity);
 
       // Set color uniforms
@@ -377,23 +391,31 @@ export function NeuroBackground({
     const handleResize = () => {
       const width = canvas.clientWidth || window.innerWidth;
       const height = canvas.clientHeight || window.innerHeight;
-      const dpr = Math.min(window.devicePixelRatio, 2);
+      const dpr = getOptimizedCanvasResolution(capabilitiesRef.current);
       canvas.width = width * dpr;
       canvas.height = height * dpr;
       gl.viewport(0, 0, canvas.width, canvas.height);
     };
 
+    // Throttled scroll handler to update scroll progress
+    // Limits updates to 20fps (50ms) to prevent excessive redraws
+    const handleScroll = rafThrottle(() => {
+      scrollProgressRef.current = window.scrollY / (2 * window.innerHeight);
+    });
+
     // Start animation
     render();
 
-    // Add resize listener only
+    // Add resize and scroll listeners with passive flag for better scroll performance
     window.addEventListener("resize", handleResize);
+    window.addEventListener("scroll", handleScroll, { passive: true });
 
     return () => {
       if (animationRef.current) {
         cancelAnimationFrame(animationRef.current);
       }
       window.removeEventListener("resize", handleResize);
+      window.removeEventListener("scroll", handleScroll);
     };
   }, [isReady, intensity]);
 
@@ -413,6 +435,20 @@ export function NeuroBackground({
       }
     };
   }, []);
+
+  // CSS fallback for devices where animations are disabled
+  if (shouldDisableAnimations(capabilitiesRef.current)) {
+    return (
+      <div
+        className={cn(
+          "absolute inset-0 w-full h-full pointer-events-none",
+          "bg-gradient-to-br from-obsidian via-carbon to-obsidian",
+          className
+        )}
+        style={{ opacity: 0.5 }}
+      />
+    );
+  }
 
   return (
     <canvas

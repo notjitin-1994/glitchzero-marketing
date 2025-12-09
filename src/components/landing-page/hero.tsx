@@ -31,23 +31,23 @@ export function Hero() {
           <FadeInSection delay={0.1} direction="up">
             <div className="inline-flex items-center gap-3 bg-carbon border border-tungsten/20 px-3 py-1.5 rounded-sm">
               <span className="w-2 h-2 rounded-full bg-terminal animate-pulse"></span>
-              <span className="typo-tech text-xs text-tungsten">Average Project Delivery: 2 Weeks</span>
+              <span className="typo-tech text-xs text-tungsten">Trusted by Growth-Stage Companies</span>
             </div>
           </FadeInSection>
 
           <BlurFadeIn delay={0.2}>
             <h1 className="typo-headline text-5xl md:text-7xl leading-tight">
               <ContrastText as="span" variant="monochrome" className="text-platinum">
-                Take Your Business
+                Engineer Products
               </ContrastText>
               <br/>
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-signal to-orange-400">Online Today.</span>
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-signal to-orange-400">That Win Markets.</span>
             </h1>
           </BlurFadeIn>
 
           <FadeInSection delay={0.3} direction="up">
             <p className="typo-subhead text-lg text-tungsten max-w-lg leading-relaxed">
-              Own a shop, startup, or agency? We build custom mobile apps and websites that help you reach customers across India. No technical knowledge required.
+              We build scalable digital platforms for India's growth-stage companies—combining startup speed with enterprise-grade architecture. From MVP to market leader in 8-12 weeks, not 6 months.
             </p>
           </FadeInSection>
 
@@ -57,7 +57,7 @@ export function Hero() {
                 onClick={() => setIsModalOpen(true)}
                 className="bg-signal text-obsidian px-8 py-4 typo-headline text-sm hover:bg-white hover:text-obsidian transition-all duration-300 flex items-center justify-center gap-2 shadow-[0_0_15px_rgba(255,79,0,0.4)]"
               >
-                Start Building Now
+                Schedule Discovery Call
                 <ArrowRight className="w-4 h-4" />
               </button>
               <a
@@ -67,7 +67,7 @@ export function Hero() {
                 className="border border-tungsten/30 text-platinum px-8 py-4 typo-headline text-sm hover:bg-carbon hover:border-platinum transition-all duration-300 flex items-center justify-center gap-2"
               >
                 <MessageCircle className="w-4 h-4" />
-                Chat on WhatsApp
+                Message Founder Directly
               </a>
             </div>
           </FadeInSection>

@@ -3,9 +3,13 @@
 import { useState, useEffect, useCallback } from 'react';
 import { createPortal } from 'react-dom';
 import Image from 'next/image';
-import { motion, AnimatePresence } from 'framer-motion';
+import { AnimatePresence } from 'framer-motion';
+import { OptimizedMotion } from '@/components/ui/optimized-motion';
 import { FadeInSection, BlurFadeIn } from '@/components/ui/fade-in-section';
 import { Android } from '@/components/ui/android';
+import { IconButton } from '@/components/ui/icon-button';
+import { useSwipe } from '@/hooks/use-swipe';
+import { Haptics } from '@/lib/haptics';
 import {
   Smartphone,
   LayoutDashboard,
@@ -104,20 +108,31 @@ export function MobileappsPortfolioShowcase() {
 
   const nextSlide = useCallback(() => {
     setActiveIndex((prev) => (prev + 1) % screenshots.length);
+    Haptics.swipe(); // Add haptic feedback
   }, []);
 
   const prevSlide = useCallback(() => {
     setActiveIndex((prev) => (prev - 1 + screenshots.length) % screenshots.length);
+    Haptics.swipe(); // Add haptic feedback
   }, []);
+
+  // Add swipe gesture support
+  const swipeHandlers = useSwipe({
+    onSwipeLeft: nextSlide,
+    onSwipeRight: prevSlide,
+    minSwipeDistance: 50,
+  });
 
   const openFullscreen = useCallback(() => {
     setIsFullscreen(true);
     document.body.style.overflow = 'hidden';
+    Haptics.buttonTap(); // Add haptic feedback
   }, []);
 
   const closeFullscreen = useCallback(() => {
     setIsFullscreen(false);
     document.body.style.overflow = '';
+    Haptics.buttonTap(); // Add haptic feedback
   }, []);
 
   useEffect(() => {
@@ -201,9 +216,9 @@ export function MobileappsPortfolioShowcase() {
               {/* Screenshot Gallery with Device Mockup */}
               <div className="lg:col-span-8 relative bg-obsidian py-8">
                 {/* Main Device Mockup */}
-                <div className="relative flex items-center justify-center min-h-[500px] md:min-h-[600px]">
+                <div className="relative flex items-center justify-center min-h-[500px] md:min-h-[600px]" {...swipeHandlers}>
                   <AnimatePresence mode="wait">
-                    <motion.div
+                    <OptimizedMotion.div
                       key={activeScreenshot.id}
                       initial={{ opacity: 0, scale: 0.95, y: 20 }}
                       animate={{ opacity: 1, scale: 1, y: 0 }}
@@ -217,62 +232,73 @@ export function MobileappsPortfolioShowcase() {
                         height={530}
                         className="drop-shadow-[0_0_40px_rgba(255,79,0,0.15)]"
                       />
-                    </motion.div>
+                    </OptimizedMotion.div>
                   </AnimatePresence>
 
-                  {/* Navigation Arrows */}
-                  <button
+                  {/* Navigation Arrows - Enhanced touch targets */}
+                  <IconButton
                     onClick={prevSlide}
-                    className="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 bg-obsidian/80 border border-tungsten/20 flex items-center justify-center text-platinum hover:bg-signal hover:text-obsidian hover:border-signal transition-all duration-300 z-10"
-                    aria-label="Previous screenshot"
-                  >
-                    <ChevronLeft className="w-5 h-5" />
-                  </button>
-                  <button
+                    icon={<ChevronLeft className="w-5 h-5 md:w-6 md:h-6" />}
+                    label="Previous screenshot"
+                    variant="default"
+                    size="md"
+                    className="absolute left-2 md:left-4 top-1/2 -translate-y-1/2 z-10 bg-obsidian/80"
+                  />
+                  <IconButton
                     onClick={nextSlide}
-                    className="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 bg-obsidian/80 border border-tungsten/20 flex items-center justify-center text-platinum hover:bg-signal hover:text-obsidian hover:border-signal transition-all duration-300 z-10"
-                    aria-label="Next screenshot"
-                  >
-                    <ChevronRight className="w-5 h-5" />
-                  </button>
+                    icon={<ChevronRight className="w-5 h-5 md:w-6 md:h-6" />}
+                    label="Next screenshot"
+                    variant="default"
+                    size="md"
+                    className="absolute right-2 md:right-4 top-1/2 -translate-y-1/2 z-10 bg-obsidian/80"
+                  />
 
-                  {/* Fullscreen Button */}
-                  <button
+                  {/* Fullscreen Button - Enhanced touch target */}
+                  <IconButton
                     onClick={openFullscreen}
-                    className="absolute top-4 right-4 w-10 h-10 bg-obsidian/80 border border-tungsten/20 flex items-center justify-center text-platinum hover:bg-signal hover:text-obsidian hover:border-signal transition-all duration-300 z-10"
-                    aria-label="View fullscreen"
-                  >
-                    <Maximize2 className="w-5 h-5" />
-                  </button>
+                    icon={<Maximize2 className="w-5 h-5" />}
+                    label="View fullscreen"
+                    variant="default"
+                    size="md"
+                    className="absolute top-4 right-4 z-10 bg-obsidian/80"
+                  />
 
-                  {/* Slide Indicator */}
-                  <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex items-center gap-2 z-10">
+                  {/* Slide Indicator - Enhanced touch targets */}
+                  <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex items-center gap-3 z-10">
                     {screenshots.map((_, idx) => (
                       <button
                         key={idx}
                         onClick={() => setActiveIndex(idx)}
-                        className={`h-1 rounded-full transition-all duration-300 ${
-                          idx === activeIndex
-                            ? 'w-8 bg-signal'
-                            : 'w-2 bg-tungsten/40 hover:bg-tungsten/60'
+                        className={`min-w-[44px] min-h-[44px] flex items-center justify-center touch-action-manipulation transition-all duration-300 ${
+                          idx === activeIndex ? 'scale-110' : ''
                         }`}
                         aria-label={`Go to slide ${idx + 1}`}
-                      />
+                        aria-current={idx === activeIndex ? 'true' : 'false'}
+                      >
+                        <span
+                          className={`block rounded-full transition-all duration-300 ${
+                            idx === activeIndex
+                              ? 'w-8 h-3 bg-signal'
+                              : 'w-3 h-3 bg-tungsten/40 hover:bg-tungsten/60'
+                          }`}
+                        />
+                      </button>
                     ))}
                   </div>
                 </div>
 
-                {/* Thumbnail Strip with Phone Mockups */}
+                {/* Thumbnail Strip with Phone Mockups - Enhanced touch targets */}
                 <div className="flex gap-4 p-4 bg-carbon/50 border-t border-tungsten/10 overflow-x-auto justify-center">
                   {screenshots.map((screenshot, idx) => (
                     <button
                       key={screenshot.id}
                       onClick={() => setActiveIndex(idx)}
-                      className={`relative flex-shrink-0 transition-all duration-300 ${
+                      className={`relative flex-shrink-0 transition-all duration-300 min-w-[48px] min-h-[48px] flex items-center justify-center touch-action-manipulation ${
                         idx === activeIndex
                           ? 'scale-110 drop-shadow-[0_0_10px_rgba(255,79,0,0.4)]'
                           : 'opacity-50 hover:opacity-80 hover:scale-105'
                       }`}
+                      aria-label={`View ${screenshot.title}`}
                     >
                       <Android
                         src={screenshot.image}
@@ -287,7 +313,7 @@ export function MobileappsPortfolioShowcase() {
               {/* Feature Details Panel */}
               <div className="lg:col-span-4 p-6 lg:p-8 bg-carbon border-l border-tungsten/10">
                 <AnimatePresence mode="wait">
-                  <motion.div
+                  <OptimizedMotion.div
                     key={activeScreenshot.id}
                     initial={{ opacity: 0, x: 20 }}
                     animate={{ opacity: 1, x: 0 }}
@@ -328,7 +354,7 @@ export function MobileappsPortfolioShowcase() {
                       </div>
                     </div>
 
-                    {/* Navigation Tabs */}
+                    {/* Navigation Tabs - Enhanced touch targets */}
                     <div className="pt-4 border-t border-tungsten/10">
                       <span className="typo-tech text-[10px] text-tungsten uppercase mb-3 block">Explore Screens</span>
                       <div className="grid grid-cols-2 gap-2">
@@ -336,11 +362,13 @@ export function MobileappsPortfolioShowcase() {
                           <button
                             key={screenshot.id}
                             onClick={() => setActiveIndex(idx)}
-                            className={`flex items-center gap-2 p-2 text-left transition-all duration-300 ${
+                            className={`flex items-center gap-2 p-3 min-h-[48px] text-left transition-all duration-300 touch-action-manipulation active:scale-95 ${
                               idx === activeIndex
                                 ? 'bg-signal/10 border border-signal/30 text-signal'
                                 : 'bg-obsidian border border-tungsten/10 text-tungsten hover:text-platinum hover:border-tungsten/30'
                             }`}
+                            aria-label={`View ${screenshot.title}`}
+                            aria-current={idx === activeIndex ? 'true' : 'false'}
                           >
                             {screenshot.icon}
                             <span className="typo-tech text-[10px] truncate">{screenshot.title.split(' ')[0]}</span>
@@ -348,7 +376,7 @@ export function MobileappsPortfolioShowcase() {
                         ))}
                       </div>
                     </div>
-                  </motion.div>
+                  </OptimizedMotion.div>
                 </AnimatePresence>
               </div>
             </div>
@@ -410,7 +438,7 @@ export function MobileappsPortfolioShowcase() {
       {isMounted && createPortal(
         <AnimatePresence>
           {isFullscreen && (
-            <motion.div
+            <OptimizedMotion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
@@ -418,14 +446,15 @@ export function MobileappsPortfolioShowcase() {
               className="fixed inset-0 z-[9999] bg-obsidian/98 backdrop-blur-md flex items-center justify-center"
               onClick={closeFullscreen}
             >
-              {/* Close Button */}
-              <button
+              {/* Close Button - Enhanced touch target */}
+              <IconButton
                 onClick={closeFullscreen}
-                className="absolute top-4 right-4 md:top-6 md:right-6 w-10 h-10 md:w-12 md:h-12 bg-carbon border border-tungsten/20 flex items-center justify-center text-platinum hover:bg-signal hover:text-obsidian hover:border-signal transition-all duration-300 z-10"
-                aria-label="Close fullscreen"
-              >
-                <X className="w-5 h-5 md:w-6 md:h-6" />
-              </button>
+                icon={<X className="w-5 h-5 md:w-6 md:h-6" />}
+                label="Close fullscreen"
+                variant="default"
+                size="md"
+                className="absolute top-4 right-4 md:top-6 md:right-6 z-10"
+              />
 
               {/* Image Counter */}
               <div className="absolute top-4 left-4 md:top-6 md:left-6 z-10">
@@ -434,24 +463,26 @@ export function MobileappsPortfolioShowcase() {
                 </span>
               </div>
 
-              {/* Navigation Arrows */}
-              <button
+              {/* Navigation Arrows - Enhanced touch targets */}
+              <IconButton
                 onClick={(e) => { e.stopPropagation(); prevSlide(); }}
-                className="absolute left-2 md:left-6 top-1/2 -translate-y-1/2 w-10 h-10 md:w-14 md:h-14 bg-carbon border border-tungsten/20 flex items-center justify-center text-platinum hover:bg-signal hover:text-obsidian hover:border-signal transition-all duration-300 z-10"
-                aria-label="Previous screenshot"
-              >
-                <ChevronLeft className="w-5 h-5 md:w-7 md:h-7" />
-              </button>
-              <button
+                icon={<ChevronLeft className="w-5 h-5 md:w-7 md:h-7" />}
+                label="Previous screenshot"
+                variant="default"
+                size="lg"
+                className="absolute left-2 md:left-6 top-1/2 -translate-y-1/2 z-10"
+              />
+              <IconButton
                 onClick={(e) => { e.stopPropagation(); nextSlide(); }}
-                className="absolute right-2 md:right-6 top-1/2 -translate-y-1/2 w-10 h-10 md:w-14 md:h-14 bg-carbon border border-tungsten/20 flex items-center justify-center text-platinum hover:bg-signal hover:text-obsidian hover:border-signal transition-all duration-300 z-10"
-                aria-label="Next screenshot"
-              >
-                <ChevronRight className="w-5 h-5 md:w-7 md:h-7" />
-              </button>
+                icon={<ChevronRight className="w-5 h-5 md:w-7 md:h-7" />}
+                label="Next screenshot"
+                variant="default"
+                size="lg"
+                className="absolute right-2 md:right-6 top-1/2 -translate-y-1/2 z-10"
+              />
 
               {/* Fullscreen Device Mockup */}
-              <motion.div
+              <OptimizedMotion.div
                 key={activeScreenshot.id}
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
@@ -466,19 +497,20 @@ export function MobileappsPortfolioShowcase() {
                   height={712}
                   className="drop-shadow-[0_0_60px_rgba(255,79,0,0.2)]"
                 />
-              </motion.div>
+              </OptimizedMotion.div>
 
-              {/* Thumbnail Strip with Phone Mockups */}
+              {/* Thumbnail Strip with Phone Mockups - Enhanced touch targets */}
               <div className="absolute bottom-16 md:bottom-6 left-1/2 -translate-x-1/2 flex gap-3 md:gap-4 bg-carbon/80 p-2 md:p-3 border border-tungsten/20 z-10">
                 {screenshots.map((screenshot, idx) => (
                   <button
                     key={screenshot.id}
                     onClick={(e) => { e.stopPropagation(); setActiveIndex(idx); }}
-                    className={`relative flex-shrink-0 transition-all duration-300 ${
+                    className={`relative flex-shrink-0 transition-all duration-300 min-w-[48px] min-h-[48px] flex items-center justify-center touch-action-manipulation ${
                       idx === activeIndex
                         ? 'scale-110 drop-shadow-[0_0_8px_rgba(255,79,0,0.5)]'
                         : 'opacity-50 hover:opacity-80'
                     }`}
+                    aria-label={`View ${screenshot.title}`}
                   >
                     <Android
                       src={screenshot.image}
@@ -495,7 +527,7 @@ export function MobileappsPortfolioShowcase() {
                   ESC to close • ← → to navigate
                 </span>
               </div>
-            </motion.div>
+            </OptimizedMotion.div>
           )}
         </AnimatePresence>,
         document.body

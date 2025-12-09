@@ -1,6 +1,7 @@
 'use client';
 
-import { motion, useInView, Variants } from 'framer-motion';
+import { useInView, Variants } from 'framer-motion';
+import { OptimizedMotion } from '@/components/ui/optimized-motion';
 import { useRef, ReactNode } from 'react';
 
 type AnimationDirection = 'up' | 'down' | 'left' | 'right' | 'none';
@@ -54,7 +55,7 @@ export function FadeInSection({
   const variants = getVariants(direction, distance);
 
   return (
-    <motion.div
+    <OptimizedMotion.div
       ref={ref}
       className={className}
       initial="hidden"
@@ -67,7 +68,7 @@ export function FadeInSection({
       }}
     >
       {children}
-    </motion.div>
+    </OptimizedMotion.div>
   );
 }
 
@@ -100,7 +101,7 @@ export function StaggerContainer({
   };
 
   return (
-    <motion.div
+    <OptimizedMotion.div
       ref={ref}
       className={className}
       initial="hidden"
@@ -108,7 +109,7 @@ export function StaggerContainer({
       variants={containerVariants}
     >
       {children}
-    </motion.div>
+    </OptimizedMotion.div>
   );
 }
 
@@ -129,7 +130,7 @@ export function StaggerItem({
   const variants = getVariants(direction, distance);
 
   return (
-    <motion.div
+    <OptimizedMotion.div
       className={className}
       variants={{
         ...variants,
@@ -143,7 +144,7 @@ export function StaggerItem({
       }}
     >
       {children}
-    </motion.div>
+    </OptimizedMotion.div>
   );
 }
 
@@ -165,7 +166,7 @@ export function ScaleIn({
   const isInView = useInView(ref, { once: true, amount: 0.2 });
 
   return (
-    <motion.div
+    <OptimizedMotion.div
       ref={ref}
       className={className}
       initial={{ opacity: 0, scale: 0.9 }}
@@ -177,7 +178,7 @@ export function ScaleIn({
       }}
     >
       {children}
-    </motion.div>
+    </OptimizedMotion.div>
   );
 }
 
@@ -199,7 +200,7 @@ export function BlurFadeIn({
   const isInView = useInView(ref, { once: true, amount: 0.2 });
 
   return (
-    <motion.div
+    <OptimizedMotion.div
       ref={ref}
       className={className}
       initial={{ opacity: 0, filter: 'blur(10px)', y: 20 }}
@@ -215,6 +216,6 @@ export function BlurFadeIn({
       }}
     >
       {children}
-    </motion.div>
+    </OptimizedMotion.div>
   );
 }

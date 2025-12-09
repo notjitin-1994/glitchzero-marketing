@@ -3,7 +3,7 @@
 import { useState, useEffect, useCallback } from 'react';
 import { createPortal } from 'react-dom';
 import Image from 'next/image';
-import { motion, AnimatePresence } from 'framer-motion';
+import { m, AnimatePresence } from 'framer-motion';
 import { FadeInSection, StaggerContainer, StaggerItem, BlurFadeIn } from '@/components/ui/fade-in-section';
 import { SafariFrame } from '@/components/ui/safari';
 import {
@@ -212,7 +212,7 @@ function SmartslateShowcase() {
             {/* Main Image */}
             <div className="relative aspect-[16/10] overflow-hidden">
               <AnimatePresence mode="wait">
-                <motion.div
+                <m.div
                   key={activeScreenshot.id}
                   initial={{ opacity: 0, scale: 1.02 }}
                   animate={{ opacity: 1, scale: 1 }}
@@ -228,7 +228,7 @@ function SmartslateShowcase() {
                     sizes="(max-width: 768px) 100vw, 66vw"
                     priority
                   />
-                </motion.div>
+                </m.div>
               </AnimatePresence>
 
               {/* Navigation Arrows */}
@@ -300,7 +300,7 @@ function SmartslateShowcase() {
           {/* Feature Details Panel */}
           <div className="lg:col-span-4 p-6 lg:p-8 bg-carbon border-l border-tungsten/10">
             <AnimatePresence mode="wait">
-              <motion.div
+              <m.div
                 key={activeScreenshot.id}
                 initial={{ opacity: 0, x: 20 }}
                 animate={{ opacity: 1, x: 0 }}
@@ -373,7 +373,7 @@ function SmartslateShowcase() {
                   Visit Live Site
                   <ArrowUpRight className="w-4 h-4" />
                 </a>
-              </motion.div>
+              </m.div>
             </AnimatePresence>
           </div>
         </div>
@@ -426,7 +426,7 @@ function SmartslateShowcase() {
       {isMounted && createPortal(
         <AnimatePresence>
           {isFullscreen && (
-            <motion.div
+            <m.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
@@ -467,7 +467,7 @@ function SmartslateShowcase() {
               </button>
 
               {/* Fullscreen Image */}
-              <motion.div
+              <m.div
                 key={activeScreenshot.id}
                 initial={{ opacity: 0, scale: 0.95 }}
                 animate={{ opacity: 1, scale: 1 }}
@@ -485,7 +485,7 @@ function SmartslateShowcase() {
                   quality={100}
                   priority
                 />
-              </motion.div>
+              </m.div>
 
               {/* Thumbnail Strip */}
               <div className="absolute bottom-16 md:bottom-6 left-1/2 -translate-x-1/2 flex gap-2 md:gap-3 bg-carbon/80 p-2 md:p-3 border border-tungsten/20 z-10">
@@ -516,7 +516,7 @@ function SmartslateShowcase() {
                   ESC to close • ← → to navigate
                 </span>
               </div>
-            </motion.div>
+            </m.div>
           )}
         </AnimatePresence>,
         document.body
@@ -619,7 +619,7 @@ function ProjectCard({ project, index, isHovered, onHover, onLeave }: ProjectCar
   const isSelfSite = project.id === 'glitchzero';
 
   return (
-    <motion.article
+    <m.article
       layout
       initial={{ opacity: 0, y: 40 }}
       animate={{ opacity: 1, y: 0 }}
@@ -739,6 +739,6 @@ function ProjectCard({ project, index, isHovered, onHover, onLeave }: ProjectCar
           </div>
         )}
       </div>
-    </motion.article>
+    </m.article>
   );
 }

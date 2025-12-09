@@ -9,7 +9,7 @@ export function Services() {
       <div className="max-w-7xl mx-auto px-6">
         <FadeInSection direction="up" className="mb-16">
           <span className="typo-tech text-signal text-xs">What We Build, Fast.</span>
-          <h2 className="typo-headline text-3xl md:text-4xl text-platinum mt-3">Digital Solutions, Delivered at Speed</h2>
+          <h2 className="typo-headline text-3xl md:text-4xl text-platinum mt-3">Product Engineering for India's Digital Economy</h2>
         </FadeInSection>
 
         <StaggerContainer staggerDelay={0.15} className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -18,9 +18,9 @@ export function Services() {
               <div className="w-12 h-12 bg-carbon flex items-center justify-center mb-6 group-hover:bg-signal transition-colors duration-300">
                 <Smartphone className="w-6 h-6 text-platinum group-hover:text-obsidian" />
               </div>
-              <h3 className="typo-headline text-xl text-platinum mb-4">Mobile Apps</h3>
+              <h3 className="typo-headline text-xl text-platinum mb-4">Product Engineering</h3>
               <p className="typo-body text-tungsten leading-relaxed">
-                Launch your branded app on Play Store & App Store in record time. Perfect for e-commerce, delivery, or customer loyalty.
+                Build market-ready platforms (iOS, Android, Web) engineered to scale from day one. UPI integration, DPDP Act compliance, and architecture built for 1M+ users—delivered in 8-12 weeks.
               </p>
               <div className="absolute bottom-0 left-0 w-full h-1 bg-signal transform -translate-x-full group-hover:translate-x-0 transition-transform duration-300"></div>
             </div>
@@ -31,9 +31,9 @@ export function Services() {
               <div className="w-12 h-12 bg-carbon flex items-center justify-center mb-6 group-hover:bg-signal transition-colors duration-300">
                 <Laptop className="w-6 h-6 text-platinum group-hover:text-obsidian" />
               </div>
-              <h3 className="typo-headline text-xl text-platinum mb-4">Business Software</h3>
+              <h3 className="typo-headline text-xl text-platinum mb-4">Enterprise Solutions</h3>
               <p className="typo-body text-tungsten leading-relaxed">
-                We rapidly build simple, powerful software for Windows & Mac to manage inventory, billing, and staff.
+                Custom CRMs, ERPs, and automation platforms that give your business a competitive edge. API-first architecture, cloud-native deployment, and seamless integration with your existing tech stack.
               </p>
               <div className="absolute bottom-0 left-0 w-full h-1 bg-signal transform -translate-x-full group-hover:translate-x-0 transition-transform duration-300 delay-75"></div>
             </div>
@@ -44,9 +44,9 @@ export function Services() {
               <div className="w-12 h-12 bg-carbon flex items-center justify-center mb-6 group-hover:bg-signal transition-colors duration-300">
                 <Globe className="w-6 h-6 text-platinum group-hover:text-obsidian" />
               </div>
-              <h3 className="typo-headline text-xl text-platinum mb-4">Modern Websites</h3>
+              <h3 className="typo-headline text-xl text-platinum mb-4">Digital Platforms</h3>
               <p className="typo-body text-tungsten leading-relaxed">
-               Need a professional website that loads instantly? We design and deploy it fast, optimized for all devices.
+               High-performance web applications built with modern frameworks (Next.js, React). From marketing sites to complex SaaS platforms—optimized for SEO, conversions, and Indian internet conditions.
               </p>
               <div className="absolute bottom-0 left-0 w-full h-1 bg-signal transform -translate-x-full group-hover:translate-x-0 transition-transform duration-300 delay-150"></div>
             </div>

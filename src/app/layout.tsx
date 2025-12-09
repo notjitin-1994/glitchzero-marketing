@@ -11,12 +11,12 @@ export const metadata: Metadata = {
     template: `%s | GlitchZero`,
   },
   description:
-    'Build your dream app with GlitchZero. Custom web & mobile solutions for Indian businesses - from idea to launch in weeks, not months. AI-powered development, pixel-perfect design, zero bugs.',
+    'Product engineering for India\'s growth-stage companies. We build scalable digital platforms combining startup speed with enterprise-grade architecture. From MVP to market leader in 8-12 weeks.',
   keywords: [
-    'Web Development India',
-    'Mobile App Development India',
-    'Small Business Websites',
-    'E-commerce Solutions',
+    'Product Engineering India',
+    'Enterprise App Development India',
+    'Growth-Stage Startup Solutions',
+    'Scalable Platform Development',
     'Custom Software India',
     'React Development',
     'Next.js Development',
@@ -90,11 +90,20 @@ export default function RootLayout({
         <meta name="twitter:description" content="Build your dream app with GlitchZero. Custom web & mobile solutions for Indian businesses - from idea to launch in weeks, not months." />
         <meta name="twitter:image" content="https://glitchzerolabs.com/opengraph-image" />
 
+        {/* Font preloading and optimization for better FCP */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link
           href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;800&family=JetBrains+Mono:wght@400;500&display=swap"
           rel="stylesheet"
+        />
+        {/* Preload critical fonts for faster initial render */}
+        <link
+          rel="preload"
+          href="https://fonts.gstatic.com/s/manrope/v15/xn7gYHE41ni1AdIRggexSg.woff2"
+          as="font"
+          type="font/woff2"
+          crossOrigin="anonymous"
         />
       </head>
       <body className={cn('antialiased min-h-screen flex flex-col relative selection:bg-signal selection:text-white', 'font-sans bg-obsidian text-platinum')}>

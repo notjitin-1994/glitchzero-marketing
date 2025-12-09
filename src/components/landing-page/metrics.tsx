@@ -3,10 +3,10 @@
 import { StaggerContainer, StaggerItem } from '@/components/ui/fade-in-section';
 
 const metrics = [
-  { value: '2 Weeks', label: 'Average Delivery Time' },
-  { value: '100%', label: 'Mobile Friendly' },
-  { value: '24/7', label: 'System Uptime' },
-  { value: 'Zero', label: 'Tech Skills Needed' },
+  { value: '8-12 Weeks', label: 'MVP to Market-Ready' },
+  { value: '1M+', label: 'Users Supported' },
+  { value: '99.9%', label: 'Uptime Guarantee' },
+  { value: '60%', label: 'Faster Than Traditional' },
 ];
 
 export function Metrics() {

@@ -12,11 +12,13 @@ interface LoadingScreenProps {
 // Smooth easing curve for elegant animations
 const smoothEase = [0.22, 1, 0.36, 1];
 
-export function LoadingScreen({ onLoadingComplete, minDuration = 2800 }: LoadingScreenProps) {
+export function LoadingScreen({ onLoadingComplete, minDuration = 800 }: LoadingScreenProps) {
   const [isLoading, setIsLoading] = useState(true);
   const [isExiting, setIsExiting] = useState(false);
 
   useEffect(() => {
+    // Optimize loading duration - reduced from 2800ms to 800ms for better FCP
+    // This significantly improves First Contentful Paint metric
     const timer = setTimeout(() => {
       setIsExiting(true);
       // Wait for exit animation to complete before calling onLoadingComplete
@@ -105,6 +107,7 @@ export function LoadingScreen({ onLoadingComplete, minDuration = 2800 }: Loading
                     alt=""
                     fill
                     className="object-contain"
+                    sizes="(max-width: 768px) 96px, 128px"
                   />
                 </div>
               </div>
@@ -116,6 +119,7 @@ export function LoadingScreen({ onLoadingComplete, minDuration = 2800 }: Loading
                     alt=""
                     fill
                     className="object-contain"
+                    sizes="(max-width: 768px) 96px, 128px"
                   />
                 </div>
               </div>
@@ -143,6 +147,8 @@ export function LoadingScreen({ onLoadingComplete, minDuration = 2800 }: Loading
                   alt="GlitchZero Logo"
                   fill
                   className="object-contain"
+                  priority
+                  sizes="(max-width: 768px) 96px, 128px"
                 />
               </motion.div>
             </motion.div>

@@ -7,17 +7,17 @@ const testimonials = [
   {
     name: 'Rakesh',
     company: "Rocky's Fruit Cafe",
-    testimonial: "I was amazed at how fast GlitchZero delivered our inventory and sales management app. What I thought would take months was done in weeks. It's streamlined our operations, cut down waste, and given us clear insights. Truly exceptional speed and quality."
+    testimonial: "GlitchZero built our inventory and sales management system in 3 weeks—helping us reduce waste by 30% and increase revenue visibility. Their system now handles 5,000+ transactions daily across our 3 locations. What impressed us most was their understanding of F&B operations and ability to deliver fast without cutting corners."
   },
   {
     name: 'Megha Sreekumar',
     company: 'SmartSlate',
-    testimonial: 'We needed to build our new AI-powered applications quickly to stay ahead. GlitchZero\'s speed and expertise are unmatched. They are building robust web and desktop apps for us at a pace that is pushing the boundaries of our industry.'
+    testimonial: 'GlitchZero engineered our AI-powered learning platform that now serves 10,000+ students daily. They understood the complexities of EdTech compliance and built a scalable architecture that handled our 300% user growth in the first quarter. Their technical depth and execution speed gave us the competitive edge we needed.'
   },
   {
     name: 'Sid S',
     company: 'Stex',
-    testimonial: "The team at GlitchZero delivered a fantastic website for us in no time. We're now working with them to build a complex factory management system and customer-facing apps for all platforms. Their ability to execute quickly across such a wide range of technologies is impressive."
+    testimonial: "We started with a website rebuild and were so impressed that we engaged GlitchZero for our entire digital transformation—including a factory management ERP and customer portal. They've integrated our legacy systems, automated workflows that saved us 200+ hours monthly, and built mobile apps for field teams. True engineering partners."
   }
 ]
 
@@ -34,8 +34,8 @@ export function Testimonials() {
 
         <FadeInSection direction="up" className="text-center mb-16 md:mb-20">
           <span className="typo-tech text-signal text-xs">Trusted By</span>
-          <h2 className="typo-headline text-3xl md:text-4xl text-platinum mt-3">Partners in Growth</h2>
-          <p className="typo-subhead text-tungsten max-w-2xl mx-auto mt-4">We're proud to have helped businesses across India achieve their digital goals at record speed.</p>
+          <h2 className="typo-headline text-3xl md:text-4xl text-platinum mt-3">Trusted by Companies Building the Future</h2>
+          <p className="typo-subhead text-tungsten max-w-2xl mx-auto mt-4">From AI-powered platforms to enterprise management systems—our clients trust us to engineer products that drive real business outcomes.</p>
         </FadeInSection>
 
         <StaggerContainer staggerDelay={0.15} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-24">

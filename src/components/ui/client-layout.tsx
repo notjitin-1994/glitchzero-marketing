@@ -4,6 +4,7 @@ import { useState, useEffect, useMemo } from 'react';
 import { LoadingScreen } from './loading-screen';
 import { PageTransitionProvider } from './page-transition';
 import { Header } from '@/components/landing-page/header';
+import { OptimizedMotionProvider } from '@/components/ui/optimized-motion';
 
 interface ClientLayoutProps {
   children: React.ReactNode;
@@ -54,17 +55,17 @@ export function ClientLayout({ children }: ClientLayoutProps) {
       {showLoadingScreen && (
         <LoadingScreen
           onLoadingComplete={handleLoadingComplete}
-          minDuration={2500}
+          minDuration={800}
         />
       )}
 
       {showContent && (
-        <>
+        <OptimizedMotionProvider>
           <Header />
           <PageTransitionProvider>
             {children}
           </PageTransitionProvider>
-        </>
+        </OptimizedMotionProvider>
       )}
     </>
   );

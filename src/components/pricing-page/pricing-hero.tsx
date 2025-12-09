@@ -17,17 +17,17 @@ export function PricingHero() {
         <ContrastWrapper className="space-y-8 z-10 order-2 lg:order-1">
           <span className="typo-tech text-signal text-xs">Transparent Pricing</span>
           <h1 className="typo-headline text-5xl md:text-7xl leading-tight text-platinum">
-            <ContrastText as="span" variant="monochrome">Fair Prices,</ContrastText>
+            <ContrastText as="span" variant="monochrome">Investment-Grade Engineering,</ContrastText>
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-signal to-orange-400">
               {' '}
-              Unfair Advantage.
+              Startup Speed.
             </span>
           </h1>
           <p className="typo-subhead text-lg text-tungsten max-w-lg leading-relaxed">
-            Our AI-driven efficiency means we deliver enterprise-grade digital
-            products at prices that make sense for small and growing businesses
-            in India. No complex retainers, no hidden fees—just clear, upfront
-            pricing.
+            We help India's growth-stage companies build market-leading products without
+            enterprise timelines or enterprise price tags. Custom solutions engineered for
+            your specific business outcomes. Fixed-scope proposals, transparent pricing,
+            no hidden fees.
           </p>
         </ContrastWrapper>
 
@@ -83,15 +83,15 @@ export function PricingHero() {
               <div className="bg-signal/10 p-4 rounded border border-signal/20 mt-4">
                 <div className="flex items-center justify-between">
                   <div>
-                    <span className="typo-tech text-xs text-tungsten block">Starting From</span>
+                    <span className="typo-tech text-xs text-tungsten block">Typical Engagements</span>
                     <div className="flex items-center gap-1 mt-1">
                       <IndianRupee className="w-5 h-5 text-signal" />
-                      <span className="typo-headline text-2xl text-platinum">15,000</span>
+                      <span className="typo-headline text-2xl text-platinum">15L - 1Cr</span>
                     </div>
                   </div>
                   <div className="flex items-center gap-2 bg-carbon px-3 py-2 rounded">
                     <Sparkles className="w-4 h-4 text-signal" />
-                    <span className="typo-tech text-xs text-platinum">Best Value</span>
+                    <span className="typo-tech text-xs text-platinum">Custom Quote</span>
                   </div>
                 </div>
               </div>

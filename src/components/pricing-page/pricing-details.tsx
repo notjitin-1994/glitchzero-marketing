@@ -3,18 +3,18 @@ import { ArrowRight, Check, IndianRupee, Zap, FileText } from 'lucide-react';
 const pricingPoints = [
   {
     icon: IndianRupee,
-    title: "Simple Websites from Just ₹10,000",
-    description: "Get a professional, high-quality online presence without the enterprise price tag. Pricing for more complex apps and software goes up from here, tailored to your specific needs."
+    title: "Transparent, Outcome-Based Pricing",
+    description: "Our engagements typically range from ₹15 lakhs to ₹1 crore depending on product complexity, platform coverage, and business requirements. We provide fixed-scope proposals after understanding your specific needs—no hourly rates, no scope creep."
   },
   {
     icon: Zap,
-    title: "First Draft in as little as 24 Hours",
-    description: "Our AI-powered platform enables us to deliver a first draft for simple projects incredibly fast. More complex projects may take up to 3 months for the initial draft, but we always move 60% faster than traditional agencies."
+    title: "8-12 Week Timeline to Market-Ready Product",
+    description: "From initial discovery to production deployment, we deliver in 8-12 weeks for most engagements—60% faster than traditional agencies. We use agile methodology with weekly iterations, so you see progress continuously, not just at the end."
   },
   {
     icon: FileText,
-    title: "Custom Quote for Every Project",
-    description: "Your business is unique. We provide a detailed, no-obligation quote based on your specific requirements."
+    title: "What Determines Your Investment",
+    description: "Pricing depends on: product complexity, platform coverage (web/iOS/Android), integrations required, compliance needs, expected user scale, and ongoing support requirements. After our discovery call, we provide a detailed proposal with fixed scope and investment within 48 hours."
   }
 ];
 
@@ -24,12 +24,12 @@ export function PricingDetails() {
       <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-16">
         <div className="lg:col-span-2">
           <h2 className="typo-headline text-3xl text-platinum mb-4">
-            How Our Pricing Works
+            Investment-Based Custom Solutions
           </h2>
           <p className="typo-body text-tungsten mb-12">
-            We believe in simple, transparent pricing that aligns with your
-            goals. We quote on a per-project basis, ensuring you only pay for
-            what you need.
+            Every business has unique challenges and opportunities. We provide custom
+            proposals based on your specific requirements, timeline, and desired outcomes.
+            No cookie-cutter packages—just solutions engineered for your goals.
           </p>
 
           <div className="space-y-8">
@@ -54,11 +54,12 @@ export function PricingDetails() {
         <div className="sticky top-24 h-fit">
           <div className="bg-carbon border border-tungsten/10 rounded-sm p-8">
             <h3 className="typo-headline text-xl text-platinum mb-4">
-              Ready to Start?
+              Start with a Discovery Call
             </h3>
             <p className="typo-body text-tungsten text-sm mb-6">
-              Let's discuss your vision. Get a free, personalized quote and see
-              how quickly we can bring your idea to life.
+              30-minute technical consultation with our founder. We'll discuss your
+              goals, challenges, and provide honest recommendations—even if it means
+              we're not the right fit.
             </p>
 
             <ul className="space-y-3 mb-8">
@@ -72,7 +73,7 @@ export function PricingDetails() {
               </li>
               <li className="flex items-center gap-3">
                 <Check className="w-4 h-4 text-terminal" />
-                <span className="typo-body text-platinum text-sm">60% Faster Delivery</span>
+                <span className="typo-body text-platinum text-sm">Fixed Scope & Timeline</span>
               </li>
               <li className="flex items-center gap-3">
                 <Check className="w-4 h-4 text-terminal" />
@@ -86,7 +87,7 @@ export function PricingDetails() {
               rel="noopener noreferrer"
               className="w-full bg-signal text-obsidian px-10 py-3 typo-headline text-base hover:bg-white transition-colors shadow-[0_0_20px_rgba(255,79,0,0.3)] hover:shadow-[0_0_30px_rgba(255,79,0,0.5)] flex items-center justify-center gap-2"
             >
-              Get Your Free Quote
+              Schedule Discovery Call
               <ArrowRight className="w-4 h-4" />
             </a>
           </div>

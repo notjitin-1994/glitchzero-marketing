@@ -7,6 +7,14 @@ body {
   background-color: #121212;
   color: #E5E5E7;
   overflow-x: hidden;
+
+  /* Touch optimization - removes 300ms click delay on mobile */
+  touch-action: manipulation;
+
+  /* Text rendering optimization */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
 }
 
 ::-webkit-scrollbar {
@@ -106,6 +114,129 @@ body {
   }
   body {
     @apply bg-background text-foreground;
+  }
+
+  /* ===== TOUCH OPTIMIZATIONS ===== */
+
+  /* Remove 300ms click delay on mobile and ensure minimum touch targets */
+  button, a, [role="button"], [role="link"], input[type="button"], input[type="submit"] {
+    touch-action: manipulation;
+    min-height: 44px; /* iOS minimum recommendation */
+    -webkit-tap-highlight-color: transparent; /* Remove tap highlight */
+  }
+
+  /* Prevent text selection on interactive elements */
+  button, [role="button"], [role="tab"] {
+    -webkit-user-select: none;
+    user-select: none;
+  }
+
+  /* Touch-friendly input fields */
+  input, textarea, select {
+    touch-action: manipulation;
+    font-size: 16px; /* Prevents iOS zoom on focus */
+  }
+
+  /* Smooth touch scrolling */
+  * {
+    -webkit-overflow-scrolling: touch;
+    scroll-behavior: smooth;
+  }
+
+  /* ===== GPU ACCELERATION ===== */
+
+  /* Force hardware acceleration for animations */
+  [class*="animate-"], [class*="motion-"], [class*="transition-"] {
+    will-change: transform, opacity;
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    perspective: 1000px;
+    -webkit-perspective: 1000px;
+  }
+
+  /* Optimize transforms */
+  .transform, [style*="transform"] {
+    transform: translateZ(0);
+    will-change: transform;
+  }
+
+  /* ===== ACCESSIBILITY ===== */
+
+  /* Respect reduced motion preference */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+
+  /* High contrast mode support */
+  @media (prefers-contrast: high) {
+    * {
+      border-width: 2px;
+    }
+  }
+}
+
+/* ===== TOUCH TARGET UTILITIES ===== */
+
+/* Helper class for WCAG 2.5.8 compliant touch targets */
+.touch-target {
+  min-width: 48px;
+  min-height: 48px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.touch-target-sm {
+  min-width: 44px;
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.touch-target-lg {
+  min-width: 56px;
+  min-height: 56px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ===== MOBILE ENHANCEMENTS ===== */
+
+/* Prevent double-tap zoom on mobile */
+a, button {
+  touch-action: manipulation;
+}
+
+/* Improve scroll performance */
+.scroll-smooth {
+  -webkit-overflow-scrolling: touch;
+  scroll-behavior: smooth;
+}
+
+/* Active state feedback for mobile */
+@media (hover: none) and (pointer: coarse) {
+  /* Mobile-only active states */
+  button:active:not(:disabled),
+  a:active,
+  [role="button"]:active {
+    transform: scale(0.98);
+    transition: transform 0.1s ease;
+  }
+
+  /* Increase touch target spacing on mobile */
+  button + button,
+  a + a {
+    margin-left: 0.5rem;
   }
 }
 
