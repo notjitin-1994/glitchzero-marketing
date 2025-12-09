@@ -344,7 +344,7 @@ function SmartslateShowcase() {
                 {/* Navigation Tabs */}
                 <div className="pt-4 border-t border-tungsten/10">
                   <span className="typo-tech text-[10px] text-tungsten uppercase mb-3 block">Explore Pages</span>
-                  <div className="grid grid-cols-1 gap-2">
+                  <div className="grid grid-cols-2 gap-2">
                     {smartslateScreenshots.map((screenshot, idx) => (
                       <button
                         key={screenshot.id}
@@ -529,7 +529,7 @@ export function WebsitesPortfolioShowcase() {
   const [hoveredProject, setHoveredProject] = useState<string | null>(null);
 
   return (
-    <section className="py-24 md:py-32 px-6 bg-carbon relative">
+    <section className="py-24 md:py-32 px-6 bg-carbon relative overflow-hidden">
       {/* Background gradient */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-signal/5 blur-[150px] rounded-full pointer-events-none"></div>
       <div className="absolute bottom-1/4 right-0 w-[400px] h-[400px] bg-terminal/5 blur-[120px] rounded-full pointer-events-none"></div>
@@ -645,7 +645,7 @@ function ProjectCard({ project, index, isHovered, onHover, onLeave }: ProjectCar
                 src={project.image}
                 alt={`${project.title} screenshot`}
                 fill
-                className="object-cover object-top transition-transform duration-700 group-hover:scale-105"
+                className="object-contain transition-transform duration-300"
                 sizes="(max-width: 768px) 100vw, 60vw"
               />
 
