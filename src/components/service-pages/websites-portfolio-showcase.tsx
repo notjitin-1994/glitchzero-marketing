@@ -224,7 +224,7 @@ function SmartslateShowcase() {
                     src={activeScreenshot.image}
                     alt={activeScreenshot.title}
                     fill
-                    className="object-cover object-top"
+                    className="object-contain"
                     sizes="(max-width: 768px) 100vw, 66vw"
                     priority
                   />
@@ -289,7 +289,7 @@ function SmartslateShowcase() {
                     src={screenshot.image}
                     alt={screenshot.title}
                     fill
-                    className="object-cover object-top"
+                    className="object-contain"
                     sizes="120px"
                   />
                 </button>
@@ -503,7 +503,7 @@ function SmartslateShowcase() {
                       src={screenshot.image}
                       alt={screenshot.title}
                       fill
-                      className="object-cover object-top"
+                      className="object-contain"
                       sizes="96px"
                     />
                   </button>
