@@ -56,6 +56,7 @@ export const metadata: Metadata = {
       'max-snippet': -1,
     },
   },
+  themeColor: '#FF4F00',
 };
 
 export default function RootLayout({
@@ -107,10 +108,10 @@ export default function RootLayout({
         />
       </head>
       <body className={cn('antialiased min-h-screen flex flex-col relative selection:bg-signal selection:text-white', 'font-sans bg-obsidian text-platinum')}>
-          <ClientLayout>
-            {children}
-          </ClientLayout>
-          <Toaster />
+        <ClientLayout>
+          {children}
+        </ClientLayout>
+        <Toaster />
       </body>
     </html>
   );
