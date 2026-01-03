@@ -1,8 +1,12 @@
-import type { Metadata } from 'next';
+import type { Metadata, Viewport } from 'next';
 import './globals.css';
 import { cn } from '@/lib/utils';
 import { Toaster } from '@/components/ui/toaster';
 import { ClientLayout } from '@/components/ui/client-layout';
+
+export const viewport: Viewport = {
+  themeColor: '#FF4F00',
+};
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://glitchzerolabs.com'),
@@ -56,7 +60,6 @@ export const metadata: Metadata = {
       'max-snippet': -1,
     },
   },
-  themeColor: '#FF4F00',
 };
 
 export default function RootLayout({
