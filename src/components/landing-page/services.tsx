@@ -5,7 +5,7 @@ import { FadeInSection, StaggerContainer, StaggerItem } from '@/components/ui/fa
 
 export function Services() {
   return (
-    <section id="services" className="py-24 bg-carbon border-y border-obsidian/50">
+    <section id="services" className="py-10 bg-carbon border-y border-obsidian/50">
       <div className="max-w-7xl mx-auto px-6">
         <FadeInSection direction="up" className="mb-16">
           <span className="typo-tech text-signal text-xs">What We Build, Fast.</span>
@@ -46,7 +46,7 @@ export function Services() {
               </div>
               <h3 className="typo-headline text-xl text-platinum mb-4">Digital Platforms</h3>
               <p className="typo-body text-tungsten leading-relaxed">
-               High-performance web applications built with modern frameworks (Next.js, React). From marketing sites to complex SaaS platforms—optimized for SEO, conversions, and Indian internet conditions.
+                High-performance web applications built with modern frameworks (Next.js, React). From marketing sites to complex SaaS platforms—optimized for SEO, conversions, and Indian internet conditions.
               </p>
               <div className="absolute bottom-0 left-0 w-full h-1 bg-signal transform -translate-x-full group-hover:translate-x-0 transition-transform duration-300 delay-150"></div>
             </div>

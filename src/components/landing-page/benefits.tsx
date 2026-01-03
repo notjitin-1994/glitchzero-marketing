@@ -5,7 +5,7 @@ import { FadeInSection, StaggerContainer, StaggerItem } from '@/components/ui/fa
 
 export function Benefits() {
   return (
-    <section id="benefits" className="py-24 px-6 max-w-7xl mx-auto">
+    <section id="benefits" className="py-10 px-6 max-w-7xl mx-auto">
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
 
         <div className="space-y-10">
@@ -65,41 +65,41 @@ export function Benefits() {
 
         <FadeInSection direction="right" delay={0.2} className="h-full">
           <div id="process" className="bg-carbon border border-tungsten/10 p-8 rounded-sm relative h-full">
-          <h3 className="typo-headline text-lg text-platinum mb-6">Our 3-Step Rapid Process</h3>
-          
-          <div className="space-y-8 relative">
-            <div className="absolute left-3 top-2 bottom-2 w-0.5 bg-tungsten/20"></div>
+            <h3 className="typo-headline text-lg text-platinum mb-6">Our 3-Step Rapid Process</h3>
 
-            <div className="relative flex items-start gap-4">
-              <div className="w-6 h-6 rounded-full bg-obsidian border border-signal flex items-center justify-center shrink-0 z-10">
-                <span className="text-signal text-[10px] font-bold">1</span>
+            <div className="space-y-8 relative">
+              <div className="absolute left-3 top-2 bottom-2 w-0.5 bg-tungsten/20"></div>
+
+              <div className="relative flex items-start gap-4">
+                <div className="w-6 h-6 rounded-full bg-obsidian border border-signal flex items-center justify-center shrink-0 z-10">
+                  <span className="text-signal text-[10px] font-bold">1</span>
+                </div>
+                <div>
+                  <h4 className="typo-subhead text-platinum text-sm">Consult & Strategize (Day 1)</h4>
+                  <p className="typo-body text-xs text-tungsten mt-1">We discuss your needs and finalize a plan on our first call.</p>
+                </div>
               </div>
-              <div>
-                <h4 className="typo-subhead text-platinum text-sm">Consult & Strategize (Day 1)</h4>
-                <p className="typo-body text-xs text-tungsten mt-1">We discuss your needs and finalize a plan on our first call.</p>
+
+              <div className="relative flex items-start gap-4">
+                <div className="w-6 h-6 rounded-full bg-obsidian border border-tungsten flex items-center justify-center shrink-0 z-10">
+                  <span className="text-platinum text-[10px] font-bold">2</span>
+                </div>
+                <div>
+                  <h4 className="typo-subhead text-platinum text-sm">Build & Review (1-2 Weeks)</h4>
+                  <p className="typo-body text-xs text-tungsten mt-1">Our team codes at high speed. You get weekly updates, not monthly.</p>
+                </div>
+              </div>
+
+              <div className="relative flex items-start gap-4">
+                <div className="w-6 h-6 rounded-full bg-obsidian border border-tungsten flex items-center justify-center shrink-0 z-10">
+                  <span className="text-platinum text-[10px] font-bold">3</span>
+                </div>
+                <div>
+                  <h4 className="typo-subhead text-platinum text-sm">Launch & Train (Final Day)</h4>
+                  <p className="typo-body text-xs text-tungsten mt-1">We deploy your app and train you, ensuring you're ready for business.</p>
+                </div>
               </div>
             </div>
-
-            <div className="relative flex items-start gap-4">
-              <div className="w-6 h-6 rounded-full bg-obsidian border border-tungsten flex items-center justify-center shrink-0 z-10">
-                <span className="text-platinum text-[10px] font-bold">2</span>
-              </div>
-              <div>
-                <h4 className="typo-subhead text-platinum text-sm">Build & Review (1-2 Weeks)</h4>
-                <p className="typo-body text-xs text-tungsten mt-1">Our team codes at high speed. You get weekly updates, not monthly.</p>
-              </div>
-            </div>
-
-            <div className="relative flex items-start gap-4">
-              <div className="w-6 h-6 rounded-full bg-obsidian border border-tungsten flex items-center justify-center shrink-0 z-10">
-                <span className="text-platinum text-[10px] font-bold">3</span>
-              </div>
-              <div>
-                <h4 className="typo-subhead text-platinum text-sm">Launch & Train (Final Day)</h4>
-                <p className="typo-body text-xs text-tungsten mt-1">We deploy your app and train you, ensuring you're ready for business.</p>
-              </div>
-            </div>
-          </div>
 
           </div>
         </FadeInSection>

@@ -29,16 +29,16 @@ const clients = [
 
 export function Testimonials() {
   return (
-    <section id="testimonials" className="py-24 px-6 bg-carbon border-y border-obsidian/50">
+    <section id="testimonials" className="py-10 px-6 bg-carbon border-y border-obsidian/50">
       <div className="max-w-7xl mx-auto">
 
-        <FadeInSection direction="up" className="text-center mb-16 md:mb-20">
+        <FadeInSection direction="up" className="text-center mb-10 md:mb-10">
           <span className="typo-tech text-signal text-xs">Trusted By</span>
           <h2 className="typo-headline text-3xl md:text-4xl text-platinum mt-3">Trusted by Companies Building the Future</h2>
           <p className="typo-subhead text-tungsten max-w-2xl mx-auto mt-4">From AI-powered platforms to enterprise management systems—our clients trust us to engineer products that drive real business outcomes.</p>
         </FadeInSection>
 
-        <StaggerContainer staggerDelay={0.15} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-24">
+        <StaggerContainer staggerDelay={0.15} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-10">
           {testimonials.map((item, index) => (
             <StaggerItem key={index}>
               <div className="bg-obsidian border border-tungsten/10 p-8 rounded-sm flex flex-col h-full">

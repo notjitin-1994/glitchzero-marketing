@@ -12,7 +12,7 @@ export function Hero() {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   return (
-    <section className="relative pt-32 pb-20 md:pt-48 md:pb-32 px-6 overflow-hidden">
+    <section className="relative pt-24 pb-8 md:pt-32 md:pb-12 px-6 overflow-hidden">
       {/* Neuro shader background - monochromatic signal orange */}
       <NeuroBackground
         intensity={1.3}
@@ -40,7 +40,7 @@ export function Hero() {
               <ContrastText as="span" variant="monochrome" className="text-platinum">
                 Engineer Products
               </ContrastText>
-              <br/>
+              <br />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-signal to-orange-400">That Win Markets.</span>
             </h1>
           </BlurFadeIn>
@@ -82,13 +82,13 @@ export function Hero() {
             <div className="p-6">
               <div className="flex items-center justify-between mb-6 border-b border-carbon pb-4">
                 <div className="flex items-center gap-2">
-                   <div className="w-8 h-8 bg-carbon rounded-full flex items-center justify-center">
-                      <Store className="w-4 h-4 text-platinum" />
-                   </div>
-                   <div>
-                      <span className="typo-subhead text-sm text-platinum block">Your Business App</span>
-                      <span className="typo-tech text-[10px] text-terminal">● Live</span>
-                   </div>
+                  <div className="w-8 h-8 bg-carbon rounded-full flex items-center justify-center">
+                    <Store className="w-4 h-4 text-platinum" />
+                  </div>
+                  <div>
+                    <span className="typo-subhead text-sm text-platinum block">Your Business App</span>
+                    <span className="typo-tech text-[10px] text-terminal">● Live</span>
+                  </div>
                 </div>
                 <Wifi className="w-4 h-4 text-tungsten" />
               </div>
