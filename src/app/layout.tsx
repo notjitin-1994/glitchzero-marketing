@@ -5,7 +5,10 @@ import { Toaster } from '@/components/ui/toaster';
 import { ClientLayout } from '@/components/ui/client-layout';
 
 export const viewport: Viewport = {
-  themeColor: '#FF4F00',
+  themeColor: [
+    { media: '(prefers-color-scheme: light)', color: '#FF4F00' },
+    { media: '(prefers-color-scheme: dark)', color: '#FF4F00' },
+  ],
 };
 
 export const metadata: Metadata = {
