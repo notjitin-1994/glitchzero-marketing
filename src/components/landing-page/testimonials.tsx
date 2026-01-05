@@ -7,17 +7,20 @@ const testimonials = [
   {
     name: 'Rakesh',
     company: "Rocky's Fruit Cafe",
-    testimonial: "GlitchZero built our inventory and sales management system in 3 weeks—helping us reduce waste by 30% and increase revenue visibility. Their system now handles 5,000+ transactions daily across our 3 locations. What impressed us most was their understanding of F&B operations and ability to deliver fast without cutting corners."
+    headline: "Reduced Waste by 30% & Scaled to 5,000+ Daily Transactions",
+    testimonial: "GlitchZero didn't just build software; they solved our operational bottlenecks. Their inventory system handles massive volume across multiple locations seamlessly. They understand business operations as well as they understand code."
   },
   {
     name: 'Megha Sreekumar',
     company: 'SmartSlate',
-    testimonial: 'GlitchZero engineered our AI-powered learning platform that now serves 10,000+ students daily. They understood the complexities of EdTech compliance and built a scalable architecture that handled our 300% user growth in the first quarter. Their technical depth and execution speed gave us the competitive edge we needed.'
+    headline: "Architected for 300% Growth in One Quarter",
+    testimonial: "Scaling an EdTech platform requires zero latency and high reliability. GlitchZero delivered a compliant, robust architecture that handled our surge to 10,000+ daily students without a hitch."
   },
   {
     name: 'Sid S',
     company: 'Stex',
-    testimonial: "We started with a website rebuild and were so impressed that we engaged GlitchZero for our entire digital transformation—including a factory management ERP and customer portal. They've integrated our legacy systems, automated workflows that saved us 200+ hours monthly, and built mobile apps for field teams. True engineering partners."
+    headline: "Saved 200+ Hours Monthly via Automation",
+    testimonial: "We engaged GlitchZero for a complete digital transformation. They integrated legacy systems with modern ERPs, saving us hundreds of man-hours. Truly a partner invested in our efficiency."
   }
 ]
 
@@ -33,7 +36,7 @@ export function Testimonials() {
       <div className="max-w-7xl mx-auto">
 
         <FadeInSection direction="up" className="text-center mb-10 md:mb-10">
-          <span className="typo-tech text-signal text-xs">Trusted By</span>
+          <span className="typo-tech text-signal text-xs">Real Engineering. Tangible ROI.</span>
           <h2 className="typo-headline text-3xl md:text-4xl text-platinum mt-3">Trusted by Companies Building the Future</h2>
           <p className="typo-subhead text-tungsten max-w-2xl mx-auto mt-4">From AI-powered platforms to enterprise management systems—our clients trust us to engineer products that drive real business outcomes.</p>
         </FadeInSection>
@@ -42,11 +45,12 @@ export function Testimonials() {
           {testimonials.map((item, index) => (
             <StaggerItem key={index}>
               <div className="bg-obsidian border border-tungsten/10 p-8 rounded-sm flex flex-col h-full">
-                <div className="flex text-yellow-400 mb-6">
+                <div className="flex text-yellow-400 mb-4">
                   {[...Array(5)].map((_, i) => <Star key={i} className="w-4 h-4 fill-current" />)}
                 </div>
-                <p className="typo-body text-tungsten flex-grow">"{item.testimonial}"</p>
-                <div className="flex items-center gap-4 mt-8">
+                <h4 className="typo-subhead text-platinum text-lg mb-3 leading-tight min-h-[3.5rem]">{item.headline}</h4>
+                <p className="typo-body text-tungsten flex-grow mb-6">"{item.testimonial}"</p>
+                <div className="flex items-center gap-4 mt-auto">
                   <div className="w-10 h-10 rounded-full bg-carbon border border-tungsten/20 flex items-center justify-center">
                     <User className="w-5 h-5 text-tungsten" />
                   </div>

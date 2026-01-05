@@ -9,14 +9,13 @@ interface GlowingEffectProps {
   inactiveZone?: number;
   proximity?: number;
   spread?: number;
-  variant?: "default" | "orange" | "white";
+  variant?: "default" | "white" | "orange";
   glow?: boolean;
   className?: string;
   disabled?: boolean;
   movementDuration?: number;
   borderWidth?: number;
 }
-
 const GlowingEffect = memo(
   ({
     blur = 0,
@@ -47,8 +46,8 @@ const GlowingEffect = memo(
           if (!element) return;
 
           const { left, top, width, height } = element.getBoundingClientRect();
-          const mouseX = e?.x ?? lastPosition.current.x;
-          const mouseY = e?.y ?? lastPosition.current.y;
+          const mouseX = e && 'clientX' in e ? e.clientX : e && 'x' in e ? e.x : lastPosition.current.x;
+          const mouseY = e && 'clientY' in e ? e.clientY : e && 'y' in e ? e.y : lastPosition.current.y;
 
           if (e) {
             lastPosition.current = { x: mouseX, y: mouseY };
@@ -80,7 +79,7 @@ const GlowingEffect = memo(
             parseFloat(element.style.getPropertyValue("--start")) || 0;
           let targetAngle =
             (180 * Math.atan2(mouseY - center[1], mouseX - center[0])) /
-              Math.PI +
+            Math.PI +
             90;
 
           const angleDiff = ((targetAngle - currentAngle + 180) % 360) - 180;
@@ -118,45 +117,6 @@ const GlowingEffect = memo(
       };
     }, [handleMove, disabled]);
 
-    // Brand orange gradient (signal color: #FF4F00)
-    const getGradient = () => {
-      if (variant === "white") {
-        return `repeating-conic-gradient(
-          from 236.84deg at 50% 50%,
-          var(--black),
-          var(--black) calc(25% / var(--repeating-conic-gradient-times))
-        )`;
-      }
-      if (variant === "orange") {
-        // Brand orange gradient with warm tones
-        return `radial-gradient(circle, #FF4F00 10%, #FF4F0000 20%),
-          radial-gradient(circle at 40% 40%, #FF7A33 5%, #FF7A3300 15%),
-          radial-gradient(circle at 60% 60%, #FF9F66 10%, #FF9F6600 20%),
-          radial-gradient(circle at 40% 60%, #CC3F00 10%, #CC3F0000 20%),
-          repeating-conic-gradient(
-            from 236.84deg at 50% 50%,
-            #FF4F00 0%,
-            #FF7A33 calc(25% / var(--repeating-conic-gradient-times)),
-            #FF9F66 calc(50% / var(--repeating-conic-gradient-times)),
-            #CC3F00 calc(75% / var(--repeating-conic-gradient-times)),
-            #FF4F00 calc(100% / var(--repeating-conic-gradient-times))
-          )`;
-      }
-      // Default colorful gradient
-      return `radial-gradient(circle, #dd7bbb 10%, #dd7bbb00 20%),
-        radial-gradient(circle at 40% 40%, #d79f1e 5%, #d79f1e00 15%),
-        radial-gradient(circle at 60% 60%, #5a922c 10%, #5a922c00 20%),
-        radial-gradient(circle at 40% 60%, #4c7894 10%, #4c789400 20%),
-        repeating-conic-gradient(
-          from 236.84deg at 50% 50%,
-          #dd7bbb 0%,
-          #d79f1e calc(25% / var(--repeating-conic-gradient-times)),
-          #5a922c calc(50% / var(--repeating-conic-gradient-times)),
-          #4c7894 calc(75% / var(--repeating-conic-gradient-times)),
-          #dd7bbb calc(100% / var(--repeating-conic-gradient-times))
-        )`;
-    };
-
     return (
       <>
         <div
@@ -178,7 +138,38 @@ const GlowingEffect = memo(
               "--active": "0",
               "--glowingeffect-border-width": `${borderWidth}px`,
               "--repeating-conic-gradient-times": "5",
-              "--gradient": getGradient(),
+              "--gradient":
+                variant === "white"
+                  ? `repeating-conic-gradient(
+                  from 236.84deg at 50% 50%,
+                  var(--black),
+                  var(--black) calc(25% / var(--repeating-conic-gradient-times))
+                )`
+                  : variant === "orange"
+                    ? `radial-gradient(circle, #FF4F00 10%, #FF4F0000 20%),
+                radial-gradient(circle at 40% 40%, #FF7A33 5%, #FF7A3300 15%),
+                radial-gradient(circle at 60% 60%, #FF9F66 10%, #FF9F6600 20%), 
+                radial-gradient(circle at 40% 60%, #CC3F00 10%, #CC3F0000 20%),
+                repeating-conic-gradient(
+                  from 236.84deg at 50% 50%,
+                  #FF4F00 0%,
+                  #FF7A33 calc(25% / var(--repeating-conic-gradient-times)),
+                  #FF9F66 calc(50% / var(--repeating-conic-gradient-times)), 
+                  #CC3F00 calc(75% / var(--repeating-conic-gradient-times)),
+                  #FF4F00 calc(100% / var(--repeating-conic-gradient-times))
+                )`
+                    : `radial-gradient(circle, #dd7bbb 10%, #dd7bbb00 20%),
+                radial-gradient(circle at 40% 40%, #d79f1e 5%, #d79f1e00 15%),
+                radial-gradient(circle at 60% 60%, #5a922c 10%, #5a922c00 20%), 
+                radial-gradient(circle at 40% 60%, #4c7894 10%, #4c789400 20%),
+                repeating-conic-gradient(
+                  from 236.84deg at 50% 50%,
+                  #dd7bbb 0%,
+                  #d79f1e calc(25% / var(--repeating-conic-gradient-times)),
+                  #5a922c calc(50% / var(--repeating-conic-gradient-times)), 
+                  #4c7894 calc(75% / var(--repeating-conic-gradient-times)),
+                  #dd7bbb calc(100% / var(--repeating-conic-gradient-times))
+                )`,
             } as React.CSSProperties
           }
           className={cn(
@@ -192,10 +183,11 @@ const GlowingEffect = memo(
           <div
             className={cn(
               "glow",
+              "absolute inset-0",
               "rounded-[inherit]",
               'after:content-[""] after:rounded-[inherit] after:absolute after:inset-[calc(-1*var(--glowingeffect-border-width))]',
               "after:[border:var(--glowingeffect-border-width)_solid_transparent]",
-              "after:[background:var(--gradient)] after:[background-attachment:fixed]",
+              "after:[background:var(--gradient)]",
               "after:opacity-[var(--active)] after:transition-opacity after:duration-300",
               "after:[mask-clip:padding-box,border-box]",
               "after:[mask-composite:intersect]",

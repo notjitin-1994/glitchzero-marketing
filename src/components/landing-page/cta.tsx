@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { ContactFormModal } from '@/components/contact-form-modal';
 import { FadeInSection, BlurFadeIn } from '@/components/ui/fade-in-section';
 import { Vortex } from '@/components/ui/vortex';
+
 import { GlowingEffect } from '@/components/ui/glowing-effect';
 
 export function Cta() {
@@ -22,9 +23,7 @@ export function Cta() {
           {/* Glassmorphic Card - subtle blur to see animation through */}
           <div className="relative rounded-2xl border border-tungsten/20 p-[2px] md:rounded-3xl">
             <GlowingEffect
-              blur={0}
-              borderWidth={1.5}
-              spread={80}
+              spread={40}
               glow={true}
               disabled={false}
               proximity={64}
@@ -38,7 +37,7 @@ export function Cta() {
 
               <FadeInSection delay={0.15} direction="up">
                 <p className="typo-body text-tungsten text-lg mb-10 max-w-xl mx-auto">
-                  Your competitors aren't waiting. Let's engineer a scalable platform that positions you for market leadership—delivered in weeks, built to last years.
+                  Your competitors are investing in digital infrastructure. Don't get left behind. We accept a limited number of high-impact projects per quarter to ensure focused delivery.
                 </p>
               </FadeInSection>
 
@@ -48,17 +47,10 @@ export function Cta() {
                     onClick={() => setIsModalOpen(true)}
                     className="bg-signal text-obsidian px-10 py-4 typo-headline text-base hover:bg-white transition-colors shadow-[0_0_20px_rgba(255,79,0,0.3)] hover:shadow-[0_0_30px_rgba(255,79,0,0.5)]"
                   >
-                    Schedule Technical Discovery
+                    Book Your Technical Discovery Call
                   </button>
-                  <a
-                    href="https://wa.me/919008898642"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="border border-tungsten/30 text-platinum px-10 py-4 typo-headline text-base hover:border-signal hover:text-signal transition-colors bg-obsidian/80 backdrop-blur-sm"
-                  >
-                    Message Our Founder
-                  </a>
                 </div>
+                <p className="typo-tech text-xs text-tungsten mt-4">Zero obligation. 100% clarity on your next steps.</p>
               </FadeInSection>
             </div>
           </div>

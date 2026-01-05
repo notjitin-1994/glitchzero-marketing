@@ -54,7 +54,7 @@ export function Footer() {
         </div>
 
         <div className="border-t border-tungsten/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
-          <span className="typo-tech text-[10px] text-signal text-center md:text-left">© 2025 GlitchZero. Proudly Made in India.</span>
+          <span className="typo-tech text-[10px] text-signal text-center md:text-left">© 2025 GlitchZero Labs. Engineering the Future of Indian Business.</span>
           <div className="flex gap-4">
             <a href="#" className="text-signal hover:text-platinum transition-colors"><Facebook className="w-4 h-4" /></a>
             <a href="#" className="text-signal hover:text-platinum transition-colors"><Instagram className="w-4 h-4" /></a>

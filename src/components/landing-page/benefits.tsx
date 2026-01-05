@@ -11,8 +11,8 @@ export function Benefits() {
         <div className="space-y-10">
           <FadeInSection direction="up">
             <div>
-              <span className="typo-tech text-signal text-xs">Why Choose Us</span>
-              <h2 className="typo-headline text-3xl md:text-4xl text-platinum mt-3">Why India's Growth-Stage Companies Choose Us</h2>
+              <span className="typo-tech text-signal text-xs">Why Industry Leaders Choose GlitchZero</span>
+              <h2 className="typo-headline text-3xl md:text-4xl text-platinum mt-3">Why Industry Leaders Choose GlitchZero</h2>
             </div>
           </FadeInSection>
 
@@ -23,8 +23,8 @@ export function Benefits() {
                   <BrainCircuit className="w-5 h-5 text-tungsten" />
                 </div>
                 <div>
-                  <h4 className="typo-subhead text-platinum mb-1">Startup Speed, Enterprise Standards</h4>
-                  <p className="typo-body text-tungsten text-sm">We move 60% faster than traditional agencies through AI-accelerated workflows—but never compromise on architecture, security, or scalability. Every line of code is written to handle your next growth phase, not just today's requirements.</p>
+                  <h4 className="typo-subhead text-platinum mb-1">Enterprise-Grade Engineering, Startup Agility</h4>
+                  <p className="typo-body text-tungsten text-sm">We don’t just write code; we architect assets. Our systems are built to handle millions of transactions and users from Day 1. We combine the agility of a modern tech stack with the security and governance required by serious enterprises.</p>
                 </div>
               </div>
             </StaggerItem>
@@ -39,8 +39,8 @@ export function Benefits() {
                   <IndianRupee className="w-5 h-5 text-tungsten" />
                 </div>
                 <div>
-                  <h4 className="typo-subhead text-platinum mb-1">India-First Product Engineering</h4>
-                  <p className="typo-body text-tungsten text-sm">We understand what it takes to build for the Indian market: UPI integration, Aadhaar verification, multilingual support, and DPDP Act compliance. Plus performance optimization for Indian internet conditions and device diversity.</p>
+                  <h4 className="typo-subhead text-platinum mb-1">India-Specific Digital Dominance</h4>
+                  <p className="typo-body text-tungsten text-sm">Winning in India requires more than just translation. We engineer for the unique complexities of the Indian digital economy—deep UPI integration, DPDP Act compliance, and optimization for diverse device landscapes. We build products that work flawlessly for every Indian user.</p>
                 </div>
               </div>
             </StaggerItem>
@@ -55,8 +55,8 @@ export function Benefits() {
                   <MessageSquare className="w-5 h-5 text-tungsten" />
                 </div>
                 <div>
-                  <h4 className="typo-subhead text-platinum mb-1">Founder-Led, Always Accessible</h4>
-                  <p className="typo-body text-tungsten text-sm">Work directly with our founder and lead engineer, not a sales team. Get technical answers in hours via WhatsApp or email. 60% of our clients are referrals—because we deliver on our commitments.</p>
+                  <h4 className="typo-subhead text-platinum mb-1">Direct Access to Technical Leadership</h4>
+                  <p className="typo-body text-tungsten text-sm">Stop playing telephone with account managers. You partner directly with our senior engineering architects. We translate your business goals into technical reality with zero "lost in translation" errors.</p>
                 </div>
               </div>
             </StaggerItem>
@@ -65,7 +65,7 @@ export function Benefits() {
 
         <FadeInSection direction="right" delay={0.2} className="h-full">
           <div id="process" className="bg-carbon border border-tungsten/10 p-8 rounded-sm relative h-full">
-            <h3 className="typo-headline text-lg text-platinum mb-6">Our 3-Step Rapid Process</h3>
+            <h3 className="typo-headline text-lg text-platinum mb-6">The GlitchZero Engineering Protocol</h3>
 
             <div className="space-y-8 relative">
               <div className="absolute left-3 top-2 bottom-2 w-0.5 bg-tungsten/20"></div>
@@ -75,8 +75,8 @@ export function Benefits() {
                   <span className="text-signal text-[10px] font-bold">1</span>
                 </div>
                 <div>
-                  <h4 className="typo-subhead text-platinum text-sm">Consult & Strategize (Day 1)</h4>
-                  <p className="typo-body text-xs text-tungsten mt-1">We discuss your needs and finalize a plan on our first call.</p>
+                  <h4 className="typo-subhead text-platinum text-sm">Deep-Dive Discovery & Architecture</h4>
+                  <p className="typo-body text-xs text-tungsten mt-1">We don’t guess; we blueprint. We analyze your business model, user flows, and technical requirements to create a roadmap that guarantees ROI before a single line of code is written.</p>
                 </div>
               </div>
 
@@ -85,8 +85,8 @@ export function Benefits() {
                   <span className="text-platinum text-[10px] font-bold">2</span>
                 </div>
                 <div>
-                  <h4 className="typo-subhead text-platinum text-sm">Build & Review (1-2 Weeks)</h4>
-                  <p className="typo-body text-xs text-tungsten mt-1">Our team codes at high speed. You get weekly updates, not monthly.</p>
+                  <h4 className="typo-subhead text-platinum text-sm">Agile Development & Iteration</h4>
+                  <p className="typo-body text-xs text-tungsten mt-1">Deploying our AI-accelerated workflow to cut development cycles by 40% without compromising code quality. You receive weekly executive briefings and tangible progress—no black boxes.</p>
                 </div>
               </div>
 
@@ -95,8 +95,8 @@ export function Benefits() {
                   <span className="text-platinum text-[10px] font-bold">3</span>
                 </div>
                 <div>
-                  <h4 className="typo-subhead text-platinum text-sm">Launch & Train (Final Day)</h4>
-                  <p className="typo-body text-xs text-tungsten mt-1">We deploy your app and train you, ensuring you're ready for business.</p>
+                  <h4 className="typo-subhead text-platinum text-sm">Scale-Ready Launch & Handover</h4>
+                  <p className="typo-body text-xs text-tungsten mt-1">We execute a seamless deployment, ensuring 99.9% uptime. Post-launch, we provide comprehensive training and documentation, empowering your internal teams to take full ownership.</p>
                 </div>
               </div>
             </div>

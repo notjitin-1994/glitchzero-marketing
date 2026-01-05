@@ -31,23 +31,23 @@ export function Hero() {
           <FadeInSection delay={0.1} direction="up">
             <div className="inline-flex items-center gap-3 bg-carbon border border-tungsten/20 px-3 py-1.5 rounded-sm">
               <span className="w-2 h-2 rounded-full bg-terminal animate-pulse"></span>
-              <span className="typo-tech text-xs text-tungsten">Trusted by Growth-Stage Companies</span>
+              <span className="typo-tech text-xs text-tungsten">Trusted by High-Growth Ventures & Enterprises</span>
             </div>
           </FadeInSection>
 
           <BlurFadeIn delay={0.2}>
             <h1 className="typo-headline text-5xl md:text-7xl leading-tight">
               <ContrastText as="span" variant="monochrome" className="text-platinum">
-                Engineer Products
+                Engineer Digital Platforms
               </ContrastText>
               <br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-signal to-orange-400">That Win Markets.</span>
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-signal to-orange-400">That Command Market Leadership.</span>
             </h1>
           </BlurFadeIn>
 
           <FadeInSection delay={0.3} direction="up">
             <p className="typo-subhead text-lg text-tungsten max-w-lg leading-relaxed">
-              We build scalable digital platforms for India's growth-stage companies—combining startup speed with enterprise-grade architecture. From MVP to market leader in 8-12 weeks, not 6 months.
+              We build enterprise-grade web & mobile ecosystems for India's fastest-growing companies. Scalable architecture, seamless user experiences, and zero technical debt—delivered with precision.
             </p>
           </FadeInSection>
 
@@ -57,17 +57,14 @@ export function Hero() {
                 onClick={() => setIsModalOpen(true)}
                 className="bg-signal text-obsidian px-8 py-4 typo-headline text-sm hover:bg-white hover:text-obsidian transition-all duration-300 flex items-center justify-center gap-2 shadow-[0_0_15px_rgba(255,79,0,0.4)]"
               >
-                Schedule Discovery Call
+                Request Strategic Consultation
                 <ArrowRight className="w-4 h-4" />
               </button>
               <a
-                href="https://wa.me/919008898642"
-                target="_blank"
-                rel="noopener noreferrer"
+                href="#testimonials"
                 className="border border-tungsten/30 text-platinum px-8 py-4 typo-headline text-sm hover:bg-carbon hover:border-platinum transition-all duration-300 flex items-center justify-center gap-2"
               >
-                <MessageCircle className="w-4 h-4" />
-                Message Founder Directly
+                View Case Studies
               </a>
             </div>
           </FadeInSection>
