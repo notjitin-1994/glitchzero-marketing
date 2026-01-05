@@ -71,7 +71,7 @@ const useCases = [
 
 export function IotFeatures() {
   return (
-    <section className="py-24 md:py-32 px-6 bg-carbon relative">
+    <section className="py-10 md:py-12 px-6 bg-carbon relative">
       {/* Background */}
       <div className="absolute top-1/3 left-0 w-96 h-96 bg-signal/5 blur-[150px] rounded-full pointer-events-none"></div>
       <div className="absolute bottom-1/4 right-0 w-64 h-64 bg-terminal/5 blur-[100px] rounded-full pointer-events-none"></div>

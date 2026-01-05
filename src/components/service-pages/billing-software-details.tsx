@@ -25,7 +25,7 @@ const features = [
 
 export function BusinessSoftwareDetails() {
   return (
-    <section className="py-24 px-6">
+    <section className="py-10 px-6">
       <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-16">
         <div className="lg:col-span-2">
           <h2 className="typo-headline text-3xl text-platinum mb-4">
@@ -54,38 +54,38 @@ export function BusinessSoftwareDetails() {
         </div>
 
         <div className="sticky top-24 h-fit">
-            <div className="bg-carbon border border-tungsten/10 rounded-sm p-8">
-                <h3 className="typo-headline text-xl text-platinum mb-4">
-                    Own Your Software
-                </h3>
-                <p className="typo-body text-tungsten text-sm mb-6">
-                    No monthly fees. No surprise price hikes. Get a lifetime license for your custom application.
-                </p>
+          <div className="bg-carbon border border-tungsten/10 rounded-sm p-8">
+            <h3 className="typo-headline text-xl text-platinum mb-4">
+              Own Your Software
+            </h3>
+            <p className="typo-body text-tungsten text-sm mb-6">
+              No monthly fees. No surprise price hikes. Get a lifetime license for your custom application.
+            </p>
 
-                <ul className="space-y-3 mb-8">
-                    <li className="flex items-center gap-3">
-                        <Check className="w-4 h-4 text-terminal" />
-                        <span className="typo-body text-platinum text-sm">Windows & macOS Apps</span>
-                    </li>
-                    <li className="flex items-center gap-3">
-                        <Check className="w-4 h-4 text-terminal" />
-                        <span className="typo-body text-platinum text-sm">One-Time Payment</span>
-                    </li>
-                    <li className="flex items-center gap-3">
-                        <Check className="w-4 h-4 text-terminal" />
-                        <span className="typo-body text-platinum text-sm">Secure Local & Cloud Data</span>
-                    </li>
-                    <li className="flex items-center gap-3">
-                        <Check className="w-4 h-4 text-terminal" />
-                        <span className="typo-body text-platinum text-sm">30-Day Post-Launch Support</span>
-                    </li>
-                </ul>
+            <ul className="space-y-3 mb-8">
+              <li className="flex items-center gap-3">
+                <Check className="w-4 h-4 text-terminal" />
+                <span className="typo-body text-platinum text-sm">Windows & macOS Apps</span>
+              </li>
+              <li className="flex items-center gap-3">
+                <Check className="w-4 h-4 text-terminal" />
+                <span className="typo-body text-platinum text-sm">One-Time Payment</span>
+              </li>
+              <li className="flex items-center gap-3">
+                <Check className="w-4 h-4 text-terminal" />
+                <span className="typo-body text-platinum text-sm">Secure Local & Cloud Data</span>
+              </li>
+              <li className="flex items-center gap-3">
+                <Check className="w-4 h-4 text-terminal" />
+                <span className="typo-body text-platinum text-sm">30-Day Post-Launch Support</span>
+              </li>
+            </ul>
 
-                <button className="w-full bg-signal text-obsidian px-10 py-3 typo-headline text-base hover:bg-white transition-colors shadow-[0_0_20px_rgba(255,79,0,0.3)] hover:shadow-[0_0_30px_rgba(255,79,0,0.5)] flex items-center justify-center gap-2">
-                    Build My Business App
-                    <ArrowRight className="w-4 h-4" />
-                </button>
-            </div>
+            <button className="w-full bg-signal text-obsidian px-10 py-3 typo-headline text-base hover:bg-white transition-colors shadow-[0_0_20px_rgba(255,79,0,0.3)] hover:shadow-[0_0_30px_rgba(255,79,0,0.5)] flex items-center justify-center gap-2">
+              Build My Business App
+              <ArrowRight className="w-4 h-4" />
+            </button>
+          </div>
         </div>
       </div>
     </section>

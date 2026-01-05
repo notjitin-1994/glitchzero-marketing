@@ -67,7 +67,7 @@ const platforms = [
 
 export function MobileappsFeatures() {
   return (
-    <section className="py-24 md:py-32 px-6 bg-obsidian relative">
+    <section className="py-10 md:py-12 px-6 bg-obsidian relative">
       {/* Background */}
       <div className="absolute top-1/2 left-0 w-96 h-96 bg-terminal/5 blur-[150px] rounded-full -translate-y-1/2 pointer-events-none"></div>
       <div className="absolute bottom-0 right-0 w-80 h-80 bg-teal-500/5 blur-[120px] rounded-full pointer-events-none"></div>

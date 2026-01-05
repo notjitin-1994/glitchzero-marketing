@@ -25,7 +25,7 @@ const techCategories = [
 
 export function TechShowcase() {
   return (
-    <section className="py-24 px-6">
+    <section className="py-10 px-6">
       <div className="max-w-5xl mx-auto">
         <div className="text-center mb-16">
           <span className="typo-tech text-signal text-xs">Our Toolkit</span>

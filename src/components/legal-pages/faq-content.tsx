@@ -61,7 +61,7 @@ const faqs = [
 
 export function FaqContent() {
   return (
-    <section className="py-24 px-6">
+    <section className="py-10 px-6">
       <div className="max-w-3xl mx-auto">
         <Accordion type="single" collapsible className="w-full">
           {faqs.map((faq, index) => (

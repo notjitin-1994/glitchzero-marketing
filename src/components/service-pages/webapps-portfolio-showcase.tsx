@@ -125,7 +125,7 @@ export function WebappsPortfolioShowcase() {
   }, [isFullscreen, closeFullscreen, nextSlide, prevSlide]);
 
   return (
-    <section className="py-24 md:py-32 px-6 bg-carbon relative overflow-hidden">
+    <section className="py-10 md:py-12 px-6 bg-carbon relative overflow-hidden">
       {/* Background Effects */}
       <div className="absolute top-1/2 left-1/4 w-[600px] h-[600px] bg-signal/5 blur-[180px] rounded-full -translate-y-1/2 pointer-events-none"></div>
       <div className="absolute bottom-0 right-0 w-[400px] h-[400px] bg-terminal/5 blur-[120px] rounded-full pointer-events-none"></div>
@@ -239,11 +239,10 @@ export function WebappsPortfolioShowcase() {
                       <button
                         key={idx}
                         onClick={() => setActiveIndex(idx)}
-                        className={`h-1 rounded-full transition-all duration-300 ${
-                          idx === activeIndex
+                        className={`h-1 rounded-full transition-all duration-300 ${idx === activeIndex
                             ? 'w-8 bg-signal'
                             : 'w-2 bg-tungsten/40 hover:bg-tungsten/60'
-                        }`}
+                          }`}
                         aria-label={`Go to slide ${idx + 1}`}
                       />
                     ))}
@@ -256,11 +255,10 @@ export function WebappsPortfolioShowcase() {
                     <button
                       key={screenshot.id}
                       onClick={() => setActiveIndex(idx)}
-                      className={`relative flex-1 aspect-video overflow-hidden rounded-sm border-2 transition-all duration-300 ${
-                        idx === activeIndex
+                      className={`relative flex-1 aspect-video overflow-hidden rounded-sm border-2 transition-all duration-300 ${idx === activeIndex
                           ? 'border-signal shadow-[0_0_10px_rgba(255,79,0,0.3)]'
                           : 'border-tungsten/20 opacity-60 hover:opacity-100 hover:border-tungsten/40'
-                      }`}
+                        }`}
                     >
                       <Image
                         src={screenshot.image}
@@ -326,11 +324,10 @@ export function WebappsPortfolioShowcase() {
                           <button
                             key={screenshot.id}
                             onClick={() => setActiveIndex(idx)}
-                            className={`flex items-center gap-2 p-2 text-left transition-all duration-300 ${
-                              idx === activeIndex
+                            className={`flex items-center gap-2 p-2 text-left transition-all duration-300 ${idx === activeIndex
                                 ? 'bg-signal/10 border border-signal/30 text-signal'
                                 : 'bg-obsidian border border-tungsten/10 text-tungsten hover:text-platinum hover:border-tungsten/30'
-                            }`}
+                              }`}
                           >
                             {screenshot.icon}
                             <span className="typo-tech text-[10px] truncate">{screenshot.title.split(' ')[0]}</span>
@@ -467,11 +464,10 @@ export function WebappsPortfolioShowcase() {
                   <button
                     key={screenshot.id}
                     onClick={(e) => { e.stopPropagation(); setActiveIndex(idx); }}
-                    className={`relative w-16 h-10 md:w-24 md:h-14 overflow-hidden border-2 transition-all duration-300 ${
-                      idx === activeIndex
+                    className={`relative w-16 h-10 md:w-24 md:h-14 overflow-hidden border-2 transition-all duration-300 ${idx === activeIndex
                         ? 'border-signal shadow-[0_0_10px_rgba(255,79,0,0.3)]'
                         : 'border-tungsten/20 opacity-60 hover:opacity-100 hover:border-tungsten/40'
-                    }`}
+                      }`}
                   >
                     <Image
                       src={screenshot.image}

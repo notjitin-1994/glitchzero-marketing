@@ -23,7 +23,7 @@ const processSteps = [
 
 export function ProcessDeepDive() {
   return (
-    <section className="py-24 px-6 bg-carbon border-y border-obsidian/50">
+    <section className="py-10 px-6 bg-carbon border-y border-obsidian/50">
       <div className="max-w-5xl mx-auto">
         <div className="text-center mb-16 md:mb-20">
           <span className="typo-tech text-signal text-xs">Our Blueprint for Speed</span>
@@ -33,7 +33,7 @@ export function ProcessDeepDive() {
 
         <div className="relative space-y-16">
           <div className="absolute left-1/2 -translate-x-1/2 top-8 bottom-8 w-0.5 bg-tungsten/10 hidden md:block"></div>
-          
+
           {processSteps.map((step, index) => (
             <div key={step.step} className={`flex flex-col md:flex-row items-center gap-8 md:gap-16 ${index % 2 !== 0 ? 'md:flex-row-reverse' : ''}`}>
               <div className="relative">

@@ -154,7 +154,7 @@ export function MobileappsPortfolioShowcase() {
   }, [isFullscreen, closeFullscreen, nextSlide, prevSlide]);
 
   return (
-    <section className="py-24 md:py-32 px-6 bg-carbon relative overflow-hidden">
+    <section className="py-10 md:py-12 px-6 bg-carbon relative overflow-hidden">
       {/* Background Effects */}
       <div className="absolute top-1/2 left-1/4 w-[600px] h-[600px] bg-signal/5 blur-[180px] rounded-full -translate-y-1/2 pointer-events-none"></div>
       <div className="absolute bottom-0 right-0 w-[400px] h-[400px] bg-orange-500/5 blur-[120px] rounded-full pointer-events-none"></div>
@@ -269,18 +269,16 @@ export function MobileappsPortfolioShowcase() {
                       <button
                         key={idx}
                         onClick={() => setActiveIndex(idx)}
-                        className={`min-w-[44px] min-h-[44px] flex items-center justify-center touch-action-manipulation transition-all duration-300 ${
-                          idx === activeIndex ? 'scale-110' : ''
-                        }`}
+                        className={`min-w-[44px] min-h-[44px] flex items-center justify-center touch-action-manipulation transition-all duration-300 ${idx === activeIndex ? 'scale-110' : ''
+                          }`}
                         aria-label={`Go to slide ${idx + 1}`}
                         aria-current={idx === activeIndex ? 'true' : 'false'}
                       >
                         <span
-                          className={`block rounded-full transition-all duration-300 ${
-                            idx === activeIndex
+                          className={`block rounded-full transition-all duration-300 ${idx === activeIndex
                               ? 'w-8 h-3 bg-signal'
                               : 'w-3 h-3 bg-tungsten/40 hover:bg-tungsten/60'
-                          }`}
+                            }`}
                         />
                       </button>
                     ))}
@@ -293,11 +291,10 @@ export function MobileappsPortfolioShowcase() {
                     <button
                       key={screenshot.id}
                       onClick={() => setActiveIndex(idx)}
-                      className={`relative flex-shrink-0 transition-all duration-300 min-w-[48px] min-h-[48px] flex items-center justify-center touch-action-manipulation ${
-                        idx === activeIndex
+                      className={`relative flex-shrink-0 transition-all duration-300 min-w-[48px] min-h-[48px] flex items-center justify-center touch-action-manipulation ${idx === activeIndex
                           ? 'scale-110 drop-shadow-[0_0_10px_rgba(255,79,0,0.4)]'
                           : 'opacity-50 hover:opacity-80 hover:scale-105'
-                      }`}
+                        }`}
                       aria-label={`View ${screenshot.title}`}
                     >
                       <Android
@@ -362,11 +359,10 @@ export function MobileappsPortfolioShowcase() {
                           <button
                             key={screenshot.id}
                             onClick={() => setActiveIndex(idx)}
-                            className={`flex items-center gap-2 p-3 min-h-[48px] text-left transition-all duration-300 touch-action-manipulation active:scale-95 ${
-                              idx === activeIndex
+                            className={`flex items-center gap-2 p-3 min-h-[48px] text-left transition-all duration-300 touch-action-manipulation active:scale-95 ${idx === activeIndex
                                 ? 'bg-signal/10 border border-signal/30 text-signal'
                                 : 'bg-obsidian border border-tungsten/10 text-tungsten hover:text-platinum hover:border-tungsten/30'
-                            }`}
+                              }`}
                             aria-label={`View ${screenshot.title}`}
                             aria-current={idx === activeIndex ? 'true' : 'false'}
                           >
@@ -505,11 +501,10 @@ export function MobileappsPortfolioShowcase() {
                   <button
                     key={screenshot.id}
                     onClick={(e) => { e.stopPropagation(); setActiveIndex(idx); }}
-                    className={`relative flex-shrink-0 transition-all duration-300 min-w-[48px] min-h-[48px] flex items-center justify-center touch-action-manipulation ${
-                      idx === activeIndex
+                    className={`relative flex-shrink-0 transition-all duration-300 min-w-[48px] min-h-[48px] flex items-center justify-center touch-action-manipulation ${idx === activeIndex
                         ? 'scale-110 drop-shadow-[0_0_8px_rgba(255,79,0,0.5)]'
                         : 'opacity-50 hover:opacity-80'
-                    }`}
+                      }`}
                     aria-label={`View ${screenshot.title}`}
                   >
                     <Android

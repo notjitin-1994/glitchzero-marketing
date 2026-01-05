@@ -12,7 +12,7 @@ export function Hero() {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   return (
-    <section className="relative pt-24 pb-8 md:pt-32 md:pb-12 px-6 overflow-hidden">
+    <section className="relative pt-12 pb-8 md:pt-20 md:pb-12 px-6 overflow-hidden">
       {/* Neuro shader background - monochromatic signal orange */}
       <NeuroBackground
         intensity={1.3}

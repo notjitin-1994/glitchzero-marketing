@@ -51,14 +51,14 @@ const testimonial = {
 
 export function WebsitesPortfolioProcess() {
   return (
-    <section className="py-24 md:py-32 px-6 bg-carbon relative overflow-hidden">
+    <section className="py-10 md:py-12 px-6 bg-carbon relative overflow-hidden">
       {/* Background */}
       <div className="absolute top-1/2 left-0 w-96 h-96 bg-terminal/5 blur-[150px] rounded-full -translate-y-1/2 pointer-events-none"></div>
       <div className="absolute bottom-0 right-0 w-64 h-64 bg-signal/5 blur-[100px] rounded-full pointer-events-none"></div>
 
       <div className="max-w-7xl mx-auto relative z-10">
         {/* Section Header */}
-        <div className="text-center mb-20">
+        <div className="text-center mb-8">
           <FadeInSection delay={0.1} direction="up">
             <span className="typo-tech text-terminal text-xs inline-flex items-center gap-2 mb-4">
               <MessageSquare className="w-3 h-3" />
@@ -80,7 +80,7 @@ export function WebsitesPortfolioProcess() {
         </div>
 
         {/* Process Steps */}
-        <StaggerContainer staggerDelay={0.1} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-24">
+        <StaggerContainer staggerDelay={0.1} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-10">
           {processSteps.map((step, index) => (
             <StaggerItem key={step.number}>
               <div className="group relative h-full">

@@ -17,7 +17,7 @@ export function Cta() {
         particleCount={600}
         baseRadius={1}
         rangeRadius={2}
-        className="flex items-center justify-center px-6 py-12 w-full"
+        className="flex items-center justify-center px-6 py-5 w-full"
       >
         <div className="text-center max-w-3xl mx-auto">
           {/* Glassmorphic Card - subtle blur to see animation through */}
@@ -30,7 +30,7 @@ export function Cta() {
               inactiveZone={0.01}
               variant="orange"
             />
-            <div className="bg-obsidian/30 backdrop-blur-[3px] rounded-xl md:rounded-2xl px-8 py-12 md:px-12 md:py-14 shadow-2xl">
+            <div className="bg-obsidian/30 backdrop-blur-[3px] rounded-xl md:rounded-2xl px-8 py-5 md:px-12 md:py-6 shadow-2xl">
               <BlurFadeIn>
                 <h2 className="typo-headline text-4xl md:text-5xl text-platinum mb-8">Ready to Build Your Competitive Advantage?</h2>
               </BlurFadeIn>

@@ -15,6 +15,7 @@ interface FadeInSectionProps {
   distance?: number;
   once?: boolean;
   threshold?: number;
+  id?: string;
 }
 
 const getVariants = (direction: AnimationDirection, distance: number): Variants => {
@@ -48,6 +49,7 @@ export function FadeInSection({
   distance = 30,
   once = true,
   threshold = 0.1,
+  id,
 }: FadeInSectionProps) {
   const ref = useRef<HTMLDivElement>(null);
   const isInView = useInView(ref, { once, amount: threshold });
@@ -57,6 +59,7 @@ export function FadeInSection({
   return (
     <OptimizedMotion.div
       ref={ref}
+      id={id}
       className={className}
       initial="hidden"
       animate={isInView ? 'visible' : 'hidden'}

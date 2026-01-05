@@ -6,7 +6,7 @@ import { TransitionLink } from '@/components/ui/page-transition';
 
 export function Footer() {
   return (
-    <footer className="bg-carbon pt-16 pb-8 border-t border-obsidian">
+    <footer className="bg-carbon pt-6 pb-3 border-t border-obsidian">
       <div className="max-w-7xl mx-auto px-6">
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-12 mb-16">
           <div className="col-span-1 sm:col-span-2 md:col-span-1">

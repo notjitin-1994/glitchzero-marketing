@@ -25,7 +25,7 @@ const pillars = [
 
 export function CorePillars() {
   return (
-    <section className="py-24 px-6">
+    <section className="py-10 px-6">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-16">
           <h2 className="typo-headline text-3xl md:text-4xl text-platinum">The GlitchZero Advantage</h2>

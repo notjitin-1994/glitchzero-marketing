@@ -262,11 +262,10 @@ function SmartslateShowcase() {
                   <button
                     key={idx}
                     onClick={() => setActiveIndex(idx)}
-                    className={`h-1 rounded-full transition-all duration-300 ${
-                      idx === activeIndex
+                    className={`h-1 rounded-full transition-all duration-300 ${idx === activeIndex
                         ? 'w-8 bg-terminal'
                         : 'w-2 bg-tungsten/40 hover:bg-tungsten/60'
-                    }`}
+                      }`}
                     aria-label={`Go to slide ${idx + 1}`}
                   />
                 ))}
@@ -279,11 +278,10 @@ function SmartslateShowcase() {
                 <button
                   key={screenshot.id}
                   onClick={() => setActiveIndex(idx)}
-                  className={`relative flex-1 aspect-video overflow-hidden rounded-sm border-2 transition-all duration-300 ${
-                    idx === activeIndex
+                  className={`relative flex-1 aspect-video overflow-hidden rounded-sm border-2 transition-all duration-300 ${idx === activeIndex
                       ? 'border-terminal shadow-[0_0_10px_rgba(0,255,136,0.3)]'
                       : 'border-tungsten/20 opacity-60 hover:opacity-100 hover:border-tungsten/40'
-                  }`}
+                    }`}
                 >
                   <Image
                     src={screenshot.image}
@@ -349,11 +347,10 @@ function SmartslateShowcase() {
                       <button
                         key={screenshot.id}
                         onClick={() => setActiveIndex(idx)}
-                        className={`flex items-center gap-2 p-2 text-left transition-all duration-300 ${
-                          idx === activeIndex
+                        className={`flex items-center gap-2 p-2 text-left transition-all duration-300 ${idx === activeIndex
                             ? 'bg-terminal/10 border border-terminal/30 text-terminal'
                             : 'bg-obsidian border border-tungsten/10 text-tungsten hover:text-platinum hover:border-tungsten/30'
-                        }`}
+                          }`}
                       >
                         {screenshot.icon}
                         <span className="typo-tech text-[10px]">{screenshot.title}</span>
@@ -493,11 +490,10 @@ function SmartslateShowcase() {
                   <button
                     key={screenshot.id}
                     onClick={(e) => { e.stopPropagation(); setActiveIndex(idx); }}
-                    className={`relative w-16 h-10 md:w-24 md:h-14 overflow-hidden border-2 transition-all duration-300 ${
-                      idx === activeIndex
+                    className={`relative w-16 h-10 md:w-24 md:h-14 overflow-hidden border-2 transition-all duration-300 ${idx === activeIndex
                         ? 'border-terminal shadow-[0_0_10px_rgba(0,255,136,0.3)]'
                         : 'border-tungsten/20 opacity-60 hover:opacity-100 hover:border-tungsten/40'
-                    }`}
+                      }`}
                   >
                     <Image
                       src={screenshot.image}
@@ -529,7 +525,7 @@ export function WebsitesPortfolioShowcase() {
   const [hoveredProject, setHoveredProject] = useState<string | null>(null);
 
   return (
-    <section className="py-24 md:py-32 px-6 bg-carbon relative overflow-hidden">
+    <section className="py-10 md:py-12 px-6 bg-carbon relative overflow-hidden">
       {/* Background gradient */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-signal/5 blur-[150px] rounded-full pointer-events-none"></div>
       <div className="absolute bottom-1/4 right-0 w-[400px] h-[400px] bg-terminal/5 blur-[120px] rounded-full pointer-events-none"></div>
@@ -558,7 +554,7 @@ export function WebsitesPortfolioShowcase() {
         </div>
 
         {/* Smartslate Featured Case Study */}
-        <div className="mb-24">
+        <div className="mb-10">
           <FadeInSection delay={0.2} direction="up">
             <span className="typo-tech text-terminal text-xs inline-flex items-center gap-2 mb-6">
               <Layers className="w-3 h-3" />
@@ -570,7 +566,7 @@ export function WebsitesPortfolioShowcase() {
 
         {/* Other Projects */}
         <FadeInSection delay={0.3} direction="up">
-          <div className="border-t border-tungsten/10 pt-16 mb-8">
+          <div className="border-t border-tungsten/10 pt-6 mb-3">
             <span className="typo-tech text-signal text-xs inline-flex items-center gap-2 mb-2">
               <Globe className="w-3 h-3" />
               More Projects
@@ -596,7 +592,7 @@ export function WebsitesPortfolioShowcase() {
 
         {/* Footnote */}
         <FadeInSection delay={0.3} direction="up">
-          <p className="typo-tech text-xs text-tungsten/60 text-left mt-16">
+          <p className="typo-tech text-xs text-tungsten/60 text-left mt-6">
             *MVP ready in 24 hours. Additional iterations for complete satisfaction.
           </p>
         </FadeInSection>

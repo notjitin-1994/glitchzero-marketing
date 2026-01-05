@@ -75,7 +75,7 @@ const useCases = [
 
 export function DesktopAppsFeatures() {
   return (
-    <section className="py-24 md:py-32 px-6 bg-carbon relative">
+    <section className="py-10 md:py-12 px-6 bg-carbon relative">
       {/* Background */}
       <div className="absolute top-1/2 right-0 w-96 h-96 bg-signal/5 blur-[150px] rounded-full -translate-y-1/2 pointer-events-none"></div>
 

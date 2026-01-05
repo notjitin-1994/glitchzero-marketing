@@ -25,7 +25,7 @@ const features = [
 
 export function AppMaintenanceDetails() {
   return (
-    <section className="py-24 px-6">
+    <section className="py-10 px-6">
       <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-16">
         <div className="lg:col-span-2">
           <h2 className="typo-headline text-3xl text-platinum mb-4">
@@ -54,43 +54,43 @@ export function AppMaintenanceDetails() {
         </div>
 
         <div className="sticky top-24 h-fit">
-            <div className="bg-carbon border border-tungsten/10 rounded-sm p-8">
-                <h3 className="typo-headline text-xl text-platinum mb-4">
-                    Simple Maintenance Plans
-                </h3>
-                <p className="typo-body text-tungsten text-sm mb-6">
-                    Choose a plan that fits your needs. We offer clear, affordable pricing to protect your investment.
-                </p>
+          <div className="bg-carbon border border-tungsten/10 rounded-sm p-8">
+            <h3 className="typo-headline text-xl text-platinum mb-4">
+              Simple Maintenance Plans
+            </h3>
+            <p className="typo-body text-tungsten text-sm mb-6">
+              Choose a plan that fits your needs. We offer clear, affordable pricing to protect your investment.
+            </p>
 
-                <ul className="space-y-3 mb-8">
-                    <li className="flex items-center gap-3">
-                        <Check className="w-4 h-4 text-terminal" />
-                        <span className="typo-body text-platinum text-sm">Monthly Health Reports</span>
-                    </li>
-                    <li className="flex items-center gap-3">
-                        <Check className="w-4 h-4 text-terminal" />
-                        <span className="typo-body text-platinum text-sm">Automated Backups</span>
-                    </li>
-                    <li className="flex items-center gap-3">
-                        <Check className="w-4 h-4 text-terminal" />
-                        <span className="typo-body text-platinum text-sm">Security & Performance Scans</span>
-                    </li>
-                    <li className="flex items-center gap-3">
-                        <Check className="w-4 h-4 text-terminal" />
-                        <span className="typo-body text-platinum text-sm">Priority Feature Requests</span>
-                    </li>
-                </ul>
+            <ul className="space-y-3 mb-8">
+              <li className="flex items-center gap-3">
+                <Check className="w-4 h-4 text-terminal" />
+                <span className="typo-body text-platinum text-sm">Monthly Health Reports</span>
+              </li>
+              <li className="flex items-center gap-3">
+                <Check className="w-4 h-4 text-terminal" />
+                <span className="typo-body text-platinum text-sm">Automated Backups</span>
+              </li>
+              <li className="flex items-center gap-3">
+                <Check className="w-4 h-4 text-terminal" />
+                <span className="typo-body text-platinum text-sm">Security & Performance Scans</span>
+              </li>
+              <li className="flex items-center gap-3">
+                <Check className="w-4 h-4 text-terminal" />
+                <span className="typo-body text-platinum text-sm">Priority Feature Requests</span>
+              </li>
+            </ul>
 
-                <a
-                    href="https://wa.me/919008898642"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="w-full bg-signal text-obsidian px-10 py-3 typo-headline text-base hover:bg-white transition-colors shadow-[0_0_20px_rgba(255,79,0,0.5)] hover:shadow-[0_0_30px_rgba(255,79,0,0.5)] flex items-center justify-center gap-2"
-                >
-                    From ₹25,000/year
-                    <ArrowRight className="w-4 h-4" />
-                </a>
-            </div>
+            <a
+              href="https://wa.me/919008898642"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-full bg-signal text-obsidian px-10 py-3 typo-headline text-base hover:bg-white transition-colors shadow-[0_0_20px_rgba(255,79,0,0.5)] hover:shadow-[0_0_30px_rgba(255,79,0,0.5)] flex items-center justify-center gap-2"
+            >
+              From ₹25,000/year
+              <ArrowRight className="w-4 h-4" />
+            </a>
+          </div>
         </div>
       </div>
     </section>

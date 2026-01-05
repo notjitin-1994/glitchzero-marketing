@@ -38,7 +38,7 @@ export function ConsultationCta({
         particleCount={600}
         baseRadius={1}
         rangeRadius={2}
-        className="px-6 py-24 md:py-32 w-full"
+        className="px-6 py-10 md:py-12 w-full"
       >
         <div className="max-w-6xl mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">

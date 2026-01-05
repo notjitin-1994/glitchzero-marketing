@@ -5,7 +5,7 @@ import { ContrastText, ContrastWrapper } from '@/components/ui/contrast-text';
 
 export function TermsOfServiceHero() {
   return (
-    <section className="relative pt-32 pb-20 md:pt-48 md:pb-24 px-6 bg-carbon text-center overflow-hidden">
+    <section className="relative pt-12 pb-8 md:pt-20 md:pb-10 px-6 bg-carbon text-center overflow-hidden">
       <NeuroBackground colorTheme="ember" />
       <div className="absolute inset-0 bg-gradient-to-b from-obsidian/40 via-transparent to-obsidian/60 pointer-events-none z-[1]" />
       <ContrastWrapper className="max-w-4xl mx-auto relative z-10">

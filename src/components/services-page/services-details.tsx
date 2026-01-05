@@ -279,87 +279,90 @@ function ServiceCard({ service, index }: { service: Service; index: number }) {
         </div>
       </div>
 
-      {/* Separator Line */}
-      {index < services.length - 1 && (
-        <div className="flex items-center justify-center mt-24">
-          <div className="w-24 h-px bg-gradient-to-r from-transparent via-tungsten/30 to-transparent"></div>
-          <div className="w-2 h-2 bg-signal/30 rounded-full mx-4"></div>
-          <div className="w-24 h-px bg-gradient-to-r from-transparent via-tungsten/30 to-transparent"></div>
-        </div>
-      )}
     </FadeInSection>
   );
 }
 
 export function ServicesDetails() {
   return (
-    <section className="py-24 bg-carbon border-y border-obsidian/50 overflow-hidden">
-      <div className="max-w-7xl mx-auto px-6">
-        {/* Section Header */}
-        <FadeInSection direction="up" className="text-center mb-20">
-          <span className="typo-tech text-signal text-xs tracking-widest uppercase">Our Expertise</span>
-          <h2 className="typo-headline text-4xl md:text-5xl text-platinum mt-4 mb-6">
-            Solutions That <span className="text-signal">Transform</span> Business
-          </h2>
-          <p className="typo-body text-tungsten max-w-2xl mx-auto text-lg">
-            From concept to deployment, we craft digital experiences that drive growth and delight users.
-          </p>
-        </FadeInSection>
-
-        {/* Services Grid */}
-        <div className="space-y-32">
-          {services.map((service, index) => (
-            <ServiceCard key={service.id} service={service} index={index} />
-          ))}
+    <div className="overflow-hidden">
+      {/* Header Segment */}
+      <section className="py-10 bg-carbon border-b border-obsidian/50">
+        <div className="max-w-7xl mx-auto px-6">
+          <FadeInSection direction="up" className="text-center">
+            <span className="typo-tech text-signal text-xs tracking-widest uppercase">Our Expertise</span>
+            <h2 className="typo-headline text-4xl md:text-5xl text-platinum mt-4 mb-6">
+              Solutions That <span className="text-signal">Transform</span> Business
+            </h2>
+            <p className="typo-body text-tungsten max-w-2xl mx-auto text-lg">
+              From concept to deployment, we craft digital experiences that drive growth and delight users.
+            </p>
+          </FadeInSection>
         </div>
+      </section>
 
-      </div>
+      {/* Services Grid Segments */}
+      {services.map((service, index) => {
+        const isObsidian = service.id === 'web-apps' || service.id === 'mobile-apps';
+        return (
+          <section
+            key={service.id}
+            className={`py-8 ${isObsidian ? 'bg-obsidian' : 'bg-carbon'} border-b border-obsidian/50`}
+          >
+            <div className="max-w-7xl mx-auto px-6">
+              <ServiceCard service={service} index={index} />
+            </div>
+          </section>
+        );
+      })}
 
       {/* Bottom CTA Section - Full Width with Vortex */}
-      <FadeInSection direction="up" className="mt-32 -mb-24">
-        <div className="relative overflow-hidden bg-[#121212]">
-          <Vortex
-            backgroundColor="#121212"
-            particleCount={600}
-            baseRadius={1}
-            rangeRadius={2}
-            className="py-20 md:py-28 w-full"
-          >
-            <div className="max-w-7xl mx-auto px-6 text-center">
-              {/* Glassmorphic Card - subtle blur to see animation through */}
-              <div className="inline-block relative rounded-2xl border border-tungsten/20 p-[2px] md:rounded-3xl">
-                <GlowingEffect
-                  blur={0}
-                  borderWidth={1.5}
-                  spread={80}
-                  glow={true}
-                  disabled={false}
-                  proximity={64}
-                  inactiveZone={0.01}
-                  variant="orange"
-                />
-                <div className="bg-obsidian/30 backdrop-blur-[3px] rounded-xl md:rounded-2xl px-8 py-10 md:px-12 md:py-12 shadow-2xl">
-                  <h3 className="typo-headline text-2xl md:text-3xl text-platinum mb-4">
-                    Not Sure Which Service You Need?
-                  </h3>
-                  <p className="typo-body text-tungsten mb-8 max-w-lg mx-auto">
-                    Let's discuss your project. We'll help you identify the perfect solution for your business goals.
-                  </p>
-                  <a
-                    href="https://wa.me/919008898642"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 bg-signal text-obsidian px-8 py-4 typo-headline text-base hover:bg-white transition-colors shadow-[0_0_20px_rgba(255,79,0,0.3)] hover:shadow-[0_0_30px_rgba(255,79,0,0.5)]"
-                  >
-                    Let's Talk
-                    <ArrowRight className="w-5 h-5" />
-                  </a>
+      <section className="bg-carbon py-10">
+        <FadeInSection direction="up" className="mt-12 -mb-10">
+          <div className="relative overflow-hidden bg-[#121212]">
+            <Vortex
+              backgroundColor="#121212"
+              particleCount={600}
+              baseRadius={1}
+              rangeRadius={2}
+              className="py-8 md:py-11 w-full"
+            >
+              <div className="max-w-7xl mx-auto px-6 text-center">
+                {/* Glassmorphic Card - subtle blur to see animation through */}
+                <div className="inline-block relative rounded-2xl border border-tungsten/20 p-[2px] md:rounded-3xl">
+                  <GlowingEffect
+                    blur={0}
+                    borderWidth={1.5}
+                    spread={80}
+                    glow={true}
+                    disabled={false}
+                    proximity={64}
+                    inactiveZone={0.01}
+                    variant="orange"
+                  />
+                  <div className="bg-obsidian/30 backdrop-blur-[3px] rounded-xl md:rounded-2xl px-8 py-10 md:px-12 md:py-12 shadow-2xl">
+                    <h3 className="typo-headline text-2xl md:text-3xl text-platinum mb-4">
+                      Not Sure Which Service You Need?
+                    </h3>
+                    <p className="typo-body text-tungsten mb-8 max-w-lg mx-auto">
+                      Let's discuss your project. We'll help you identify the perfect solution for your business goals.
+                    </p>
+                    <a
+                      href="https://wa.me/919008898642"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 bg-signal text-obsidian px-8 py-4 typo-headline text-base hover:bg-white transition-colors shadow-[0_0_20px_rgba(255,79,0,0.3)] hover:shadow-[0_0_30px_rgba(255,79,0,0.5)]"
+                    >
+                      Let's Talk
+                      <ArrowRight className="w-5 h-5" />
+                    </a>
+                  </div>
                 </div>
               </div>
-            </div>
-          </Vortex>
-        </div>
-      </FadeInSection>
-    </section>
+            </Vortex>
+          </div>
+        </FadeInSection>
+      </section>
+    </div>
   );
 }

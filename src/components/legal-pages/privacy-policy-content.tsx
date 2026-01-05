@@ -1,9 +1,9 @@
 export function PrivacyPolicyContent() {
   return (
-    <section className="py-24 px-6">
+    <section className="py-10 px-6">
       <div className="max-w-3xl mx-auto prose prose-invert prose-p:text-tungsten prose-headings:text-platinum prose-strong:text-platinum prose-a:text-signal prose-li:text-tungsten prose-ul:list-disc prose-ul:ml-6">
         <p>Last updated: July 29, 2025</p>
-        
+
         <h2>1. Introduction</h2>
         <p>
           Welcome to GlitchZero ("we," "us," or "our"). We are committed to protecting your privacy and handling your personal data in an open and transparent manner. This Privacy Policy outlines our practices concerning the collection, use, and disclosure of your information through our website (the "Site") and services.
@@ -15,21 +15,21 @@ export function PrivacyPolicyContent() {
         </p>
         <h4>2.1. Information You Provide to Us</h4>
         <ul>
-            <li>
-                <strong>Contact Information:</strong> When you fill out our contact form, subscribe to our newsletter, or communicate with us, we collect your name, email address, phone number, and any other information you choose to provide.
-            </li>
-            <li>
-                <strong>Project Details:</strong> When you request a quote or start a project, we collect details about your business and project requirements.
-            </li>
+          <li>
+            <strong>Contact Information:</strong> When you fill out our contact form, subscribe to our newsletter, or communicate with us, we collect your name, email address, phone number, and any other information you choose to provide.
+          </li>
+          <li>
+            <strong>Project Details:</strong> When you request a quote or start a project, we collect details about your business and project requirements.
+          </li>
         </ul>
         <h4>2.2. Information We Collect Automatically</h4>
         <ul>
-            <li>
-                <strong>Log and Usage Data:</strong> Our servers automatically collect information when you access our Site, including your IP address, browser type, operating system, access times, and the pages you have viewed.
-            </li>
-            <li>
-                <strong>Cookies and Tracking Technologies:</strong> We use cookies and similar tracking technologies to track activity on our Site and hold certain information. You can instruct your browser to refuse all cookies or to indicate when a cookie is being sent.
-            </li>
+          <li>
+            <strong>Log and Usage Data:</strong> Our servers automatically collect information when you access our Site, including your IP address, browser type, operating system, access times, and the pages you have viewed.
+          </li>
+          <li>
+            <strong>Cookies and Tracking Technologies:</strong> We use cookies and similar tracking technologies to track activity on our Site and hold certain information. You can instruct your browser to refuse all cookies or to indicate when a cookie is being sent.
+          </li>
         </ul>
 
         <h2>3. How We Use Your Information</h2>
@@ -46,7 +46,7 @@ export function PrivacyPolicyContent() {
           <li>Send you emails and other communications.</li>
           <li>Find and prevent fraud.</li>
         </ul>
-        
+
         <h2>4. How We Share Your Information</h2>
         <p>
           We do not sell your personal information. We may share information we have collected about you in the following situations:
@@ -73,10 +73,10 @@ export function PrivacyPolicyContent() {
           Depending on your location, you may have the following rights regarding your personal data:
         </p>
         <ul>
-            <li>The right to access – You have the right to request copies of your personal data.</li>
-            <li>The right to rectification – You have the right to request that we correct any information you believe is inaccurate or complete information you believe is incomplete.</li>
-            <li>The right to erasure – You have the right to request that we erase your personal data, under certain conditions.</li>
-            <li>The right to restrict processing – You have the right to request that we restrict the processing of your personal data, under certain conditions.</li>
+          <li>The right to access – You have the right to request copies of your personal data.</li>
+          <li>The right to rectification – You have the right to request that we correct any information you believe is inaccurate or complete information you believe is incomplete.</li>
+          <li>The right to erasure – You have the right to request that we erase your personal data, under certain conditions.</li>
+          <li>The right to restrict processing – You have the right to request that we restrict the processing of your personal data, under certain conditions.</li>
         </ul>
         <p>If you would like to exercise any of these rights, please contact us.</p>
 
