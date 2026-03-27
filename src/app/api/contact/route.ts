@@ -5,7 +5,18 @@ import { NotificationEmail } from '@/emails/notification-email';
 import { AcknowledgementEmail } from '@/emails/acknowledgement-email';
 import { supabase, ContactSubmission } from '@/lib/supabase';
 
-const resend = new Resend(process.env.RESEND_API_KEY);
+// Lazy-initialize Resend client to avoid build-time errors
+let _resend: Resend | null = null;
+function getResend(): Resend {
+  if (!_resend) {
+    const apiKey = process.env.RESEND_API_KEY;
+    if (!apiKey) {
+      throw new Error('Missing RESEND_API_KEY environment variable');
+    }
+    _resend = new Resend(apiKey);
+  }
+  return _resend;
+}
 
 interface ContactFormData {
   name: string;
@@ -59,7 +70,7 @@ export async function POST(request: NextRequest) {
     const acknowledgementHtml = await render(AcknowledgementEmail({ name }));
 
     // Send notification email to business
-    const notificationResult = await resend.emails.send({
+    const notificationResult = await getResend().emails.send({
       from: 'GlitchZero Labs <noreply@glitchzerolabs.com>',
       to: ['jitin@glitchzerolabs.com'],
       subject: `New Enquiry from ${name}`,
@@ -75,7 +86,7 @@ export async function POST(request: NextRequest) {
     }
 
     // Send acknowledgement email to user
-    const acknowledgementResult = await resend.emails.send({
+    const acknowledgementResult = await getResend().emails.send({
       from: 'GlitchZero Labs <noreply@glitchzerolabs.com>',
       to: [email],
       subject: 'Thank you for contacting GlitchZero Labs!',
