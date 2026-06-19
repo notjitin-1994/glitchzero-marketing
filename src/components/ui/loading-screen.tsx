@@ -107,6 +107,9 @@ export function LoadingScreen({ onLoadingComplete, minDuration = 800 }: LoadingS
                     alt=""
                     fill
                     className="object-contain"
+                    priority
+                    unoptimized
+                    fetchPriority="high"
                     sizes="(max-width: 768px) 96px, 128px"
                   />
                 </div>
@@ -119,6 +122,9 @@ export function LoadingScreen({ onLoadingComplete, minDuration = 800 }: LoadingS
                     alt=""
                     fill
                     className="object-contain"
+                    priority
+                    unoptimized
+                    fetchPriority="high"
                     sizes="(max-width: 768px) 96px, 128px"
                   />
                 </div>
@@ -148,6 +154,8 @@ export function LoadingScreen({ onLoadingComplete, minDuration = 800 }: LoadingS
                   fill
                   className="object-contain"
                   priority
+                  unoptimized
+                  fetchPriority="high"
                   sizes="(max-width: 768px) 96px, 128px"
                 />
               </motion.div>
