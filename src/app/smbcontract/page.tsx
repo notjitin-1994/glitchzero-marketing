@@ -194,48 +194,39 @@ const SmbContractPage = () => {
                   </div>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
-                  <div className="relative">
-                    <label className={`absolute left-4 transition-all duration-200 font-mono text-[10px] tracking-tags uppercase pointer-events-none ${
-                      focusedField === 'name' || formData.name ? 'top-2 text-signal' : 'top-1/2 -translate-y-1/2 text-tungsten/40'
-                    }`}>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                  <div className="flex flex-col gap-2">
+                    <label className="font-mono text-[10px] tracking-tags uppercase text-tungsten">
                       Full Name
                     </label>
                     <input
                       required
-                      className="w-full bg-obsidian border border-tungsten/10 p-4 pt-6 text-platinum font-body text-sm outline-none focus:border-signal/40 transition-colors duration-300"
-                      onFocus={() => setFocusedField('name')}
-                      onBlur={() => setFocusedField(null)}
+                      placeholder="e.g. John Doe"
+                      className="w-full bg-obsidian border border-tungsten/10 p-4 text-platinum font-body text-sm outline-none focus:border-signal/40 transition-colors duration-300 placeholder:text-tungsten/30"
                       onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFormData({...formData, name: e.target.value})}
                       value={formData.name}
                     />
                   </div>
-                  <div className="relative">
-                    <label className={`absolute left-4 transition-all duration-200 font-mono text-[10px] tracking-tags uppercase pointer-events-none ${
-                      focusedField === 'company' || formData.company ? 'top-2 text-signal' : 'top-1/2 -translate-y-1/2 text-tungsten/40'
-                    }`}>
+                  <div className="flex flex-col gap-2">
+                    <label className="font-mono text-[10px] tracking-tags uppercase text-tungsten">
                       Business Name
                     </label>
                     <input
                       required
-                      className="w-full bg-obsidian border border-tungsten/10 p-4 pt-6 text-platinum font-body text-sm outline-none focus:border-signal/40 transition-colors duration-300"
-                      onFocus={() => setFocusedField('company')}
-                      onBlur={() => setFocusedField(null)}
+                      placeholder="e.g. Acme Corp"
+                      className="w-full bg-obsidian border border-tungsten/10 p-4 text-platinum font-body text-sm outline-none focus:border-signal/40 transition-colors duration-300 placeholder:text-tungsten/30"
                       onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFormData({...formData, company: e.target.value})}
                       value={formData.company}
                     />
                   </div>
-                  <div className="relative md:col-span-2">
-                    <label className={`absolute left-4 transition-all duration-200 font-mono text-[10px] tracking-tags uppercase pointer-events-none ${
-                      focusedField === 'phone' || formData.phone ? 'top-2 text-signal' : 'top-1/2 -translate-y-1/2 text-tungsten/40'
-                    }`}>
+                  <div className="flex flex-col gap-2 md:col-span-2">
+                    <label className="font-mono text-[10px] tracking-tags uppercase text-tungsten">
                       WhatsApp Number
                     </label>
                     <input
                       required
-                      className="w-full bg-obsidian border border-tungsten/10 p-4 pt-6 text-platinum font-body text-sm outline-none focus:border-signal/40 transition-colors duration-300"
-                      onFocus={() => setFocusedField('phone')}
-                      onBlur={() => setFocusedField(null)}
+                      placeholder="+91 98765 43210"
+                      className="w-full bg-obsidian border border-tungsten/10 p-4 text-platinum font-body text-sm outline-none focus:border-signal/40 transition-colors duration-300 placeholder:text-tungsten/30"
                       onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFormData({...formData, phone: e.target.value})}
                       value={formData.phone}
                     />
@@ -265,13 +256,25 @@ const SmbContractPage = () => {
                 </label>
 
                 {/* Submit Button */}
-                <button
-                  disabled={!formData.agreed}
-                  className="w-full py-5 bg-signal text-obsidian font-headline font-extrabold text-sm uppercase tracking-tags flex items-center justify-center gap-3 hover:bg-platinum disabled:bg-carbon disabled:text-tungsten/30 disabled:cursor-not-allowed transition-all duration-300"
-                >
-                  Accept Agreement & Proceed
-                  <ArrowRight className="w-4 h-4" />
-                </button>
+                <div className="relative group/btn">
+                  <button
+                    disabled={!formData.agreed}
+                    className={`w-full py-5 font-headline font-extrabold text-sm uppercase tracking-tags flex items-center justify-center gap-3 transition-all duration-300 ${
+                      formData.agreed 
+                        ? 'bg-signal text-obsidian hover:bg-platinum' 
+                        : 'bg-carbon text-tungsten/50 border border-tungsten/10 cursor-not-allowed'
+                    }`}
+                  >
+                    Accept Agreement & Proceed
+                    <ArrowRight className="w-4 h-4" />
+                  </button>
+                  
+                  {!formData.agreed && (
+                    <div className="absolute -top-12 left-1/2 -translate-x-1/2 bg-obsidian border border-tungsten/20 text-tungsten text-[10px] uppercase tracking-tags px-3 py-2 opacity-0 group-hover/btn:opacity-100 transition-opacity duration-300 pointer-events-none whitespace-nowrap shadow-xl">
+                      Please check the agreement box to proceed
+                    </div>
+                  )}
+                </div>
 
               </div>
             </FadeInSection>
