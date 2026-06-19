@@ -13,7 +13,7 @@ const App = () => {
 
   return (
     <div className="min-h-screen bg-[#111111] text-zinc-300 font-sans selection:bg-orange-600 selection:text-white">
-      <div className="max-w-4xl mx-auto py-12 px-6">
+      <div className="max-w-4xl mx-auto pt-28 pb-12 px-6">
         
         {/* Header */}
         <header className="mb-12 border-b border-zinc-800 pb-8">
